@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="libs/httpclient-4.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/httpcore-4.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/jackson-core-asl-1.9.11.jar"/>
+	<classpathentry kind="lib" path="libs/jackson-mapper-asl-1.9.11.jar"/>
+	<classpathentry kind="lib" path="libs/json-20080701.jar"/>
+	<classpathentry kind="lib" path="libs/opengl-api-gl1.1-android-2.1_r1.jar"/>
+	<classpathentry kind="lib" path="libs/spring-android-core-1.0.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/spring-android-rest-template-1.0.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="libs/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/commons-io-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/rabbitmq-client.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
