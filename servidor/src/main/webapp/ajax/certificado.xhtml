@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<body>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-pencil-square-o fa-fw "></i> Reporte <span>>
+					Certificado</span>
+			</h1>
+		</div>
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+
+		<!-- row -->
+		<div class="row">
+
+			<!-- NEW WIDGET START -->
+			<article class="col-sm-12 col-md-12 col-lg-12">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+					
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc" novalidate="novalidate">
+									<div class="col-sm-12">
+
+										<div
+											class="well well-sm bg-color-darken txt-color-white text-center">
+											<h1 align="center" style="font-size: 30px;"><STRONG>Apto Físico</STRONG></h1>
+											<h2 align="center"><STRONG>Diagnóstico Médico de Aptitud Física</STRONG></h2>
+											<h3 align="center"><STRONG>Certificados</STRONG></h3>
+										</div>
+
+										<br />
+
+										<p>
+											<span class="label label-info"></span> INFORME #{certificadoBean.estadoInforme} 
+											<span class="txt-color-purple pull-right"><i
+												class="fa fa-warning"></i></span>
+										</p>
+
+										<div class="progress">
+
+											<div class="progress progress-striped">
+												<div class="progress-bar bg-color-purple" role="progressbar"
+															style="width: #{certificadoBean.porcentajeInforme}"></div>
+											</div>
+
+										</div>
+
+										<article
+											class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+											<table class="table">
+												<tr>
+													<th width="80%"><h1
+															class="page-title txt-color-blueDark">
+															#{certificadoBean.titulo}
+														</h1>
+														<h1	class="page-title txt-color-blueDark" align="left">
+															Conclusión D.A.F
+														</h1>
+													</th>
+													<th width="20%"><h1
+															class="page-title txt-color-blueDark">
+															H. H. N°: 
+															<h:outputText value="#{certificadoBean.dniHc_173p}" />
+														</h1>
+													</th>
+												</tr>
+												<tr>
+													<th width="50%"><h1
+															class="page-title txt-color-blueDark">
+															Apellidos: 
+															<h:outputText value="#{certificadoBean.apellido_173}" />
+														</h1></th>
+													<th width="50%"><h1
+															class="page-title txt-color-blueDark">
+															Nombres:
+															<h:outputText value="#{certificadoBean.nombre_173}" />
+														</h1>
+													</th>
+												</tr>
+											</table>
+										</article>
+
+										<article
+											class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+											
+											<h4 class="alert alert-info" align="left">
+											Paciente en Evaluación Clínica y Cardiológica del Programa, no se encontró patología evidente						
+											que le impida realizar  sus tareas habituales y Actividad Física de tipo Recreativa de Intensidad #{certificadoBean.intensidad_174a != null ? certificadoBean.intensidad_174a : "___________________________________"} <BR />	
+											según sus Antecedentes Clínicos, su sexo, su peso y edad, en el día de la fecha: #{certificadoBean.fechaActual_175}			
+											para una Posterior Progresión Graduada, Bajo Estricto Control Médico. A una Frecuencia Cardíaca Máxima de Entrenamiento Teórica de Inicio de	
+																							
+												 #{certificadoBean.latidosPorMinuto_174BI != null  ? certificadoBean.latidosPorMinuto_174BI : "___"} Latidos por Minuto,			
+											    						#{certificadoBean.minutosPorDia_174BII != null  ? certificadoBean.minutosPorDia_174BII : "___"}	minutos / día, 
+																	    #{certificadoBean.vecesPorSemana_174BIII != null ? certificadoBean.vecesPorSemana_174BIII : "___"}	veces por semana.
+												<BR />	 <BR />							
+												Mas Actividad, otras #{certificadoBean.vecesPorSemana_174CIII != null ? certificadoBean.vecesPorSemana_174CIII : "___"} veces por semana,
+																   #{certificadoBean.minutosPorDia_174CII != null ? certificadoBean.minutosPorDia_174CII : "___"} minutos / día,
+																  A una Frecuencia Cardíaca Máxima de Entrenamiento de #{certificadoBean.latidosPorMinuto_174CI != null ? certificadoBean.latidosPorMinuto_174CI : "___"} Latidos por Minuto,
+											</h4>
+			
+											
+											<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+											
+											<h4 class="alert alert-info" align="left">
+											 
+											Se indicó:						
+											Seguimiento Estricto por Médico de Cabecera; Estudios para control, e Interconsultas para Seguimiento y						
+											Recomendaciones por Especialidades: Solicitar Interconsulta con Nutrición y Plan de Actividad Física Adaptada:						
+											 Completar estudios, interconsultas e indicaciones descriptas en H.C.Nº #{certificadoBean.dniHc_173p}		
+											
+											</h4>
+
+										</article>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<h3 class="panel-title">Conclusión</h3>
+												</div>
+												<div class="panel-body">Apto Con Observaciones</div>
+											</div>
+										</div>
+
+										<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" align="right">
+											<BR />
+											<BR />
+											<div class="hr" style="width: 20%"><hr /></div>
+											FIRMA DEL MÉDICO <BR />
+										</div>
+
+										<article
+											class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+											
+											<h4 class="alert alert-info" align="left">
+											¿Cuál debe ser la intensidad del ejercicio?						
+											Una forma sencilla de medir la intensidad de sus ejercicios es tomar la “Prueba de la Conversación”. 
+											La Prueba de la Conversación se basa en que usted debe ser capaz de mantener una charla normal mientras hace ejercicios, sin necesidad de quedarse sin aliento, o con aquello que la mayoría de los expertos describen como un “cómodo empujón”. Si usted se queda sin aliento,disminuya la intensidad, su cuerpo le dirá si está haciendo más de la cuenta. Cuanto más ejercicio haga, más activo podrá estar y podrá, al mismo tiempo, mantener una conversación normal.						
+											Esto sucederá porque su organismo se volverá más eficiente gracias al ejercicio.						
+ 
+																				
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											 
+											¿Cuánto tiempo deben durar sus ejercicios?						
+											Comience con lo que pueda hacer, incluso si son sólo unos pocos minutos. Trabaje para lograr hacer unos 30 minutos de ejercicios la mayor parte						
+											de los días de la semana, pero comience lentamente y aumente poco a poco su resistencia cada semana.						
+											Debe realizar estudios en profundidad previamente a comenzar la progresión del volúmen, frecuencia, e intensidad de sus actividades.						
+											Por ejemplo, si le cuesta trabajo subir las escaleras de su casa, comience con un par de escalones, respire y descanse y luego suba otros dos,						
+											y así sucesivamente. Luego de unas pocas semanas, añada algún escalón extra antes de detenerse a respirar.						
+											
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											 
+											Precauciones en la práctica del ejercicio Físico:						
+											Durante la práctica del ejercicio físico se controlarán los siguientes puntos, y ante cualquier alteración; debe consultar con su Médico de Cabecera:						
+											Tensión Arterial muy baja o elevada, pulsaciones aceleradas (Taquicardia), , ritmo cardíaco irregular, palpitaciones, coloración de la piel pálida o azulada, cansancio, agotamiento,						
+											sensación de ahogo, y asfixia, dolores musculares y articulares, calambres o contracturas, dolor de pecho, mareos, vómitos, visión borrosa, dolor de cabeza.						
+											Para las personas con edad elevada: Tomarse las cosas con calma, hacer ejercicio dentro del nivel recomendado por su Médico de Cabecera						
+											
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											
+											O.M.S: Se considera actividad física cualquier movimiento corporal producido por los músculos esqueléticos que exija gasto de energía.						 
+											
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											
+											Estrategia mundial sobre régimen alimentario, actividad física y salud: O.M.S/ ACTIVIDAD FISICA (LINK DERIVADOR).						
+ 						 
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											
+											DECLARACIÓN JURADA:
+											
+											<BR /><BR />
+																
+											Se me ha explicado Claramente que Para Comenzar Actividades Deportivas, y de Entrenamiento de una Intensidad Mayor						
+											a las de Mis Actividades Habituales, Debo Realizar una Consulta con Mi Médico Clínico, Cardiólogo, o Deportólogo  de						
+											Cabecera, de Manera de Efectuar los Exámenes Clínicos y Cardiológicos Correspondientes, Incluyendo los Mismos;						
+											Prueba Ergométrica Graduada, Ecocardiograma de Esfuerzo, Laboratorio Sanguíneo, Radiografías, y/o lo que Corresponda						
+											en Mí Caso en Particular Según Prescripción Médica, Para Obtener el Apto Sín Limitaciones, Por lo que:						
+											Deslindo de Toda Responsabilidad a Toda Persona Distinta de Mí, Por Daño o Perjuicio Alguno que Me Ocurriera Durante						
+											el Desarrollo de las Actividades que Yo Realizare sin Supervición Médica y Profesional en General, Y/O,						
+											Sin Cumplir con los Requisitos Descriptos e Indicados.						
+											Asimismo manifiesto, con carácter de Declaración Jurada,  que todos los datos aquí enunciados, son completos y verídicos,						
+											y que soy plenamente conciente de que el ocultar, o tergiversar datos,puede ser perjudicial para la confección de mi						
+											Historia Clínica, y en lo que de ello derive.						
+ 					
+ 						 
+											</h4>
+											
+											<h4 class="alert alert-info" align="left">
+											
+											La evaluación Cardiovascular Pre-Participativa cumple un papel importante en el cuidado del deportista.
+											La finalidad del chequeo no es prohibir, sino cuidar la salud del deportista
+											Los Exámenes Pre-Participativos no previenen eventos de Muerte Súbita, aunque si disminuyen su incidencia. <BR />
+											La mayor parte de los deportistas con cardiopatía detectada, tratada o no según indicación, pueden participar en
+											deportes recreativos, y en muchos casos competitivos, acordes a la situación personal y severidad del hallazgo. Aunque, para ello, realizar controles de salud regulares se constituye en un hábito muy importante para proteger la salud.
+											 			
+											</h4>
+												
+											<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
+												<BR />
+												<BR />
+												<div class="hr" style="width: 20%"><hr /></div>
+												FIRMA DEL PACIENTE <BR />
+											</div>
+											
+
+										</article>
+										
+									
+
+									</div>
+
+								</h:form>
+								
+							</div>
+
+							<BR /><BR />	
+
+							<h4 class="alert alert-block alert-warning" align="left">
+									
+								UNA VEZ COMPLETADOS TODOS LOS PUNTOS INDICADOS EN LA  H.C. N°:					
+								ENTREGAR EN LA INSTITUCIÓN SOLICITANTE, CERTIFICADO IMPRESO Y CON FIRMAS OLOGRÁFICAS										
+											 			
+							</h4>
+
+							<DIV align="right">
+								<button type="button" class="btn btn-default">Ver Bases y Condiciones</button>
+								<button type="button" class="btn btn-default" onclick="window.location.href='login.xhtml#ajax/fme.xhtml'">Ir a Ficha de Emergencia</button>
+								<button type="button" class="btn btn-default"  onclick="window.location.href='login.xhtml#ajax/ordenesMedicas.xhtml'">Ir a Ordenes Médicas</button>
+								<button type="button" class="btn btn-default"  onclick="window.location.href='login.xhtml#ajax/odyc.xhtml'">Ir a Orientación Diagnóstica y Conductual</button>
+							</DIV>
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- WIDGET END -->
+		</div>
+
+		<!-- end row -->
+
+	</section>
+	<!-- end widget grid -->
+
+	<script type="text/javascript">
+		/*
+		 * Load bootstrap wizard dependency
+		 */
+		loadScript(
+				"javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js",
+				runBootstrapWizard);
+
+		//Bootstrap Wizard Validations
+
+		function runBootstrapWizard() {
+
+			var $validator = $("#wizard-1")
+					.validate(
+							{
+
+								rules : {
+									email : {
+										required : true,
+										email : "Your email address must be in the format of name@domain.com"
+									},
+									nombre : {
+										required : true
+									},
+									presentarEn : {
+										required : true
+									},
+									apellido : {
+										required : true
+									},
+									sexo : {
+										required : true
+									},
+									tipoDoc : {
+										required : true
+									},
+									numeroDoc : {
+										required : true
+									},
+									postal : {
+										required : true,
+										minlength : 4
+									},
+									telefono : {
+										required : true,
+										minlength : 10
+									},
+									celular : {
+										required : true,
+										minlength : 10
+									}
+								},
+
+								messages : {
+									fname : "Please specify your First name",
+									lname : "Please specify your Last name",
+									email : {
+										required : "We need your email address to contact you",
+										email : "Your email address must be in the format of name@domain.com"
+									}
+								},
+
+								highlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-success')
+											.addClass('has-error');
+								},
+								unhighlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-error').addClass(
+													'has-success');
+								},
+								errorElement : 'span',
+								errorClass : 'help-block',
+								errorPlacement : function(error, element) {
+									if (element.parent('.input-group').length) {
+										error.insertAfter(element.parent());
+									} else {
+										error.insertAfter(element);
+									}
+								}
+							});
+
+			$('#bootstrap-wizard-1').bootstrapWizard(
+					{
+						'tabClass' : 'form-wizard',
+						'onNext' : function(tab, navigation, index) {
+							var $valid = $("#wizard-1").valid();
+							if (!$valid) {
+								$validator.focusInvalid();
+								return false;
+							} else {
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).addClass(
+												'complete');
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).find(
+												'.step').html(
+												'<i class="fa fa-check"></i>');
+							}
+						}
+					});
+
+		}
+
+		/*
+		 * Load fuelux wizard dependency
+		 */
+		/* 	loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+		
+		 function fueluxWizard() {
+		
+		 var wizard = $('.wizard').wizard();
+		
+		 wizard.on('finished', function (e, data) {
+		 //$("#fuelux-wizard").submit();
+		 //console.log("submitted!");
+		 $.smallBox({
+		 title: "Congratulations! Your form was submitted",
+		 content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+		 color: "#5F895F",
+		 iconSmall: "fa fa-check bounce animated",
+		 timeout: 4000
+		 });
+		
+		 });
+		
+		 } */
+	</script>
+
+
+</body>
+
+</html>

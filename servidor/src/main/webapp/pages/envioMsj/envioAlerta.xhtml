@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+	<title>Edit Auth Page</title>
+	 
+</h:head>
+
+<body>
+	<f:view>
+		<ui:composition template="/pages/template.xhtml">
+
+			<ui:define name="body">
+				<h:form id="form">
+			
+					<p:growl id="mensaje" showDetail="true" sticky="true" />
+
+					<p:panel header="Envío de Alertas" style="height:470px">
+
+						<p:wizard flowListener="#{personaBean.onFlowProcess}">
+
+							<p:tab id="cargaPersonas" title="Paso 1">
+
+								<p:layout id="layout" style="height:350px">
+
+									<p:layoutUnit position="west" resizable="false" size="150" maxSize="200">
+										<p:column>Agendas</p:column>
+										<br></br>
+										<br></br>
+										<p:selectOneMenu required="false"	value="#{personaBean.selectedAgenda}">
+											<f:selectItem itemLabel="Seleccionar" itemValue="" />
+											<f:selectItems value="#{agendaBean.agendas}" var="agenda"
+												itemValue="#{agenda.nombre}" itemLabel="#{agenda.nombre}" />
+										</p:selectOneMenu>
+										<br></br>
+										<br></br>
+									
+										<p:commandButton value="Agregar Agenda" id="btnAgregarAgenda"
+											actionListener="#{personaBean.agregarPersonas}" update=":form:personasList"/>
+											
+									</p:layoutUnit>
+ 									  
+									<p:layoutUnit position="center">
+
+										<p:panel id="pnlDestMsj" header="Destinatarios del Mensaje"
+											style="border:0">
+
+											<h:messages errorClass="error" />
+
+											<p:dataTable var="persona" value="#{personaBean.personas}"
+												id="personasList" editable="true">
+												<p:ajax event="rowEdit" listener="#{personaBean.onEdit}"
+													update=":form:mensaje" />
+												<p:ajax event="rowEditCancel"
+													listener="#{personaBean.onCancel}" update=":form:mensaje" />
+
+												<p:column headerText="Apellido, Nombre" style="width:50px">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText
+																value="#{persona.apellido}, #{persona.nombre}" />
+														</f:facet>
+														<f:facet name="input">
+															<h:inputText value="#{persona.apellido}" id="apellido"/>
+															<p:watermark for="apellido" value="Apellido" />  
+															<h:inputText value="#{persona.nombre}" id="nombre"/>
+															<p:watermark for="nombre" value="Nombre" />  
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+												<p:column headerText="Celular" style="width:25%">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{persona.celular}" />
+														</f:facet>
+														<f:facet name="input">
+															<h:inputText value="#{persona.celular}"	style="width:100%" id="celular"/>
+															<p:watermark for="celular" value="Celular" />  
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+												<p:column headerText="Estado" style="width:50px">
+													<p:cellEditor>
+														<f:facet name="output">
+															<h:outputText value="#{persona.estado}"
+																style="width:50px" />
+														</f:facet>
+														<f:facet name="input" style="width:50px">
+															<p:selectOneMenu value="#{persona.estado}"
+																style="width:100%">
+																<f:selectItem itemLabel="Select One" itemValue="" />
+																<f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+																<f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+															</p:selectOneMenu>
+														</f:facet>
+													</p:cellEditor>
+												</p:column>
+												<p:column headerText="Opciones" style="width:2%">
+													<p:rowEditor />
+													<h:commandLink
+														action="#{personaBean.eliminarPersona(persona)}"
+														update="personasList">
+														<span class="ui-icon ui-icon-trash"></span>
+													</h:commandLink>
+												</p:column>
+												<f:facet name="footer">
+													<p:commandButton value="Nuevo Destinatario"
+														id="btnNuevoDest" update=":form:personasList"
+														actionListener="#{personaBean.agregarPersona}"
+														styleClass="ui-priority-primary"
+														oncomplete="jQuery('.ui-datatable-data tr').last().find('span.ui-icon-pencil').each(function(){jQuery(this).click()}); " />
+												</f:facet>
+											</p:dataTable>
+
+										</p:panel>
+										<p:blockUI block="pnlDestMsj"
+											trigger=":form:personasList:btnNuevoDest,:form:btnAgregarAgenda">
+													Un momento por favor...<br />
+											<p:graphicImage value="/imgs/ajax-loader.gif" />
+										</p:blockUI>
+									</p:layoutUnit>
+								</p:layout>
+							</p:tab>
+
+							<p:tab id="cargarMensaje" title="Paso 2">
+								<p:panel header="Mensaje de texto">
+
+									<h:panelGrid columns="2">
+										<p:inputTextarea id="msj" value="#{envioMensajeAction.texto}"
+											completeMethod="#{envioAlertaView.completeArea}" rows="5"
+											cols="50" counterTemplate="{0} characters remaining."
+											queryDelay="750" minQueryLength="1" />
+										<!--  counter="counter"/> -->
+										<!-- h:outputText id="counter" /-->
+										<p:commandButton value="Enviar"
+											action="#{envioMensajeAction.enviarMsj}" ajax="false" />
+									</h:panelGrid>
+
+
+								</p:panel>
+							</p:tab>
+
+						</p:wizard>
+					</p:panel>
+				</h:form>
+				
+			</ui:define>
+		</ui:composition>
+		
+	</f:view>
+
+</body>
+
+</html>

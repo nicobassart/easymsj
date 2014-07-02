@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+	<title>Edit Auth Page</title>
+</h:head>
+
+<body>
+	<f:view>
+		<ui:composition template="/pages/template.xhtml">
+
+			<ui:define name="body">
+				<h:form id="form">
+					<p:growl id="mensaje" showDetail="true" sticky="true" />
+					<p:panel header="Envío de Alertas" style="height:470px">
+						<p:layout id="layout" style="height:350px">
+							<p:layoutUnit position="center">
+								<p:panel header="Destinatarios del Mensaje" style="border:0">
+									<h:messages errorClass="error" />
+									<p:dataTable var="persona" value="#{personaBean.personas}"
+										selection="#{personaBean.selectedPersonas}" id="personasList"
+										editable="true" rowKey="#{persona.nombre}"
+										rowIndexVar="#{persona}">
+
+										<p:column headerText="Apellido, Nombre" style="width:50px">
+											<h:outputText value="#{persona.apellido}, #{persona.nombre}" />
+										</p:column>
+
+										<p:column headerText="Celular" style="width:25%">
+											<h:outputText value="#{persona.celular}" />
+										</p:column>
+
+										<p:column headerText="Estado" style="width:50px">
+											<h:outputText value="#{persona.estado}" style="width:50px" />
+										</p:column>
+
+										<p:column selectionMode="multiple" style="width:18px" />
+
+									</p:dataTable>
+									<br></br>
+									<br></br>
+									<div align="center">
+										<p:commandButton value="Agregar seleccionados en nueva Agenda"
+											id="btnNuevaAgenda" oncomplete="nuevaAgendaDialog.show()"
+											icon="ui-icon-star" title="Crear Nueva Agenda"
+											update=":nuevaAgendaForm" />
+
+										<p:commandButton
+											value="Agregar Seleccionados en Agenda existente"
+											id="btnAgregarEnAgenda" oncomplete="agregarEnAgendaDialog.show()"
+											icon="ui-icon-star" title="Crear Nueva Agenda"
+											update=":agregarEnAgendaForm" />
+									</div>
+								</p:panel>
+							</p:layoutUnit>
+						</p:layout>
+
+					</p:panel>
+				</h:form>
+				
+			</ui:define>
+		</ui:composition>
+	</f:view>
+
+</body>
+
+</html>

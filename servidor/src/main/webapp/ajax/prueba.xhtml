@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark">
+			<i class="fa fa-table fa-fw "></i> 
+				Table 
+			<span>> 
+				Data Tables
+			</span>
+		</h1>
+	</div>
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Standard Data Tables </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div class="widget-body-toolbar">
+						
+						</div>
+
+								<h:dataTable value="#{personaBean.personas}"  var="persona" 
+									styleClass="table table-striped table-bordered table-hover"
+									id="dt_basic" >
+	
+									<h:column>
+										<f:facet name="header">ID</f:facet>
+										<h:outputText value="#{persona.apellido}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Name</f:facet>
+										<h:outputText value="#{persona.celular}" />
+									</h:column>
+									<h:column>
+										<f:facet name="header">Phone</f:facet>
+										<h:outputText value="#{persona.estado}" />
+									</h:column>
+								</h:dataTable>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+
+
+		</article>
+		<!-- WIDGET END -->
+
+	</div>
+
+	<!-- end row -->
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+<script type="text/javascript">
+
+
+
+	// PAGE RELATED SCRIPTS
+
+	loadDataTableScripts();
+	function loadDataTableScripts() {
+		loadScript("javax.faces.resource/plugin/datatables/jquery.dataTables-cust.min.js.xhtml?ln=js", dt_2);
+
+		function dt_2() {
+			loadScript("javax.faces.resource/plugin/datatables/ColReorder.min.js.xhtml?ln=js", dt_3);
+		}
+
+		function dt_3() {
+			loadScript("javax.faces.resource/plugin/datatables/FixedColumns.min.js.xhtml?ln=js", dt_4);
+		}
+
+		function dt_4() {
+			loadScript("javax.faces.resource/plugin/datatables/ColVis.min.js.xhtml?ln=js", dt_5);
+		}
+
+		function dt_5() {
+			loadScript("javax.faces.resource/plugin/datatables/ZeroClipboard.js.xhtml?ln=js", dt_6);
+		}
+
+		function dt_6() {
+			loadScript("javax.faces.resource/plugin/datatables/media/js/TableTools.min.js.xhtml?ln=js", dt_7);
+		}
+
+		function dt_7() {
+			loadScript("javax.faces.resource/plugin/datatables/DT_bootstrap.js.xhtml?ln=js", runDataTables);
+		}
+
+	}
+
+	function runDataTables() {
+
+		/*
+		 * BASIC
+		 */
+		$('#dt_basic').dataTable({
+			"sPaginationType" : "bootstrap_full"
+		});
+
+		/* END BASIC */
+
+		/* Add the events etc before DataTables hides a column */
+		$("#datatable_fixed_column thead input").keyup(function() {
+			oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+		});
+
+		$("#datatable_fixed_column thead input").each(function(i) {
+			this.initVal = this.value;
+		});
+		$("#datatable_fixed_column thead input").focus(function() {
+			if (this.className == "search_init") {
+				this.className = "";
+				this.value = "";
+			}
+		});
+		$("#datatable_fixed_column thead input").blur(function(i) {
+			if (this.value == "") {
+				this.className = "search_init";
+				this.value = this.initVal;
+			}
+		});		
+		
+
+		var oTable = $('#datatable_fixed_column').dataTable({
+			"sDom" : "%3C'dt-top-row'%3E%3C'dt-wrapper't%3E%3C'dt-row dt-bottom-row'%3C'row'%3C'col-sm-6'i%3E%3C'col-sm-6 text-right'p%3E%3E",
+			"oLanguage" : {
+				"sSearch" : "Search all columns:"
+			},
+			"bSortCellsTop" : true
+		});		
+		
+
+
+		/*
+		 * COL ORDER
+		 */
+		$('#datatable_col_reorder').dataTable({
+			"sPaginationType" : "bootstrap",
+			"sDom" : "R%3C'dt-top-row'Clf%3Er%3C'dt-wrapper't%3E%3C'dt-row dt-bottom-row'%3C'row'%3C'col-sm-6'i%3E%3C'col-sm-6 text-right'p%3E%3E",
+			"fnInitComplete" : function(oSettings, json) {
+				$('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns %3Ci class="icon-arrow-down"%3E%3C/i%3E');
+			}
+		});
+		
+		/* END COL ORDER */
+
+		/* TABLE TOOLS */
+		$('#datatable_tabletools').dataTable({
+			"sDom" : "%3C'dt-top-row'Tlf%3Er%3C'dt-wrapper't%3E%3C'dt-row dt-bottom-row'%3C'row'%3C'col-sm-6'i%3E%3C'col-sm-6 text-right'p%3E%3E",
+			"oTableTools" : {
+				"aButtons" : ["copy", "print", {
+					"sExtends" : "collection",
+					"sButtonText" : 'Save %3Cspan class="caret" /%3E',
+					"aButtons" : ["csv", "xls", "pdf"]
+				}],
+				"sSwfPath" : "javax.faces.resource/plugin/datatables/media/swf/copy_csv_xls_pdf.swf.xhtml?ln=js"
+			},
+			"fnInitComplete" : function(oSettings, json) {
+				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
+					$(this).addClass('btn-sm btn-default');
+				});
+			}
+		});
+		
+		/* END TABLE TOOLS */
+
+	}
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:sec="http://www.springframework.org/security/tags">
+
+<body>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark"><i class="fa fa-pencil-square-o fa-fw "></i> APTO MÉDICO <span>>
+				 Formulario DAF Trend</span></h1>
+		</div>
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+	
+		<!-- row -->
+		<div class="row">
+	
+			<!-- NEW WIDGET START -->
+			<article class="col-sm-12 col-md-12 col-lg-12">
+			
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+	
+					data-widget-colorbutton="false"
+					data-widget-editbutton="false"
+					data-widget-togglebutton="false"
+					data-widget-deletebutton="false"
+					data-widget-fullscreenbutton="false"
+					data-widget-custombutton="false"
+					data-widget-collapsed="true"
+					data-widget-sortable="false"
+	
+					-->
+					<header>
+						<span class="widget-icon"> <i class="fa fa-check"></i> </span>
+						<h2>Ficha Médica Personal</h2>
+	
+					</header>
+	
+					<!-- widget div-->
+					<div>
+	
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+	
+						</div>
+						<!-- end widget edit box -->
+	
+						<!-- widget content -->
+						<div class="widget-body">
+	
+							<div class="row">
+								<h:form id="wizard-1" novalidate="novalidate">
+									<h:inputHidden id="estadoFichaMedica" value="#{solicitudBean.estadoFichaMedica}" />
+	
+								
+									<div id="bootstrap-wizard-1" class="col-sm-12">
+										<div class="form-bootstrapWizard">
+											<ul class="bootstrapWizard form-wizard">
+												<li class="active" data-target="#step1">
+													<a href="#tab1" data-toggle="tab" > <span class="step">1</span> <span class="title">Datos Personales</span> </a>
+												</li>
+												<li data-target="#step2">
+													<a href="#tab2" data-toggle="tab" > <span class="step">2</span> <span class="title">Motivo de Consulta</span> </a>
+												</li>
+												<li data-target="#step3">
+													<a href="#tab3" data-toggle="tab" > <span class="step">3</span> <span class="title">Antecedentes Clínicos</span> </a>
+												</li>
+												<li data-target="#step4">
+													<a href="#tab4" data-toggle="tab" > <span class="step">4</span> <span class="title">Exámen Físico<sec:authorize ifAnyGranted="PACIENTE"><small class="txt-color-red"><br/>Completa Médico</small></sec:authorize> </span></a>
+												</li>
+												<li data-target="#step5">
+													<a href="#tab5" data-toggle="tab" > <span class="step">5</span> <span class="title">Exámenes Complementarios<sec:authorize ifAnyGranted="PACIENTE"><small class="txt-color-red"><br/>Completa Médico</small></sec:authorize></span></a>
+												</li>
+											</ul>
+
+											<div class="clearfix"></div>
+										</div>
+										<div class="tab-content">
+											<div class="tab-pane active" id="tab1">
+												<br/>
+												<h3><strong>Paso 1 </strong> - Datos personales <h:outputText value="#{solicitudBean.fechaSolicitudAptoMedico}" styleClass="text-primary pull-right"> <f:convertDateTime dateStyle="short" timeZone="America/Argentina/Buenos_Aires" pattern="dd/MM/yyyy HH:mm" type="date" /></h:outputText></h3> 
+												
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+																<h:inputText id="nombre"  styleClass="form-control input-lg"  p:placeholder="Nombres"  value="#{solicitudBean.paso1_2_nombre}" disabled="true"/>
+																
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+																<h:inputText styleClass="form-control input-lg"  p:placeholder="Apellidos"  value="#{solicitudBean.paso1_3_apellido}" disabled="true"/>
+															</div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="row">
+													<div class="col-sm-3">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+																<h:inputText id="paso1_6_fechaNacimiento" styleClass="form-control input-lg datepicker"  p:placeholder="Fecha" onchange="setEdad(this.value)" value="#{solicitudBean.paso1_6_fechaNacimiento}" p:data-dateformat="dd/mm/yy"/>
+																
+															</div>
+														</div>
+													</div>
+
+													<div class="col-sm-2">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+																<input type="text" name="edad" id="edad" class="form-control  input-lg" />
+																<!-- h:inputText id="paso1_6_fechaNacimiento" styleClass="form-control input-lg datepicker"  p:placeholder="Fecha"  value="#{solicitudBean.paso1_6_fechaNacimiento}" p:data-dateformat="dd/mm/yy"/-->
+																
+															</div>
+														</div>
+													</div>
+
+													<div class="col-sm-3">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="tipoDoc" styleClass="form-control input-lg"  value="#{solicitudBean.paso1_4_tipoDoc}" disabled="true">
+															        <f:selectItem itemLabel="Tipo Documento"  itemValue="" />
+															        <f:selectItem itemLabel="DNI"  itemValue="1" />
+															        <f:selectItem itemLabel="CI"   itemValue="2" />
+															        <f:selectItem itemLabel="LE"   itemValue="3" />
+															        <f:selectItem itemLabel="LC"   itemValue="4" />
+															        <f:selectItem itemLabel="PAS"  itemValue="5" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+																<h:inputText name="numeroDoc" styleClass="form-control  input-lg"  p:placeholder="30123245"  value="#{solicitudBean.paso1_4_numeroDoc}" disabled="true"/>
+															</div>
+														</div>
+													</div>
+												</div>
+	
+												<div class="row">
+													<div class="col-sm-4" >
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+																<h:selectOneMenu id="sexo" name="sexo" styleClass="form-control input-lg"  value="#{solicitudBean.paso1_5_sexo}" onchange="habilitarEmbarazada();">
+															        <f:selectItem itemLabel="Sexo" itemValue="" />
+															        <f:selectItem itemLabel="Masculino" itemValue="M" />
+															        <f:selectItem itemLabel="Femenino"  itemValue="F" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-2" id="embarazada">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-female fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="embarazada"  id="embarazada" disabled="false" styleClass="form-control input-lg"  value="#{solicitudBean.paso1_11_embarazada}" onchange="validarCampo95(this)">
+																	<f:selectItem itemLabel="Esta usted embarazada?" itemValue="" />
+															        <f:selectItem itemLabel="SI" itemValue="1" />
+															        <f:selectItem itemLabel="NO" itemValue="0" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-tint fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="grupoSanguineo" id="grupoSanguineo"  styleClass="form-control input-lg"  value="#{solicitudBean.paso1_14_grupoSanguineo}">
+															        <f:selectItem itemLabel="Grupo Sanguineo" itemValue="" />
+															        <f:selectItem itemLabel="Grupo Sanguineo A" itemValue="1" />
+															        <f:selectItem itemLabel="Grupo Sanguineo B"  itemValue="2" />
+															        <f:selectItem itemLabel="Grupo Sanguineo AB"  itemValue="3" />
+															        <f:selectItem itemLabel="Grupo Sanguineo O"  itemValue="4" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-tint fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="factorSanguineo" id="factorSanguineo" styleClass="form-control input-lg"  value="#{solicitudBean.paso1_14_factorSanguineo}">
+															        <f:selectItem itemLabel="Factor Sanguineo" itemValue="" />
+															        <f:selectItem itemLabel="Factor Sanguineo RH +" itemValue="1" />
+															        <f:selectItem itemLabel="Factor Sanguineo RH -" itemValue="2" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+	
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+																<h:inputText name="telefono"  id="telefono" styleClass="form-control  input-lg"  p:placeholder="Teléfono Particular"  value="#{solicitudBean.paso1_9_telefono}" p:data-mask-placeholder="X" p:data-date-format="+99 (999) 999-9999"/>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+																<h:inputText name="celular" id="celular" styleClass="form-control  input-lg"    value="#{solicitudBean.paso1_8_celular}" p:placeholder="Teléfono Celular" />
+															</div>
+														</div>
+													</div>
+												</div>
+												
+	
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-ambulance fa-lg fa-fw"></i></span>
+																<h:inputText name="telEmergencia" id="telEmergencia" styleClass="form-control  input-lg" value="#{solicitudBean.paso1_10_telEmergencia}"  p:placeholder="Telefono de Emergencia"/>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+																<h:inputText name="email" id="email" styleClass="form-control input-lg" value="#{solicitudBean.paso1_11_email}" p:placeholder="Correo" />
+															</div>
+														</div>
+													</div>
+												</div>
+	
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-group fa-lg fa-fw"></i></span>
+																<h:inputText name="obraSocial" styleClass="form-control  input-lg" value="#{solicitudBean.paso1_12_obraSocial}" p:placeholder="Obra social / Prepaga"  />
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-info fa-lg fa-fw"></i></span>
+																<h:inputText name="nroAfiliado" styleClass="form-control  input-lg" value="#{solicitudBean.paso1_13_nroAfiliado}"  p:placeholder="Numero de Afiliado" />
+															</div>
+														</div>
+													</div>
+												</div>
+	
+											</div>
+											<div class="tab-pane" id="tab2">
+												<br />
+												<h3><strong>Paso 2</strong> - Antecedentes de actividad fisica  <h:outputText value="#{solicitudBean.fechaSolicitudAptoMedico}" styleClass="text-primary pull-right"> <f:convertDateTime dateStyle="short" pattern="dd/MM/yyyy HH:mm" timeZone="America/Argentina/Buenos_Aires" type="date" /></h:outputText></h3>
+	
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="alert alert-info">
+															APTO FÍSICO PARA PRESENTAR EN
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+<!-- 																<h:selectOneMenu id="paso2_15_presentarEn" name="presentarEn" styleClass="form-control input-lg" onchange="habilitarPaso2_15_nombreClub();" value="#{solicitudBean.paso2_15_presentarEn}"> -->
+																<h:selectOneMenu id="paso2_15_presentarEn" name="presentarEn" styleClass="form-control input-lg" value="#{solicitudBean.paso2_15_presentarEn}">
+															        <f:selectItem itemLabel="Presentar en.." itemValue="" />
+															        <f:selectItem itemLabel="CLUB" itemValue="1" />
+															        <f:selectItem itemLabel="TORNEO PRIVADO" itemValue="2" />
+															        <f:selectItem itemLabel="COUNTRY" itemValue="3" />
+															        <f:selectItem itemLabel="COLEGIO" itemValue="4" />
+															        <f:selectItem itemLabel="GPO. DE ENTRENAMIENTO" itemValue="5" />
+															        <f:selectItem itemLabel="GIMNASIO" itemValue="6" />
+															        <f:selectItem itemLabel="EMPRESA" itemValue="7" />
+															        <f:selectItem itemLabel="CENTRO MEDICO" itemValue="8" />
+															        <f:selectItem itemLabel="MARATÓN/CARRERA" itemValue="9" />
+															        <f:selectItem itemLabel="MEDICO DE CABECERA" itemValue="10" />
+															        <f:selectItem itemLabel="OTRA INSTITUCION" itemValue="11" />
+															        <f:selectItem itemLabel="OTROS" itemValue="12" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+																<h:selectOneMenu id="paso2_15_nombreClub" styleClass="form-control input-lg" value="#{solicitudBean.paso2_15_nombreClub}" >
+																	<f:selectItem itemLabel="Nombre de la Entidad" itemValue="" />
+																	<f:selectItems value="#{solicitudBean.listClubes}" var="typeCode" itemLabel="#{typeCode.nombre}" itemValue="#{typeCode.id}" />
+																</h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+																
+																<h:selectOneMenu name="paso2_17_actividad" id="paso2_17_actividad" styleClass="form-control input-lg"  value="#{solicitudBean.paso2_17_actividad}">
+															        <f:selectItem itemLabel="Act. Física que realiza" itemValue="" />
+															        <f:selectItem itemLabel="Gimnasia" itemValue="1" />
+															        <f:selectItem itemLabel="Futbol" itemValue="2" />
+															        <f:selectItem itemLabel="Rugby" itemValue="3" />
+															        <f:selectItem itemLabel="Hockey" itemValue="4" />
+															        <f:selectItem itemLabel="Tenis" itemValue="5" />
+															        <f:selectItem itemLabel="Natación" itemValue="6" />
+															        <f:selectItem itemLabel="Running" itemValue="7" />
+															        <f:selectItem itemLabel="Ciclismo" itemValue="8" />
+															        <f:selectItem itemLabel="Basquet" itemValue="9" />
+															        <f:selectItem itemLabel="Voley" itemValue="10" />
+															        <f:selectItem itemLabel="Art.Marc" itemValue="11" />
+															        <f:selectItem itemLabel="Otros" itemValue="12" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="paso2_19_intensidad"  id="paso2_19_intensidad" styleClass="form-control input-lg" onchange="modificarPaso5(this.value);"  value="#{solicitudBean.paso2_19_intensidad}">
+															        <f:selectItem itemLabel="Intensidad de la Actividad" itemValue="" />
+															        <f:selectItem itemLabel="Acticidad Física Recreativa" itemValue="1" />
+															        <f:selectItem itemLabel="Actividad Deportiva No competitiva" itemValue="2" />
+															        <f:selectItem itemLabel="Deporte Competitivo" itemValue="4" />
+															        <f:selectItem itemLabel="Deporte de Alto Rendimiento" itemValue="3" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-4">
+														<div class="form-group">
+															<div class="input-group">
+																<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+																<h:selectOneMenu name="paso2_18_tiempoActividad" id="paso2_18_tiempoActividad" styleClass="form-control input-lg"  value="#{solicitudBean.paso2_18_tiempoActividad}" onchange="validarCampo95(this);" >
+															        <f:selectItem itemLabel="Antigüedad en la actividad" itemValue="" />
+															        <f:selectItem itemLabel="Menos de 6 Meses" itemValue="1" />
+															        <f:selectItem itemLabel="Menos de 1 Año" itemValue="2" />
+															        <f:selectItem itemLabel="Entre 1 y 2 Años" itemValue="3" />
+															        <f:selectItem itemLabel="Más de 2 Años" itemValue="4" />
+															    </h:selectOneMenu>
+															</div>
+														</div>
+													</div>
+												</div>
+	
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="alert alert-info">
+															ANTECEDENTES DE ACTIVIDAD FÍSICA
+														</div>
+													</div>
+												</div>
+	
+												<div class="row">
+															<div class="col-sm-12" >
+																<div class="form-group">
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_23_antecedenteNuncaRealizo}" />
+															            </span>
+																		<label  class="form-control input-lg">Nunca he realizado Actividad Física de manera regular y frecuente.</label>
+																	</div>
+																</div>
+															</div>
+														
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_24_algunaEpocaRegularFrecuente}" />
+														            </span>
+																	<label  class="form-control input-lg">En alguna época he realizado Actividad Física de manera regular y frecuente.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_25_antecedenteRelizaRegularFrecuente6meses}" />
+														            </span>
+																	<label  class="form-control input-lg">Realizo Actividad Física de manera regular más de 2 veces por semana desde hace mas de 6 meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox  styleClass="paso2SelectOne" value="#{solicitudBean.paso2_26_regular2vecesx12meses}" />
+														            </span>
+																	<label  class="form-control input-lg">Entreno de manera regular más de 2 veces por semana desde hace más de 12 meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_27_regular2vecesx18meses}" />
+														            </span>
+																	<label  class="form-control input-lg">Entreno de manera regular más de 2 veces por semana desde hace más de 18 meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_28_entrenoAl75}" />
+														            </span>
+																	<label  class="form-control input-lg">Entreno Intensamente 3 o más veces por semana, 30 minutos por día al 75% de mi capacidad.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox  styleClass="paso2SelectOne" value="#{solicitudBean.paso2_29_entrenoAl85}" />
+														            </span>
+																	<label  class="form-control input-lg">Entreno Actualmente, Próximo al Máximo de mi Capacidad ( 85%).</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso2SelectOne" value="#{solicitudBean.paso2_30_entrenoAl100}" />
+														            </span>
+																	<label  class="form-control input-lg">Entreno Actualmente al Máximo de mi Capacidad ( 100%).</label>
+																</div>
+															</div>
+														</div>
+												</div>
+	 
+											</div>
+	
+											<SCRIPT type="text/javascript">
+												$("input:checkbox[class='paso2SelectOne']").click(function() {
+												    if ($(this).is(":checked")) {
+												        var group = "input:checkbox[class='paso2SelectOne']";
+												        $(group).prop("checked", false);
+												        $(this).prop("checked", true);
+												    } else {
+												        $(this).prop("checked", false);
+												    }
+												});
+											</SCRIPT>
+
+	
+											<div class="tab-pane" id="tab3">
+												<br/>
+												<h3><strong>Paso 3</strong> - Antecedentes Clínicos  <h:outputText value="#{solicitudBean.fechaSolicitudAptoMedico}" styleClass="text-primary pull-right"> <f:convertDateTime dateStyle="short" pattern="dd/MM/yyyy HH:mm" timeZone="America/Argentina/Buenos_Aires" type="date" /></h:outputText></h3>
+	
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="form-group">
+															<strong><label>(Marque con una tilde en los casilleros de la Izquierda, al lado de cada antecedente, si alguna vez ha sufrido o padece:)</label></strong>
+														</div>
+	
+														<div class="input-group">
+	
+														</div>
+													</div>
+												</div>
+												<div class="row">
+	
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_31_dolorPecho}" />
+														            </span>
+																	<label  class="form-control input-lg">Dolor de pecho de tipo Opresivo, en reposo o al realizar ejercicio?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_32_soplosCardiacos}" />
+														            </span>
+																	<label  class="form-control input-lg">Soplos Cardíacos?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_32_infartoMiocardio}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió alguna vez infarto Agudo de Miocardio?</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_32_arritmias}" />
+														            </span>
+																	<label  class="form-control input-lg">Padece o ha padecido alguna vez de Arrítmias(o Sensación de Palpitaciones Anormales)?</label>
+																</div>
+															</div>
+														</div>
+														
+														
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_32_anticoagulacion}" />
+														            </span>
+																	<label  class="form-control input-lg">Está usted en tratamiento de Anticoagulación?</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_33_perdidasConciendia}" />
+														            </span>
+																	<label  class="form-control input-lg">Ha sufrido episodios de Síncope,(Perdida súbita del conocimiento)?</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_34_hipertencionArterial}" />
+														            </span>
+																	<label  class="form-control input-lg">Hipertensión Arterial?</label>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_32_marcapasos}" />
+														            </span>
+																	<label  class="form-control input-lg">Tiene usted colocado un Marcapasos?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_35_colesterol}" />
+														            </span>
+																	<label  class="form-control input-lg">Colesterol o Trigliceridos Elevados.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_36_faltaAire}" id="paso3_36_faltaAire" onchange="validarCampo95(this)" />
+														            </span>
+																	<label  class="form-control input-lg">Sensación de falta de aire en reposo, o a mínimos esfuerzos</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_36_broncoespasmos}" id="paso3_36_broncoespasmos"/>
+														            </span>
+																	<label  class="form-control input-lg">Asma / Broncoespasmos.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_37_diabetes}" />
+														            </span>
+																	<label  class="form-control input-lg">Diabetes.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_38_hipertiroidismo}" />
+														            </span>
+																	<label  class="form-control input-lg">Hipertiroidismo.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_38_hipotiroidismo}" />
+														            </span>
+																	<label  class="form-control input-lg">Hipotiroidismo.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_39_convulsiones}" />
+														            </span>
+																	<label  class="form-control input-lg">Convulsiones.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_40_hernia}" />
+														            </span>
+																	<label  class="form-control input-lg">Hernia o Eventraciòn en Abdómen o Ingle.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_41_sometidoCirugia}" />
+														            </span>
+																	<label  class="form-control input-lg">Fué sometido a alguna Cirugía de Abdómen o Ingle en los últimos 6 meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_42_laparoscopica}" />
+														            </span>
+																	<label  class="form-control input-lg">Cirugía Laparoscópica en el último mes.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_43_cirugiaGranIncision}" />
+														            </span>
+																	<label  class="form-control input-lg">Cirugía de gran Incisión en abdómen en los últimos 3 meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_44_dolorMuscular}" />
+														            </span>
+																	<label  class="form-control input-lg">Algún dolor en músculos o articulaciones que limita francamente sus movimientos.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_45_desgarroMuscular}" />
+														            </span>
+																	<label  class="form-control input-lg">Desgarro muscular hace menos de un mes.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_46_operacionesMeniscos}" />
+														            </span>
+																	<label  class="form-control input-lg">Operación de meniscos en el último mes y medio.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_47_ligamentoCruzado}" />
+														            </span>
+																	<label  class="form-control input-lg">Operación de ligamentos cruzados hace menos de doce meses.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_48_fracturaBrazo}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió alguna fractura en alguno de sus brazos, piernas, clavícula o costillas, hace menos de 6 meses?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_49_fracturaMenosUnAno}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió alguna fractura hace menos de un año en Pelvis o Columna?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_49_fracturaMenosUnAnoCara}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió alguna fractura hace menos de un año en Cara?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_50_traumatismoCraneo}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió traumatismo de cráneo con pérdida de conocimiento, o que haya requerido Tomografía Computada, en el último mes?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_51_enfermedadChagas}" />
+														            </span>
+																	<label  class="form-control input-lg">Padece enfermedad de Chagas.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_53_enfermedadCeliaca}" />
+														            </span>
+																	<label  class="form-control input-lg">Enfermedad Celíaca.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_52_padeseTuberculosis}" />
+														            </span>
+																	<label  class="form-control input-lg">Padece Tuberculosis, H.I.V., Sífilis, o alguna otra enfermedad Infecciosa?</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_49_fracturaMenosUnAnoCraneo}" />
+														            </span>
+																	<label  class="form-control input-lg">Sufrió alguna fractura hace menos de un año en Cráneo</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_54_alergico}" />
+														            </span>
+																	<label  class="form-control input-lg">Es alérgico a alguna medicación o algún alimento (ACLARE):</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<h:inputText styleClass="form-control input-lg" p:placeholder="Aclare a qué es Alérgico:" value="#{solicitudBean.paso3_55_alergicoAclare}" />
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso3SelectOne" value="#{solicitudBean.paso3_56_fuma}" />
+														            </span>
+																	<label  class="form-control input-lg">Fuma</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox styleClass="paso3SelectOne" value="#{solicitudBean.paso3_57_fumaUltimos10Anos}" />
+														            </span>
+																	<label  class="form-control input-lg">Fumó en los últimos 10 años.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_58_suplementoNutricional}" />
+														            </span>
+																	<label  class="form-control input-lg">Toma alguna Medicación o Suplemento Nutricional actualmente (ACLARE):</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<h:inputText styleClass="form-control input-lg" p:placeholder="Nombre del o los Fármacos y la dosis diaria (miligramos por día)" value="#{solicitudBean.paso3_59_suplementoNutricionalAclare}" />
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_60_antecedentesClinicos}" />
+														            </span>
+																	<label  class="form-control input-lg">Presenta algún otro antecedente clínico personal relevante (ACLARE):</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<h:inputText styleClass="form-control input-lg" p:placeholder="Agregue los comentarios que desea.." value="#{solicitudBean.paso3_61_antecedentesClinicosAclare}" />
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso3_62_familiarDirecto}" />
+														            </span>
+																	<label  class="form-control input-lg">Algún familiar directo ( Abuelos, Padres, Tíos, Hermanos o Hijos), Ha sufrido Infarto antes de los 50 años, o Muerte súbita. O presenta Cardiopatía Congénita, O Sindróme de Marfan, O Sindróme de QT Largo.</label>
+																</div>
+															</div>
+														</div>
+	
+												</div>
+												<div class="form-group">
+													<h5>USTED DESEA REALIZAR ALGÚN OTRO COMENTARIO CON RESPECTO A SUS ANTECEDENTES DE SALUD?</h5>
+													<!-- input class="form-control input-lg" placeholder="Agregue los comentarios que desea.." type="text" name="etc" id="etc" /-->
+													<h:inputText styleClass="form-control input-lg" p:placeholder="Agregue los comentarios que desea.." value="#{solicitudBean.paso3_63_comentarioAntecedenteSalud}" />
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="form-group">
+															<div class="input-group">
+																<h4>
+																<h:selectBooleanCheckbox  id="checkTerminosYcondiciones" value="#{solicitudBean.aceptoTerminosCondiciones}">
+																	<f:ajax event="click" onevent="mostrarTerminosCondiciones()"  />
+																</h:selectBooleanCheckbox>
+																¿ Usted acepta los siguientes terminos y condiciones ?</h4>
+															</div>
+														</div>	
+													</div>
+												</div>
+												
+												
+											</div>
+											
+											
+											<SCRIPT type="text/javascript">
+												$("input:checkbox").click(function() {
+												    if ($(this).is(":checked")) {
+												        var group = "input:checkbox[class='paso3SelectOne']";
+												        $(group).prop("checked", false);
+												        $(this).prop("checked", true);
+												    } else {
+												        $(this).prop("checked", false);
+												    }
+												});
+											</SCRIPT>
+											
+											
+											
+											<div class="tab-pane" id="tab4">
+												<br/>
+												<h3><strong>Paso 4</strong> - Exámen Físico  <h:outputText value="#{solicitudBean.fechaSolicitudAptoMedico}" styleClass="text-primary pull-right"> <f:convertDateTime dateStyle="short" pattern="dd/MM/yyyy HH:mm" type="date" /></h:outputText></h3>
+												<div class="page-header">
+													<div class="row">
+														<div class="col-sm-6">
+												  			<h2><h:outputText value="#{solicitudBean.paso1_2_nombre}"/>, <h:outputText value="#{solicitudBean.paso1_3_apellido}"/>        <small>  : HISTORIA CLÍNICA N ° <h:outputText value="#{solicitudBean.paso4_64_historiaClinica}" /></small></h2>
+												  		</div>
+														<div class="col-sm-2">
+															<h2>E.C.G. NORMAL:</h2> 
+												  		</div>
+														<div class="col-sm-2">
+															<h:inputText styleClass="form-control input-lg datepicker" 	p:placeholder="PENDIENTE" p:data-dateformat="dd/mm/yy" value="#{solicitudBean.paso4_64_ecgNormal}" onchange="accionesEcgNormal(this);" />
+														</div>
+													</div> 
+												</div>
+	<!-- 											<div class="col-sm-12">
+													<div class="form-group">
+														<div class="input-group">
+															<div class="col-sm-12">
+																<h3>E.C.G. NORMAL: <h:outputText value="#{solicitudBean.paso4_64_ecgNormal}"/> </h3>
+															</div>
+														</div>
+													</div>
+												</div> -->
+												
+												<div class="col-sm-4">
+													<div class="panel panel-default">
+														<div class="panel-heading">TENSIÓN ARTERIAL (mmhg)</div>
+														<div class="panel-body">
+															<div class="row">
+																<div class="col-sm-12">
+																	<h5>Sistólica</h5>
+																	<div class="input-group">
+																		<h:inputText styleClass="form-control input-lg"
+																			p:placeholder="Sistólica" value="#{solicitudBean.paso4_66_sistolica}" />
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row">
+																<div class="col-sm-12">
+																	<h5>Diastólica</h5>
+																	<div class="input-group">
+	<!-- 																	<span class="input-group-addon">
+																			<i class="fa fa-user fa-lg fa-fw"></i>
+																		</span> -->
+																		<h:inputText styleClass="form-control input-lg"
+																			p:placeholder="Diastólica" value="#{solicitudBean.paso4_67_diastolica}" />
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												
+												
+												<div class="col-sm-8">
+													<div class="panel panel-default">
+														<div class="panel-heading">ANTROPOMETRIA</div>
+														<div class="panel-body">
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>Peso (Kg)</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg" id="paso4_69_peso" p:placeholder="Peso (Kg)"  p:pattern="[[0-9]+([\.|,][0-9]+)?" value="#{solicitudBean.paso4_69_peso}" />
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>Talla</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg" id="paso4_70_talla" p:placeholder="Talla (Mts)"  value="#{solicitudBean.paso4_70_talla}" />
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>I.M.C.</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg" id="paso4_71_imc"  p:placeholder="I.M.C."  value="#{solicitudBean.paso4_71_imc}"/>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>Cintura</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg" id="cintura"  p:placeholder="Cintura (cm)" maxlength="4" value="#{solicitudBean.paso4_72_cintura}" onchange="calcularCinturaCadera(this.value,document.getElementById('wizard-1:cadera').value);" />
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>Cadera</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg" id="cadera" p:placeholder="Cadera (cm)" maxlength="4" value="#{solicitudBean.paso4_73_cadera}" onchange="calcularCinturaCadera(document.getElementById('wizard-1:cintura').value,this.value);"/>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="input-group">
+																		<h5>Ind. Cint/Cadera</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg"  p:placeholder="Ind. Cint/Cadera" id="indice" value="#{solicitudBean.paso4_74_indiceCinturaCadera}"/>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="col-sm-4">
+													<div class="panel panel-default">
+														<div class="panel-heading">FRENCUENCIA CARDIACA (Latidos por minuto)</div>
+														<div class="panel-body">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="input-group">
+																		<h5>Frecuencia Cardiaca</h5>
+																		<!-- <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span> -->
+																		<h:inputText styleClass="form-control input-lg"  p:placeholder="Frecuencia Cardiaca"  value="#{solicitudBean.paso4_68_frecuencuaCardiaca}"/>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="alert alert-info">
+															INSPECCIÓN - PALPACIÓN - PERCUSIÓN - AUSCULTACIÓN<small>  ( Marcar con un tilde los signos positivos)</small>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_75_pulsoIrregular}" />
+														            </span>
+																	<label  class="form-control input-lg">Pulso Irregular.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_77_murmulloVesicular}" id="paso4_77_murmulloVesicular" onchange="validarCampo95(this)" />
+														            </span>
+																	<label  class="form-control input-lg">Murmullo Vesicular Anormal.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_79_dolorMuscularLimitante}" />
+														            </span>
+																	<label  class="form-control input-lg">Dolor Muscular o Articular, limitante.</label>
+																</div>
+															</div>
+														</div>
+	
+												</div>
+												<div class="row">
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_1_soploCardiaco}" />
+														            </span>
+																	<label  class="form-control input-lg">Soplos Cardíaco.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_78_sibilancias}" id="paso4_78_sibilancias" onchange="validarCampo95(this);" />
+														            </span>
+																	<label  class="form-control input-lg">Sibilancias.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_82_herniaEventracion}" />
+														            </span>
+																	<label  class="form-control input-lg">Hernia - Eventración.</label>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_1_edema}" />
+														            </span>
+																	<label  class="form-control input-lg">EDEMA en M.M.I.I.</label>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_78_disnea}" />
+														            </span>
+																	<label  class="form-control input-lg">DISNEA CF III/IV.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_83_infeccionPiel}" />
+														            </span>
+																	<label  class="form-control input-lg">Infección en Curso.</label>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_80_paresia}" />
+														            </span>
+																	<label  class="form-control input-lg">Paresia-Parestésia.</label>
+																</div>
+															</div>
+														</div>
+												</div>
+												<div class="row">	
+														<div class="col-sm-4">
+															<div class="form-group">
+																<div class="input-group">
+																	<span class="input-group-addon">
+																		<h:selectBooleanCheckbox value="#{solicitudBean.paso4_76_otrosSignosClinicos}" />
+														            </span>
+																	<label  class="form-control input-lg">Otros Signos Clínicos.</label>
+																</div>
+															</div>
+														</div>
+	
+														<div class="col-sm-8">
+															<div class="form-group">
+																<h:inputText styleClass="form-control input-lg" p:placeholder="Agregue los comentarios que desea.." value="#{solicitudBean.paso4_84_otrosSignosClinicosComentarios}" />
+															</div>
+														</div>
+												</div>
+												<div class="row">	
+													<div class="col-sm-4">
+														<label><h4>AL EXÁMEN FÍSICO EN EL DÍA DE LA FECHA: </h4></label>
+													</div>
+													<div class="col-sm-2">
+														<h:outputText styleClass="form-control" value="#{solicitudBean.paso4_85_examenesFisicoFecha}" />												
+													</div>
+												</div>
+	 											<div class="row">
+													<div class="col-sm-2">
+															<label>Informe del Electrocardiograma:<h:inputText id="paso4_86_electrocardiograma" styleClass="form-control input-lg" value="#{solicitudBean.paso4_86_electrocardiograma}" /></label>
+													</div>
+												</div>
+	 											<div class="row">
+													<div class="col-sm-4">
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<h:selectBooleanCheckbox id="paso4_86_ritmoSinusal" value="#{solicitudBean.paso4_86_ritmoSinusal}" />
+													            </span>
+																<label  class="form-control input-lg">Ritmo sinusal; Trazado compatible con la normalidad</label>
+															</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+															<label>Realizó evalución Clínico-Cardiológica Dr./Dra:</label>
+															<h:outputText styleClass="form-control"  value="#{solicitudBean.paso4_87_docDraRealizoEvaluacion}" />
+													</div>
+												</div>
+	
+												<div class="row">
+													<div class="col-sm-12">
+															<label>M.N.  Nro:</label>
+															<h:outputText styleClass="form-control" value="#{solicitudBean.paso4_88_matruculaNacional}" />
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+															<label>M.P.  Nro:</label>
+															<h:outputText styleClass="form-control"  value="#{solicitudBean.paso4_88_matruculaProvincial}" />
+													</div>
+												</div>
+												
+											</div>
+	
+											<div class="tab-pane" id="tab5">
+												<br/>
+												<h3><strong>Paso 5</strong> - Exámenes Complementarios  <h:outputText value="#{solicitudBean.fechaSolicitudAptoMedico}" styleClass="text-primary pull-right"> <f:convertDateTime dateStyle="short" pattern="dd/MM/yyyy HH:mm" type="date" /></h:outputText></h3>
+												
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="alert alert-info">
+															SE SOLICITO:<small>  (Marque con un tilde aquellos estudios Complementarios que se hallan Solicitado)</small>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+														
+												<!-- 		<div class="form-group">
+															<h4>Se solicito:</h4>
+															<strong><label>Marque con una X en los casilleros de la Izquierda, al lado de cada antecedente, si alguna vez ha sufrido o padece:</label></strong>
+														</div>
+												 -->
+	
+														<div class="input-group">
+														
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_89_electrocardiograma}" />
+																            </span>
+																			<label  class="form-control input-lg">Electrocardiograma.</label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_90_laboratorio}" />
+																            </span>
+																			<label  class="form-control input-lg">Laboratorio.</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_91_ergometrica}" />
+																            </span>
+																			<label  class="form-control input-lg">Ergometría.</label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_92_ecocardiograma}" />
+																            </span>
+																			<label  class="form-control input-lg">Ecocardiograma.</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_93_ecodopler}" />
+																            </span>
+																			<label  class="form-control input-lg">Ecodopler Cardíaco.</label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox id="paso5_95_rxtorax" value="#{solicitudBean.paso5_95_rxtorax}" />
+																            </span>
+																			<label  class="form-control input-lg">RX tórax.</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_96_rxcolumna}" />
+																            </span>
+																			<label  class="form-control input-lg">RX de Columna.</label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox id="paso5_94_ecotres" value="#{solicitudBean.paso5_94_ecotres}" />
+																            </span>
+																			<label  class="form-control input-lg">Ecostress.</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_97_tac}" />
+																            </span>
+																			<label  class="form-control input-lg">T.A.C.</label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-4">
+																	<div class="form-group">
+																		<div class="input-group">
+																			<span class="input-group-addon">
+																				<h:selectBooleanCheckbox value="#{solicitudBean.paso5_98_rnm}" />
+																            </span>
+																			<label  class="form-control input-lg">R.N.M.</label>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row">	
+																<div class="col-sm-12">
+																	<div class="form-group">
+																		<h:inputText styleClass="form-control input-lg" p:placeholder="Otros Estudios." value="#{solicitudBean.paso5_99_otrosEstudios}" />
+																	</div>
+																</div>
+															</div>
+															
+														 </div>
+	
+	
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="alert alert-info">
+																	RESULTADO DE EXÁMENES COMPLEMENTARIOS:<small> </small>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-4">
+																<div class="form-group">
+																	<label>Electrocardiograma</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<h:selectBooleanCheckbox id="paso5_100_ecocardiograma" value="#{solicitudBean.paso5_100_ecocardiograma}" />
+															            </span>
+																		<label id="paso5_100_ecocardiograma" class="form-control input-lg">Pendiente</label>
+																	</div>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<div class="form-group">
+																	<label>Patológico</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<h:selectBooleanCheckbox id="paso5_100_patologico" value="#{solicitudBean.paso5_100_patologico}" onchange="accionesPatologico(this);" />
+															            </span>
+																		<label  class="form-control input-lg">Patológico</label>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+														<div class="row">
+															<div class="col-sm-4">
+																<div class="form-group">
+																	<label>Informe</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<h:selectBooleanCheckbox id="paso5_100_informe" value="#{solicitudBean.paso5_100_informe}" />
+															            </span>
+																		<label id="paso5_100_informe" class="form-control input-lg">Pendiente</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="alert alert-info">
+																	LABORATORIO:<small> </small>
+																</div>
+															</div>
+														</div>
+														
+														
+														<div class="col-sm-4">
+															<div class="panel panel-default">
+																<div class="panel-heading">PERFIL GLUCÉMICO</div>
+																<div class="panel-body">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Glucemia:</h5>
+																				<!-- <span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span> -->
+																				<h:inputText styleClass="form-control input-lg"
+																					p:placeholder="Glucemia (mg %)" value="#{solicitudBean.paso5_101_glucemia}" />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Insulinemia:</h5>
+																				<!-- <label>Insulinemia</label> -->
+																				<!-- <span class="input-group-addon">
+																					<i class="fa fa-stethoscope fa-lg fa-fw"></i>
+																				</span> -->
+																				<h:inputText styleClass="form-control input-lg"
+																					p:placeholder="Insulinemia (mU/L)" value="#{solicitudBean.paso5_102_insulinemia}" />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<!-- <span class="input-group-addon">
+																					<i class="fa fa-stethoscope fa-lg fa-fw"></i>
+																				</span> -->
+																				
+																				<h5>INDICE HOMAIR:</h5>
+																				<h:inputText styleClass="form-control input-lg"
+																					p:placeholder="INDICE HOMAIR (mU/L)" value="#{solicitudBean.paso5_102_indiceHomair}" />
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+															<div class="panel panel-default">
+																<div class="panel-heading">PERFIL LIPÍDICO</div>
+																<div class="panel-body">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Colecterol total:</h5>
+																				<h:inputText styleClass="form-control input-lg" id="paso5_103_colesterol" onchange="calcularRiesgoCoronario(this.value,document.getElementById('wizard-1:paso5_104_colesterolHDL').value);"
+																					p:placeholder="Colecterol total" value="#{solicitudBean.paso5_103_colesterol}" />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Colesterol HDL:</h5>
+																				<h:inputText styleClass="form-control input-lg" id="paso5_104_colesterolHDL" onchange="calcularRiesgoCoronario(document.getElementById('wizard-1:paso5_103_colesterol').value,this.value);"
+																					p:placeholder="Colesterol HDL" value="#{solicitudBean.paso5_104_colesterolHDL}" />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Colesterol LDL:</h5>
+																				<!-- <span class="input-group-addon">
+																					<i class="fa fa-stethoscope fa-lg fa-fw"></i>
+																				</span> -->
+																				<h:inputText styleClass="form-control input-lg"
+																					p:placeholder="Colesterol LDL" value="#{solicitudBean.paso5_105_colesterolLDL}" />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<div class="input-group">
+																				<h5>Triglicéridos:</h5>
+																				<!-- <span class="input-group-addon">
+																					<i class="fa fa-stethoscope fa-lg fa-fw"></i>
+																				</span> -->
+																				<h:inputText styleClass="form-control input-lg"
+																					p:placeholder="Triglicéridos" value="#{solicitudBean.paso5_106_trigliceridos}" />
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														<div class="col-sm-4">
+																<h5>Factor de Riesgo Coronario:</h5>
+																<div class="input-group">
+																	<h:inputText styleClass="form-control input-lg" id="paso5_104_riesgoCoronario"
+																					p:placeholder="Riesco Coronario" value="#{solicitudBean.paso5_104_riesgoCoronario}" />
+																</div>
+														</div>
+														<div class="col-sm-4">
+																<h5>PERFIL TIROIDE</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_112_perfilTiroide}">
+																        <f:selectItem itemLabel="Perfil Tiroide" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+														</div>
+														
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="alert alert-info">
+																	OTROS PAREMETROS:<small> </small>
+																</div>
+															</div>
+														</div>
+														
+														<div class="row">
+															<div class="col-sm-4">
+																<h5>Hemograma</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_107_hemograma}">
+																        <f:selectItem itemLabel="Hemograma" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>Hepatograma</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_109_hepatograma}">
+																        <f:selectItem itemLabel="Hepatograma" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>Coagulograma</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_111_coagulograma}">
+																        <f:selectItem itemLabel="Coagulograma" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+														</div>
+	
+														<div class="row">
+															<div class="col-sm-4">
+																<h5>Ionograma</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_108_ionograma}">
+																        <f:selectItem itemLabel="Ionograma" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>Función Renal</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_110_funcionRenal}">
+																        <f:selectItem itemLabel="Función Reanl" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>Uricemia</h5>
+																<div class="input-group">
+																	<span class="input-group-addon"><i class="fa fa-stethoscope fa-lg fa-fw"></i></span>
+																	<h:selectOneMenu name="intensidad" styleClass="form-control input-lg"  value="#{solicitudBean.paso5_113_uricemia}">
+																        <f:selectItem itemLabel="Uricemia" itemValue="" />
+																        <f:selectItem itemLabel="Normal" itemValue="1" />
+																        <f:selectItem itemLabel="Anormal" itemValue="2" />
+																    </h:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<div class="input-group">
+																	<h5>Orina <small>Albuminuria (mg %)</small></h5>
+																	<h:inputText styleClass="form-control input-lg"
+																		p:placeholder="Orina" value="#{solicitudBean.paso5_114_orina}" />
+																</div>
+															</div>
+														</div>
+															
+														<br/>
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="alert alert-info">
+																	RADIOGRAFIAS:<small> </small>
+																</div>
+															</div>
+														</div>
+														
+														<div class="row">
+															<div class="col-sm-4">
+																<div class="form-group">
+																	<div class="input-group">
+																		<span class="input-group-addon">
+																			<h:selectBooleanCheckbox value="#{solicitudBean.paso5_117_rxtorax}" />
+															            </span>
+																		<label  class="form-control input-lg">Rx Torax</label>
+																	</div>
+																</div>
+															</div>
+														</div>
+														
+														
+														<div class="row">	
+															<div class="col-sm-4">
+																<h5>Observaciónes / Descripción<small></small></h5>
+																<div class="form-group">
+																	<h:inputText styleClass="form-control input-lg" p:placeholder="Observaciónes / Descripción." value="#{solicitudBean.paso5_118_rxtoraxObservacion}" />
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>INDICE DE TORG  Y PAVLOV</h5>
+																<div class="form-group">
+																	<h:inputText styleClass="form-control input-lg" p:placeholder="Indice de Torg y Pavlov." value="#{solicitudBean.paso5_115_indiceTorgPavlov}" />
+																</div>
+															</div>
+															<div class="col-sm-4">
+																<h5>Recomendación de posición en la fomacion</h5>
+																<div class="form-group">
+																	<h:inputText styleClass="form-control input-lg" p:placeholder="Recomendación Posición" value="#{solicitudBean.paso5_116_recomendacionPosicion}" />
+																</div>
+															</div>
+														</div>
+														<div class="row">	
+															<div class="col-sm-12">
+																<h5>Otros Estudios: <small>VER RESULADOS EN CARPETA DE EXÁMENES COMPLEMENTARIOS</small></h5>
+															</div>
+														</div>
+														
+														<footer>
+															<sec:authorize ifAnyGranted="MEDICO">
+																<div class="btn-toolbar">
+																	<h:commandButton type="button" styleClass="btn btn-primary btn-lg btn-toolbar  pull-right" value="Grabar">
+													        			<f:ajax listener="#{solicitudBean.grabarMedico('PARCIAL_MEDICO')}" execute="@form" onevent="mostrarMensaje()" render="mensaje" />
+														    		</h:commandButton>
+														    		
+																	<!-- >h:commandButton type="button" styleClass="btn btn-default btn-lg btn-toolbar  pull-right" value="Finalizar">
+													        			<f:ajax listener="#{solicitudBean.grabarMedico('FINALIZADO')}" execute="@form" onevent="mostrarMensaje()" render="mensaje" />
+														    		</h:commandButton-->
+													    		</div>
+													    	</sec:authorize>
+														</footer>
+														
+														
+													</div>
+												</div>
+												<br/>
+												<br/>
+											</div>
+	
+	
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-sm-12">
+														<ul class="pager wizard no-margin">
+															<!--<li class="previous first disabled">
+															<a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+															</li>-->
+															<li class="previous disabled">
+																<h:commandLink styleClass="btn btn-lg btn-default" p:href="javascript:void(0);" p:onclick="javascript:void(0);jsf.ajax.request(this, event, {execute:'wizard-1', render: 'out1'}); return false;" actionListener="#{solicitudBean.grabarParcial}"> Atrás </h:commandLink>
+																<!-- >a href="javascript:void(0);" class="btn btn-lg btn-default"> Atras </a-->
+															</li>
+															<!--<li class="next last">
+															<a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+															</li>-->
+															<li class="next">
+																<h:link  styleClass="btn btn-lg txt-color-darken" id="aja"  actionListener="#{solicitudBean.grabarParcial}" p:onclick="javascript:void(0);" p:href="javascript:void(0);"> Siguiente </h:link>
+															</li>
+															<sec:authorize ifAnyGranted="MEDICO">
+																<li class="next finish">
+																	<h:commandButton type="button" styleClass="btn btn-default btn-lg btn-toolbar  pull-right" value="Finalizar">
+													        			<f:ajax listener="#{solicitudBean.grabarMedico('FINALIZADO')}" execute="@form" onevent="mostrarMensaje()" render="mensaje" />
+														    		</h:commandButton>
+																</li>
+															</sec:authorize>
+															
+															<sec:authorize ifAnyGranted="PACIENTE">
+																<li class="finish">
+				
+				 													<h:commandButton type="button" id="grabarPaciente" styleClass="btn btn-default btn-lg btn-toolbar  pull-right"  value="Grabar" disabled="false">
+															        	<f:ajax listener="#{solicitudBean.grabarParcial}" execute="@form" onevent="mostrarMensaje()" render="mensaje" />
+																    </h:commandButton>
+																				
+																</li>
+															</sec:authorize>
+															
+															<!-- >li class="next finish" style="display:none;"><a href="javascript:;">Finalizar</a></li-->
+														</ul>
+														
+													</div>
+												</div>
+											</div>
+	
+										</div>
+									</div>
+									<div id="dialog_simple" title="Dialog Simple Title">
+										<p>
+											<h:outputText id="mensaje" value="#{solicitudBean.mensaje}"/>
+										</p>
+									</div>
+									<div id="dialog_terminoscondiciones" title="Dialog Simple Title">
+										<p>
+											Deberiamos poner la parte de terminos y condiciones	
+										</p>
+									</div>
+									
+								</h:form>
+							</div>
+	
+						</div>
+						<!-- end widget content -->
+	
+					</div>
+					<!-- end widget div -->
+	
+				</div>
+				<!-- end widget -->
+				<!-- ui-dialog -->
+	
+			</article>
+			<!-- WIDGET END -->
+		</div>
+	
+		<!-- end row -->
+	
+	</section>
+
+
+	<script type="text/javascript">
+	<![CDATA[
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		pageSetUp();
+		/*
+		 * Load bootstrap wizard dependency
+		 */
+		 
+		loadScript("javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js", runBootstrapWizard);
+		
+		//Bootstrap Wizard Validations
+		
+		//*******************************
+		// INICIO -- FUNCIONES PARA HABILITAR Y DESHABILITAR
+		//Reglas para el paso Número 5
+			// 95=X SI; 36"=X (#{solicitudBean.paso3_36_broncoespasmos}) || 78=X(solicitudBean.paso4_78_sibilancias) || 
+			// 77=X(>Murmullo Vesicular Anormal // paso4_77_murmulloVesicular) || 36=X (Sensacion falta de aire)
+			//|| ( 18<1AÑO (Actividad) &&  11" != SI (embarazada))
+		function validarCampo95(componente){
+				valor1= document.getElementById('wizard-1:paso4_78_sibilancias').checked;
+				valor2= document.getElementById('wizard-1:paso3_36_broncoespasmos').checked;
+				valor3= document.getElementById('wizard-1:paso4_77_murmulloVesicular').checked;
+				valor4= document.getElementById('wizard-1:paso3_36_faltaAire').checked;
+				valor5= ('1'==document.getElementById('wizard-1:embarazada').value && '2'==document.getElementById('wizard-1:paso2_18_tiempoActividad').value);
+				document.getElementById('wizard-1:paso5_95_rxtorax').checked= valor1 || valor2 ||valor3 || valor4 || valor5;
+		}
+		
+		//Regla para nombre club
+		//document.getElementById('wizard-1:paso2_15_nombreClub').disabled=true;
+		
+			
+		$('#embarazada').hide();
+
+		if(document.getElementById('wizard-1:paso2_15_nombreClub').value!=''){
+			document.getElementById('wizard-1:paso2_15_nombreClub').disabled=false;
+		}
+		//Regla para embarazada
+		document.getElementById('wizard-1:embarazada').disabled=true;
+		if(document.getElementById('wizard-1:sexo').value=='F')
+			document.getElementById('wizard-1:embarazada').disabled=false;
+		
+		function habilitarEmbarazada(){
+			if(document.getElementById('wizard-1:sexo').value=='F')
+				document.getElementById('wizard-1:embarazada').disabled=false;
+				$('#embarazada').show();
+			if(document.getElementById('wizard-1:sexo').value=='M' || document.getElementById('wizard-1:sexo').value==''){
+				//document.getElementById('wizard-1:embarazada').disabled=true;
+				document.getElementById('wizard-1:embarazada').value="";
+				$('#embarazada').hide();
+			}
+		};
+		
+		function modificarPaso5(valor){
+			if(valor=='3')
+				document.getElementById('wizard-1:paso5_94_ecotres').checked=true;
+			return true;
+		}
+		function calcularCinturaCadera(cintura,cadera){
+			if(cintura==null || cadera ==null ){
+				return;
+			}
+			
+			document.getElementById('wizard-1:indice').value= cintura / cadera;
+		}
+	
+		function calcularRiesgoCoronario(colesterol,colesterolHDL){
+			if(colesterol==null || colesterolHDL ==null ){
+				return;
+			}
+			
+			document.getElementById('wizard-1:paso5_104_riesgoCoronario').value= colesterol / colesterolHDL;
+		}
+		
+/* 		function habilitarPaso2_15_nombreClub(){
+			document.getElementById('wizard-1:paso2_15_nombreClub').disabled=true;
+			if(document.getElementById('wizard-1:paso2_15_presentarEn').value=='1')
+				document.getElementById('wizard-1:paso2_15_nombreClub').disabled=false;
+		} */
+		
+		function accionesEcgNormal(valor){
+			
+			document.getElementById('wizard-1:paso4_86_electrocardiograma').value=valor.value;
+			
+			if(valor.value=='' || valor.value=='PENDIENTE'){
+				document.getElementById('wizard-1:paso4_86_ritmoSinusal').checked=false;
+			}else{
+				document.getElementById('wizard-1:paso4_86_ritmoSinusal').checked=true;
+			}
+			
+			
+			
+			//Setteos para el paso 5
+			if(valor.value=='' || valor.value=='PENDIENTE'){
+				$('#paso5_100_ecocardiograma').text("Pendiente");
+				$('#paso5_100_informe').text("Pendiente");
+			}else{
+				$('#paso5_100_ecocardiograma').text("Normal");
+				$('#paso5_100_informe').text("Ritmo sinusal; Trazado compatible con la normalidad");
+				document.getElementById('wizard-1:paso5_100_ecocardiograma').checked=true;
+				document.getElementById('wizard-1:paso5_100_informe').checked=true;
+			}
+			
+		}
+	
+		function accionesPatologico(valor){
+			if(document.getElementById('wizard-1:paso5_100_patologico').value==true){
+				document.getElementById('wizard-1:paso5_100_ecocardiograma').checked=false;
+				document.getElementById('wizard-1:paso5_100_informe').checked=false;
+				//document.getElementById('wizard-1:paso5_100_informe').text='asdas';
+				$('#paso5_100_informe').text("Patologíco");
+			}else{
+				document.getElementById('wizard-1:paso5_100_ecocardiograma').checked=false;
+				document.getElementById('wizard-1:paso5_100_informe').checked=true;
+				$('#paso5_100_informe').text("Consultar informe con Médico Actuante");
+			}
+		}
+	
+	
+		function mostrarMensaje(){
+			//$('#alerta').hide();
+			$('#dialog_simple').dialog('open').fadeIn(350);
+		}
+		
+		function mostrarTerminosCondiciones(){
+			if(document.getElementById("wizard-1:checkTerminosYcondiciones").checked)
+				$('#dialog_terminoscondiciones').dialog('open').fadeIn(350);
+			else{
+				document.getElementById("wizard-1:grabarPaciente").disabled=true;
+			}
+		}
+		
+		$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+			_title : function(title) {
+				if (!this.options.title) {
+					title.html("&#160;");
+				} else {
+					title.html(this.options.title);
+				}
+			}
+		}));
+	
+		$('#dialog_simple').dialog({
+			autoOpen : false,
+			width : 600,
+			resizable : false,
+			modal : true,
+			title : "<div class='widget-header'><h4><i class='fa fa-warning'></i> Se genero la siguiente información:</h4></div>",
+			buttons : [ {
+				html : "<i class='fa fa-times'></i>&nbsp; Salir",
+				"class" : "btn btn-danger",
+				click : function() {
+					
+					$("#tab1 input").prop("disabled", true);
+					$("#tab1 select").prop("disabled", true);
+					$("#tab2 input").prop("disabled", true);
+					$("#tab2 select").prop("disabled", true);
+					$("#tab3 input").prop("disabled", true);
+					$("#tab3 select").prop("disabled", true);
+					$("#tab4 input").prop("disabled", true);
+					$("#tab4 select").prop("disabled", true);
+					$("#tab5 input").prop("disabled", true);
+					$("#tab5 select").prop("disabled", true);
+					
+					$('#bootstrap-wizard-1').find('.pager .finish').hide();
+					$('#bootstrap-wizard-1').find('.previous').hide();
+					
+					$(this).fadeOut(350);
+					$(this).dialog("close");
+					
+				}
+			}]
+		});
+		
+		$('#dialog_terminoscondiciones').dialog({
+			autoOpen : false,
+			width : 800,
+			resizable : true,
+			modal : true,
+			title : "<div class='widget-header'><h4><i class='fa fa-warning'></i>   &iquest; Acepta los siguientes terminos y condiciones ?</h4></div>",
+			buttons : [ {
+				html : "<i class='fa fa-times'></i>&nbsp; Cerrar",
+				"class" : "btn btn-danger",
+				click : function() {
+
+					$(this).dialog("close");
+					
+				}
+			}
+			,
+			{
+				html : "<i class='fa fa-check'></i>&nbsp; Acepto",
+				"class" : "btn btn-success",
+				click : function() {
+					document.getElementById("wizard-1:grabarPaciente").disabled=false;
+					$(this).fadeOut(350);
+					$(this).dialog("close");
+					
+				}
+			}
+			
+			
+			]
+		});
+		
+		
+		
+		$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+			_title : function(title) {
+				if (!this.options.title) {
+					title.html("&#160;");
+				} else {
+					title.html(this.options.title);
+				}
+			}
+		}));
+		// FIN -- FUNCIONES PARA HABILITAR Y DESHABILITAR	
+		
+		
+		function runBootstrapWizard() {
+		  
+		  var $validator = $("#wizard-1").validate({
+		    
+		    rules: {
+		      'wizard-1:email': {
+		        required: true,
+		        email: "Your email address must be in the format of name@domain.com"
+		      },
+		      'wizard-1:nombre': {
+		        required: true
+		      },
+		      'wizard-1:presentarEn': {
+		        required: true
+		      },
+		      'wizard-1:apellido': {
+		        required: true
+		      },
+		      'wizard-1:sexo': {
+		        required: true
+		      },
+		      'wizard-1:tipoDoc': {
+		        required: true
+		      },
+		      'wizard-1:numeroDoc': {
+		        required: true
+		      },
+		      'wizard-1:postal': {
+		        required: true,
+		        minlength: 4
+		      },
+		      'wizard-1:factorSanguineo': {
+		        required: true
+		      },
+		      'wizard-1:grupoSanguineo': {
+		        required: true
+		      },
+		      'wizard-1:telefono': {
+		        required: true,
+		        minlength: 1
+		      },
+		      'wizard-1:telEmergencia': {
+		        required: true,
+		        minlength: 1
+		      },
+		      'wizard-1:celular': {
+		        required: true,
+		        minlength: 8
+		      },
+		      'wizard-1:paso2_15_presentarEn': {
+			        required: true
+			  },
+		      'wizard-1:paso2_17_actividad': {
+			        required: true
+			  },
+		      'wizard-1:paso2_19_intensidad': {
+			        required: true
+			  },
+		      'wizard-1:paso2_18_tiempoActividad': {
+			        required: true
+			  },
+		      'wizard-1:paso1_6_fechaNacimiento': {
+			        required: true
+			  },
+		      'wizard-1:paso4_70_talla': {
+		    	  digits : 'Solamente números'
+			  },
+		      'wizard-1:paso4_71_imc': {
+		    	  digits : 'Solamente números'
+			  },
+		      'wizard-1:cintura': {
+		    	  digits : 'Solamente números'
+			  },
+		      'wizard-1:cadera': {
+		    	  digits : 'Solamente números'
+			  },
+		      'wizard-1:paso4_69_peso': {
+		    	  digits : 'Solamente números'
+			  }
+		    },
+		    
+		    messages: {
+		      fname: "Please specify your First name",
+		      lname: "Please specify your Last name",
+		      email: {
+		        required: "Necesitamos su email, para contactarlo",
+		        email: "su email  debe tener el siguiente formato nombre@domain.com"
+		      }
+		    },
+		    
+		    highlight: function (element) {
+		      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+		    },
+		    unhighlight: function (element) {
+		      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+		    },
+		    errorElement: 'span',
+		    errorClass: 'help-block',
+		    errorPlacement: function (error, element) {
+		      if (element.parent('.input-group').length) {
+		        error.insertAfter(element.parent());
+		      } else {
+		        error.insertAfter(element);
+		      }
+		    }
+		  });
+		  
+			$('#bootstrap-wizard-1').find('.pager .finish').hide();
+		  
+		  $('#bootstrap-wizard-1').bootstrapWizard({
+		    'tabClass': 'form-wizard',
+		    'onNext': function (tab, navigation, index) {
+		    	
+	    	 var $total = navigation.find('li').length;
+			 var $current = index+1;
+		    	
+		      var $valid = $("#wizard-1").valid();
+		      if (!$valid) {
+		        $validator.focusInvalid();
+		        return false;
+		      } else {
+		        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass('complete');
+		        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step').html('<i class="fa fa-check"></i>');
+		      }
+		      
+		      if($current >= $total || (document.getElementById("wizard-1:grabarPaciente") != null && $current == 3)) {//no solo muestra "finalizar" cuando se llega al paso 5, sino tambien cuando es paciente y este en el paso 3.
+					$('#bootstrap-wizard-1').find('.pager .next').hide();
+					$('#bootstrap-wizard-1').find('.pager .finish').show();
+					$('#bootstrap-wizard-1').find('.pager .finish').removeClass('disabled');
+				} else {
+					$('#bootstrap-wizard-1').find('.pager .next').show();
+					$('#bootstrap-wizard-1').find('.pager .finish').hide();
+				}
+		    }
+		  });
+		  
+		}
+
+		/*
+		 * Load fuelux wizard dependency
+		 */
+		loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+		
+		function fueluxWizard() {
+		  
+		  var wizard = $('.wizard').wizard();
+		  
+		  wizard.on('finished', function (e, data) {
+		    //$("#fuelux-wizard").submit();
+		    //console.log("submitted!");
+		    $.smallBox({
+		      title: "Congratulations! Your form was submitted",
+		      content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+		      color: "#5F895F",
+		      iconSmall: "fa fa-check bounce animated",
+		      timeout: 4000
+		    });
+		    
+		  });
+		  
+		}
+		
+		function getAge(d1){
+		    var d2 = new Date();
+		    var diff = d2.getTime() - d1.getTime();
+		    return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+		}
+		
+		function setEdad(fechaNacimiento){
+			document.getElementById('edad').value= getAge(parseDate(fechaNacimiento)) + " Años";
+		}
+		
+		function parseDate(input) {
+			  var parts = input.split('/');
+			  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+			  return new Date(parts[2],parts[1]-1,parts[0]); // Note: months are 0-based
+		}
+
+		if(document.getElementById('wizard-1:paso1_6_fechaNacimiento').value != '')
+			document.getElementById('edad').value= getAge(parseDate(document.getElementById('wizard-1:paso1_6_fechaNacimiento').value)) + " Años";
+		
+		]]>
+	</script>
+	<!-- end widget grid -->
+	<sec:authorize ifAnyGranted="PACIENTE">
+		<script type="text/javascript">
+
+		if(document.getElementById('wizard-1:estadoFichaMedica').value != ''){
+			$("#tab1 input").prop("disabled", true);
+			$("#tab1 select").prop("disabled", true);
+			$("#tab2 input").prop("disabled", true);
+			$("#tab2 select").prop("disabled", true);
+			$("#tab3 input").prop("disabled", true);
+			$("#tab3 select").prop("disabled", true);
+			$("#tab4 input").prop("disabled", true);
+			$("#tab4 select").prop("disabled", true);
+			$("#tab5 input").prop("disabled", true);
+			$("#tab5 select").prop("disabled", true);
+		}
+			$("#tab4 input").prop("disabled", true);
+			$("#tab4 select").prop("disabled", true);
+			$("#tab5 input").prop("disabled", true);
+			$("#tab5 select").prop("disabled", true);
+			$("#tab4").prop("disabled", true);
+			$("#tab5").prop("disabled", true);
+			
+			document.getElementById("wizard-1:grabarPaciente").disabled=true;
+	
+		</script>
+	</sec:authorize>
+	<sec:authorize ifAnyGranted="MEDICO">
+		<script type="text/javascript">
+			$("#tab1 input").prop("disabled", true);
+			$("#tab1 select").prop("disabled", true);
+			$("#tab2 input").prop("disabled", true);
+			$("#tab2 select").prop("disabled", true);
+			$("#tab3 input").prop("disabled", true);
+			$("#tab3 select").prop("disabled", true);
+
+			$('li a[href="#tab4"]').trigger('click');
+		</script>
+	</sec:authorize>
+
+</body>
+
+</html>

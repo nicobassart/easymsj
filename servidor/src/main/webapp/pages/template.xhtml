@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<meta charset="utf-8" />
+
+	<title>EasyMsj</title>
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<!-- Basic Styles -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="font-awesome.min.css" />
+
+	<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+	<h:outputStylesheet library="css" name="smartadmin-production.css"	media="screen" />
+	<h:outputStylesheet library="css" name="smartadmin-skins.css" media="screen" />
+	<!-- SmartAdmin RTL Support is under construction
+	<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+
+	<!-- We recommend you use "your_style.css" to override SmartAdmin
+	specific styles this will also ensure you retrain your customization
+	with each SmartAdmin update.
+	<link rel="stylesheet" type="text/css" media="screen" href="css/demo.css"> -->
+
+	<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+	<!-- h:outputStylesheet library="css"  media="screen" href="demo.css" /-->
+
+	<!-- FAVICONS -->
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+
+	<!-- GOOGLE FONT -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+	<h:outputScript library="javax.faces" name="jsf.js" target="head" />
+</h:head>
+
+<body id="pgMainMenu" >
+	<ui:include src="header.xhtml" />
+	<ui:include src="menu_lateral.xhtml" />
+	<ui:insert name="body" />
+	<ui:include src="footer.xhtml" />
+	
+	<!--================================================== -->
+
+	<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>-->
+	<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+	<script	src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script>
+		if (!window.jQuery) {
+			document.write('%3Cscript src="js/libs/jquery-2.0.2.min.js"%3E%3C\/script%3E');
+		}
+	</script>
+	
+	<script	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script>
+		if (!window.jQuery.ui) {
+			document.write('%3Cscript src="js/libs/jquery-ui-1.10.3.min.js"%3E%3C\/script%3E');
+		}
+	</script>
+
+	<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+	<!-- BOOTSTRAP JS -->
+	<h:outputScript library="js" name="bootstrap/bootstrap.min.js"  />
+
+	<!-- CUSTOM NOTIFICATION -->
+	<h:outputScript library="js" name="notification/SmartNotification.min.js" />
+
+	<!-- JARVIS WIDGETS -->
+	<h:outputScript library="js" name="smartwidgets/jarvis.widget.min.js" />
+
+	<!-- EASY PIE CHARTS -->
+	<h:outputScript library="js" name="plugin/easy-pie-chart/jquery.easy-pie-chart.min.js" />
+
+	<!-- SPARKLINES -->
+	<h:outputScript library="js" name="plugin/sparkline/jquery.sparkline.min.js" />
+
+	<!-- JQUERY VALIDATE -->
+	<h:outputScript library="js" name="plugin/jquery-validate/jquery.validate.min.js" />
+
+	<!-- JQUERY MASKED INPUT -->
+	<h:outputScript library="js" name="plugin/masked-input/jquery.maskedinput.min.js" />
+
+	<!-- JQUERY SELECT2 INPUT -->
+	<h:outputScript library="js" name="plugin/select2/select2.min.js" />
+
+	<!-- JQUERY UI + Bootstrap Slider -->
+	<h:outputScript library="js" name="plugin/bootstrap-slider/bootstrap-slider.min.js" />
+
+	<!-- browser msie issue fix -->
+	<h:outputScript library="js" name="plugin/msie-fix/jquery.mb.browser.min.js" />
+
+	<!-- SmartClick: For mobile devices -->
+	<h:outputScript library="js" name="plugin/smartclick/smartclick.js" />
+
+	<!--[if IE 7]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+	<![endif]-->
+
+	<!-- Demo purpose only -->
+	<!-- h:outputScript library="js" name="demo.js" /-->
+
+	<!-- MAIN APP JS FILE -->
+	<h:outputScript library="js" name="app.js"/>
+
+	<!-- Your GOOGLE ANALYTICS CODE Below -->
+	<script type="text/javascript">
+
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		pageSetUp();
+	
+	
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-XXXXXXXX-X' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</body>
+
+</html>

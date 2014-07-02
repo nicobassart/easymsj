@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark"><i class="fa fa-pencil-square-o fa-fw "></i> Forms <span>>
+			Wizards </span></h1>
+	</div>
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-check"></i> </span>
+					<h2>Solicitud de Apto Medico </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body">
+
+						<div class="row">
+							<h:form id="wizard-1" novalidate="novalidate">
+								<div id="bootstrap-wizard-1" class="col-sm-12">
+									<div class="form-bootstrapWizard">
+										<ul class="bootstrapWizard form-wizard">
+											<li class="active" data-target="#step1">
+												<a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Paso</span> </a>
+											</li>
+											<li data-target="#step2">
+												<a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Paso</span> </a>
+											</li>
+											<li data-target="#step3">
+												<a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Paso</span> </a>
+											</li>
+											<li data-target="#step4">
+												<a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Paso</span> </a>
+											</li>
+											<li data-target="#step5">
+												<a href="#tab5" data-toggle="tab"> <span class="step">5</span> <span class="title">Paso</span> </a>
+											</li>
+
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab1">
+											<br/>
+											<h3><strong>Paso 1 </strong> - Destinatarios del Mensaje</h3>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+															<h:inputText id="keyword" value="#{solicitudBean.nombre}" p:placeholder="Enter text" styleClass="form-control input-lg" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" placeholder="Apellido" type="text" name="lname" id="lname"/>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<!-- span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span-->
+															<!-- input class="form-control input-lg" placeholder="10 / 10 / 2014" type="text" name="fechaNac" id="fechaNac"-->
+															
+															<span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+															<input type="text" name="mydate" placeholder="Select a date" class="form-control  input-lg datepicker" data-dateformat="dd/mm/yy" />
+															
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="tipoDoc" class="form-control input-lg">
+																<option value="" selected="selected">Tipo Documento</option>
+																<option value="1">DNI</option>
+																<option value="2">CUIT</option>
+																<option value="3">CUIL</option>
+																<option value="4">LI</option>
+																<option value="5">LE</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" placeholder="30.123.245" type="text" name="nroDoc" id="nroDoc" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+															<select name="country" class="form-control input-lg">
+																<option value="" selected="selected">Está usted embarazada?</option>
+																<option value="SI">SI</option>
+																<option value="NO">NO</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+															<select name="country" class="form-control input-lg">
+																<option value="" selected="selected">Sexo</option>
+																<option value="M">Masculino</option>
+																<option value="F">Femenino</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="grupoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Grupo Sanguineo</option>
+																<option value="A">A</option>
+																<option value="B">B</option>
+																<option value="AB">AB</option>
+																<option value="O">O</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="factoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Factor Sanguineo</option>
+																<option value="RH+">RH +</option>
+																<option value="RH-">RH -</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="+99 (999) 999-9999" data-mask-placeholder= "X" placeholder="+1" type="text" name="wphone" id="wphone" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="+99 (999) 999-9999" data-mask-placeholder= "X" placeholder="+01" type="text" name="hphone" id="hphone" />
+														</div>
+													</div>
+												</div>
+											</div>
+											
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Telefono de mergencia" data-mask-placeholder="X" placeholder="Telefono de mergencia" type="text" name="telEmergencia" id="telEmergencia" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Correo" data-mask-placeholder= "X" placeholder="Correo" type="text" name="email" id="email" />
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Obra social / prepaga" data-mask-placeholder="X" placeholder="Obra social / prepaga" type="text" name="telEmergencia" id="obraSocial" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Numero de afiliado" data-mask-placeholder= "X" placeholder="Numero de afiliado" type="text" name="nroAfiliado" id="nroAfiliado" />
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="tab-pane" id="tab2">
+											<br />
+											<h3><strong>Step 2</strong> - Crear mensaje que sera enviado</h3>
+
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+															
+															<select name="country" class="form-control input-lg">
+																<option value="" selected="selected">Para presentar en</option>
+																<option value="M">Masculino</option>
+																<option value="F">Femenino</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="grupoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Actividad fisica</option>
+																<option value="A">Gimnasia</option>
+																<option value="B">Futbol</option>
+																<option value="AB">Rugby</option>
+																<option value="O">Hockey</option>
+																<option value="O">Tenis</option>
+																<option value="O">Natación</option>
+																<option value="O">Running</option>
+																<option value="O">Ciclismo</option>
+																<option value="O">Basquet</option>
+																<option value="O">Voley</option>
+																<option value="O">Art.Marc</option>
+																<option value="O">Otros</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+														    <h:selectOneMenu styleClass="form-control input-lg" value="#{subscriptionController.subscriptions}">
+														        <f:selectItem itemLabel="Recreativo" itemValue="1" />
+														        <f:selectItem itemLabel="Competitivo" itemValue="2" />
+														        <f:selectItem itemLabel="No Competitivo" itemValue="2" />
+														        <f:selectItem itemLabel="Alto Rendimiento" itemValue="2" />
+														    </h:selectOneMenu>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="grupoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Hace cuanto tiempo ?</option>
+																<option value="A"> + de 6 meses</option>
+																<option value="B"> - de 1 año</option>
+																<option value="AB"> + de 2 años</option>
+																<option value="AB"> Entre 1 y 2 años</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<strong><label>ANTECEDENTES DE ACTIVIDAD FISICA</label></strong>
+													</div>
+													<div class="input-group">
+
+														<h:selectManyCheckbox layout="pageDirection" styleClass="form-control input-lg">
+														                          <!-- value="#{subscriptionController.subscriptions}"-->
+															<f:selectItem  itemLabel="Nunca he realizado Actividad Fìsica de manera regular y frecuente" itemValue="1" />
+															<f:selectItem  itemLabel="En alguna época he realizado Actividad Física de manera regular y frecuente" itemValue="1" />
+															<f:selectItem  itemLabel="Realizo Actividad Física de manera regular más de 2 veces por semana desde hace mas de 6 meses" itemValue="1" />
+															<f:selectItem  itemLabel="Entreno de manera regular más de 2 veces por semana desde hace más de 12 meses" itemValue="1" />
+															<f:selectItem itemLabel="Entreno de manera regular más de 2 veces por semana desde hace más de 18 meses" itemValue="1" />
+															<f:selectItem  itemLabel="Entreno Intensamente 3 o más veces por semana, 30 minutos por día al 75% de mi capacidad" itemValue="1" />
+															<f:selectItem  itemLabel="Entreno Actualmente, Próximo al Máximo de mi Capacidad ( 85%)" itemValue="1" />
+															<f:selectItem  itemLabel="Entreno Actualmente al Máximo de mi Capacidad ( 100%)" itemValue="1" />
+														</h:selectManyCheckbox>
+													</div>
+												</div>
+											
+											</div>
+
+										</div>
+										<div class="tab-pane" id="tab3">
+											<br/>
+											<h3><strong>Paso 3</strong> -</h3>
+											<!-- div class="alert alert-info fade in">
+												<button class="close" data-dismiss="alert">
+													Ã—
+												</button>
+												<i class="fa-fw fa fa-info"></i>
+												<strong>Info!</strong> Place an info message box if you wish.
+											</div>
+											<div class="form-group">
+												<label>This is a label</label>
+												<input class="form-control input-lg" placeholder="Another input box here..." type="text" name="etc" id="etc" />
+											</div-->
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<strong><label>Marque con una X en los casilleros de la Izquierda, al lado de cada antecedente, si alguna vez ha sufrido o padece:</label></strong>
+													</div>
+													<div class="input-group">
+
+														<h:selectManyCheckbox layout="pageDirection" styleClass="form-control input-lg">
+														                          <!-- value="#{subscriptionController.subscriptions}"-->
+															<f:selectItem itemLabel="Dolor de pecho de tipo Opresivo, en reposo o al realizar ejercicio." itemValue="1" />
+															<f:selectItem itemLabel="Marcapasos" itemValue="1" />
+															<f:selectItem itemLabel="Soplos Cardíacos, o algún otro problema Cardiovascular." itemValue="1" />
+															<f:selectItem itemLabel="Infarto Agudo de Miocardio" itemValue="1" />
+															<f:selectItem itemLabel="Pérdidas Súbitas del Conocimiento." itemValue="1" />
+															<f:selectItem itemLabel="Hipertensión Arterial." itemValue="1" />
+															<f:selectItem itemLabel="Colesterol o Trigliceridos Elevados." itemValue="1" />
+															<f:selectItem itemLabel="Sensacion de falta de aire en reposo, o a minimos esfuerzos" itemValue="1" />
+															<f:selectItem itemLabel="Asma / Broncoespasmos." itemValue="1" />
+															<f:selectItem itemLabel="Diabetes." itemValue="1" />
+															<f:selectItem itemLabel="Hipotiroidismo." itemValue="1" />
+															<f:selectItem itemLabel="Convulsiones." itemValue="1" />
+															
+															<f:selectItem itemLabel="Hernia o Eventraciòn en Abdómen o Ingle." itemValue="1" />
+															<f:selectItem itemLabel="Fué sometido a alguna Cirugía de Abdómen o Ingle en los últimos 6 meses." itemValue="1" />
+															<f:selectItem itemLabel="Cirugía Laparoscópica en el último mes." itemValue="1" />
+															<f:selectItem itemLabel="Cirugía de gran Incisión en abdómen en los últimos 3 meses." itemValue="1" />
+															<f:selectItem itemLabel="Algún dolor en músculos o articulaciones que limita francamente sus movimientos." itemValue="1" />
+															<f:selectItem itemLabel="Desgarro muscular hace menos de un mes." itemValue="1" />
+															<f:selectItem itemLabel="Operación de meniscos en el último mes y medio." itemValue="1" />
+															<f:selectItem itemLabel="operación de ligamentos cruzados hace menos de doce meses." itemValue="1" />
+															<f:selectItem itemLabel="Sufrió alguna fractura en alguno de sus brazos, piernas, clavícula o costillas, hace menos de 6 meses." itemValue="1" />
+															<f:selectItem itemLabel="Sufrió alguna fractura hace menos de un año. en Pelvis o Columna." itemValue="1" />
+															<f:selectItem itemLabel="Sufrió alguna fractura hace menos de un año en: Cara" itemValue="1" />
+															<f:selectItem itemLabel="Sufrió traumatismo de cráneo con pérdida de conocimiento, o que haya requerido Tomografía Computada, en el último mes." itemValue="1" />
+															<f:selectItem itemLabel="Padece enfermedad de Chagas." itemValue="1" />
+															<f:selectItem itemLabel="Enfermedad Celíaca." itemValue="1" />
+															<f:selectItem itemLabel="Padece Tuberculosis, H.I.V., Sífilis, o alguna otra enfermedad Infecciosa." itemValue="1" />
+															<f:selectItem itemLabel="Sufrió alguna fractura hace menos de un año en: Cràneo" itemValue="1" />
+															<f:selectItem itemLabel="Es alérgico a alguna medicación o algún alimento.ACLARE:" itemValue="1" />
+															
+															<f:selectItem itemLabel="Fuma" itemValue="1" />
+															<f:selectItem itemLabel="Fumó en los últimos 10 años" itemValue="1" />
+															<f:selectItem itemLabel="Toma alguna Medicación o Suplemento Nutricional actualmente." itemValue="1" />
+															<f:selectItem itemLabel="Presenta algún otro antecedente clínico personal relevante." itemValue="1" />
+															<f:selectItem itemLabel="Algún familiar directo ( Abuelos, Padres, Tíos, Hermanos o Híjos), Ha sufrido Infarto antes de los 50 años, o Muerte súbiota. O presenta Cardiopatía Congénita, O Sindróme de Marfan, O Sindróme de QT Largo." itemValue="1" />
+														</h:selectManyCheckbox>
+													</div>
+												</div>
+											</div>
+
+											
+											<div class="form-group">
+												<label>USTED DESEA REALIZAR ALGÚN OTRO COMENTARIO CON RESPECTO A SUS ANTECEDENTES DE SALUD?</label>
+												<input class="form-control input-lg" placeholder="Agregue los comentarios que desea.." type="text" name="etc" id="etc" />
+											</div>
+										</div>
+										<div class="tab-pane" id="tab4">
+											<br/>
+											<h3><strong>Step 4</strong> - Save Form</h3>
+											<br/>
+											<h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Complete</strong></h1>
+											<h4 class="text-center">Click next to finish</h4>
+											<br/>
+											<br/>
+										</div>
+										<div class="tab-pane" id="tab5">
+											<br/>
+											<h3><strong>Step 5</strong> - Save Form</h3>
+											<br/>
+											<h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Complete</strong></h1>
+											<h4 class="text-center">Click next to finish</h4>
+											<br/>
+											<br/>
+										</div>
+
+
+										<div class="form-actions">
+											<div class="row">
+												<div class="col-sm-12">
+													<ul class="pager wizard no-margin">
+														<!--<li class="previous first disabled">
+														<a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+														</li>-->
+														<li class="previous disabled">
+															<a href="javascript:void(0);" class="btn btn-lg btn-default"> Previous </a>
+														</li>
+														<!--<li class="next last">
+														<a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+														</li>-->
+														<li class="next">
+															<a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Next </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</h:form>
+						</div>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- WIDGET END -->
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+<script type="text/javascript">
+	
+	/*
+	 * Load bootstrap wizard dependency
+	 */
+	loadScript("javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js", runBootstrapWizard);
+	
+	//Bootstrap Wizard Validations
+	
+	function runBootstrapWizard() {
+	  
+	  var $validator = $("#wizard-1").validate({
+	    
+	    rules: {
+	      email: {
+	        required: true,
+	        email: "Your email address must be in the format of name@domain.com"
+	      },
+	      fname: {
+	        required: true
+	      },
+	      lname: {
+	        required: true
+	      },
+	      country: {
+	        required: true
+	      },
+	      city: {
+	        required: true
+	      },
+	      postal: {
+	        required: true,
+	        minlength: 4
+	      },
+	      wphone: {
+	        required: true,
+	        minlength: 10
+	      },
+	      hphone: {
+	        required: true,
+	        minlength: 10
+	      }
+	    },
+	    
+	    messages: {
+	      fname: "Please specify your First name",
+	      lname: "Please specify your Last name",
+	      email: {
+	        required: "We need your email address to contact you",
+	        email: "Your email address must be in the format of name@domain.com"
+	      }
+	    },
+	    
+	    highlight: function (element) {
+	      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	    },
+	    unhighlight: function (element) {
+	      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-block',
+	    errorPlacement: function (error, element) {
+	      if (element.parent('.input-group').length) {
+	        error.insertAfter(element.parent());
+	      } else {
+	        error.insertAfter(element);
+	      }
+	    }
+	  });
+	  
+	  $('#bootstrap-wizard-1').bootstrapWizard({
+	    'tabClass': 'form-wizard',
+	    'onNext': function (tab, navigation, index) {
+	      var $valid = $("#wizard-1").valid();
+	      if (!$valid) {
+	        $validator.focusInvalid();
+	        return false;
+	      } else {
+	        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+	          'complete');
+	        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+	        .html('<i class="fa fa-check"></i>');
+	      }
+	    }
+	  });
+	  
+	}
+
+	
+	/*
+	 * Load fuelux wizard dependency
+	 */
+/* 	loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+	
+	function fueluxWizard() {
+	  
+	  var wizard = $('.wizard').wizard();
+	  
+	  wizard.on('finished', function (e, data) {
+	    //$("#fuelux-wizard").submit();
+	    //console.log("submitted!");
+	    $.smallBox({
+	      title: "Congratulations! Your form was submitted",
+	      content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+	      color: "#5F895F",
+	      iconSmall: "fa fa-check bounce animated",
+	      timeout: 4000
+	    });
+	    
+	  });
+	  
+	} */
+</script>
+
+
+</body>
+
+</html>

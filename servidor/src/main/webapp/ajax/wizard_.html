@@ -1,0 +1,516 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<h1 class="page-title txt-color-blueDark"><i class="fa fa-pencil-square-o fa-fw "></i> Forms <span>>
+			Wizards </span></h1>
+	</div>
+	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<ul id="sparks" class="">
+			<li class="sparks-info">
+				<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+			<li class="sparks-info">
+				<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+					110,150,300,130,400,240,220,310,220,300, 270, 210
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+				<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-check"></i> </span>
+					<h2>Very Basic Wizard Example </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body">
+
+						<div class="row">
+							<form id="wizard-1" novalidate="novalidate">
+								<div id="bootstrap-wizard-1" class="col-sm-12">
+									<div class="form-bootstrapWizard">
+										<ul class="bootstrapWizard form-wizard">
+											<li class="active" data-target="#step1">
+												<a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Destinatarios</span> </a>
+											</li>
+											<li data-target="#step2">
+												<a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Crear mensaje</span> </a>
+											</li>
+											<li data-target="#step3">
+												<a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Enviar</span> </a>
+											</li>
+											<li data-target="#step4">
+												<a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Agendar contactos</span> </a>
+											</li>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab1">
+											<br>
+											<h3><strong>Paso 1 </strong> - Destinatarios del Mensaje</h3>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" placeholder="Nombre" type="text" name="fname" id="fname">
+
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" placeholder="Apellido" type="text" name="lname" id="lname">
+
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<!-- span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span-->
+															<!-- input class="form-control input-lg" placeholder="10 / 10 / 2014" type="text" name="fechaNac" id="fechaNac"-->
+															
+															<span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+															<input type="text" name="mydate" placeholder="Select a date" class="form-control  input-lg datepicker" data-dateformat="dd/mm/yy">
+															
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="tipoDoc" class="form-control input-lg">
+																<option value="" selected="selected">Tipo Documento</option>
+																<option value="1">DNI</option>
+																<option value="2">CUIT</option>
+																<option value="3">CUIL</option>
+																<option value="4">LI</option>
+																<option value="5">LE</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" placeholder="30.123.245" type="text" name="nroDoc" id="nroDoc">
+
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+															<select name="country" class="form-control input-lg">
+																<option value="" selected="selected">Está usted embarazada?</option>
+																<option value="SI">SI</option>
+																<option value="NO">NO</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+															<select name="country" class="form-control input-lg">
+																<option value="" selected="selected">Sexo</option>
+																<option value="M">Masculino</option>
+																<option value="F">Femenino</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="grupoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Grupo Sanguineo</option>
+																<option value="A">A</option>
+																<option value="B">B</option>
+																<option value="AB">AB</option>
+																<option value="O">O</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+															<select name="factoSanguineo" class="form-control input-lg">
+																<option value="" selected="selected">Factor Sanguineo</option>
+																<option value="RH+">RH +</option>
+																<option value="RH-">RH -</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="+99 (999) 999-9999" data-mask-placeholder= "X" placeholder="+1" type="text" name="wphone" id="wphone">
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="+99 (999) 999-9999" data-mask-placeholder= "X" placeholder="+01" type="text" name="hphone" id="hphone">
+														</div>
+													</div>
+												</div>
+											</div>
+											
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Telefono de mergencia" data-mask-placeholder="X" placeholder="Telefono de mergencia" type="text" name="telEmergencia" id="telEmergencia">
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Correo" data-mask-placeholder= "X" placeholder="Correo" type="text" name="email" id="email">
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Obra social / prepaga" data-mask-placeholder="X" placeholder="Obra social / prepaga" type="text" name="telEmergencia" id="obraSocial">
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-6">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-mobile fa-lg fa-fw"></i></span>
+															<input class="form-control input-lg" data-mask="Numero de afiliado" data-mask-placeholder= "X" placeholder="Numero de afiliado" type="text" name="nroAfiliado" id="nroAfiliado">
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+											<div class="row pull-right">
+												<div class="col-sm-12">
+													<div class="input-group">
+														<button id="btnAdd" type="button" class="btn btn-primary"  data-loading-text="Add..">Agregar</button>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<!-- widget edit box -->
+												<div class="jarviswidget-editbox">
+													<!-- This area used as dropdown edit box -->
+
+												</div>
+												<!-- end widget edit box -->
+
+												<!-- widget content -->
+												<div class="col-sm-12">
+													<p>Destinatarios de mensajes.</p>
+													<table class="table table-bordered" id="tblDestinatario">
+														<thead>
+															<tr>
+																<th>Nombre</th>
+																<th>Apellido</th>
+																<th>Telefono</th>
+																<th>Email</th>
+															</tr>
+														</thead>
+														<tbody>
+														</tbody>
+													</table>
+
+												</div>
+												<!-- end widget content -->
+
+											</div>
+										</div>
+										<div class="tab-pane" id="tab2">
+											<br>
+											<h3><strong>Step 2</strong> - Crear mensaje que sera enviado</h3>
+
+											<div class="row">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<div class="input-group">
+															<span class="input-group-addon"><i class="fa fa-envelope-o fa-lg fa-fw"></i></span>
+															<textarea class="form-control input-lg" placeholder="Texto a enviar" name="postal" id="postal"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="tab-pane" id="tab3">
+											<br>
+											<h3><strong>Step 3</strong> - Domain Setup</h3>
+											<div class="alert alert-info fade in">
+												<button class="close" data-dismiss="alert">
+													Ã—
+												</button>
+												<i class="fa-fw fa fa-info"></i>
+												<strong>Info!</strong> Place an info message box if you wish.
+											</div>
+											<div class="form-group">
+												<label>This is a label</label>
+												<input class="form-control input-lg" placeholder="Another input box here..." type="text" name="etc" id="etc">
+											</div>
+										</div>
+										<div class="tab-pane" id="tab4">
+											<br>
+											<h3><strong>Step 4</strong> - Save Form</h3>
+											<br>
+											<h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Complete</strong></h1>
+											<h4 class="text-center">Click next to finish</h4>
+											<br>
+											<br>
+										</div>
+
+
+										<div class="form-actions">
+											<div class="row">
+												<div class="col-sm-12">
+													<ul class="pager wizard no-margin">
+														<!--<li class="previous first disabled">
+														<a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+														</li>-->
+														<li class="previous disabled">
+															<a href="javascript:void(0);" class="btn btn-lg btn-default"> Previous </a>
+														</li>
+														<!--<li class="next last">
+														<a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+														</li>-->
+														<li class="next">
+															<a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Next </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</form>
+						</div>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+
+		</article>
+		<!-- WIDGET END -->
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+<script type="text/javascript">
+	// DO NOT REMOVE : GLOBAL FUNCTIONS!
+	pageSetUp();
+
+	// PAGE RELATED SCRIPTS
+
+	/*
+	 * Load bootstrap wizard dependency
+	 */
+	loadScript("javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js", runBootstrapWizard);
+	
+	$(document).on('ready',function() {
+		
+		$('#btnAdd').button().click(function() {
+			   $('#tblDestinatario tbody').append('<tr><td>' + $('#fname').val() + '</td><td>' + $('#lname').val() + '</td><td>' + $('#wphone').val() + '</td><td>' + $('#email').val() + '</td></tr>');
+		});
+	});
+	
+	//Bootstrap Wizard Validations
+	
+	function runBootstrapWizard() {
+	  
+	  var $validator = $("#wizard-1").validate({
+	    
+	    rules: {
+	      email: {
+	        required: true,
+	        email: "Your email address must be in the format of name@domain.com"
+	      },
+	      fname: {
+	        required: true
+	      },
+	      lname: {
+	        required: true
+	      },
+	      country: {
+	        required: true
+	      },
+	      city: {
+	        required: true
+	      },
+	      postal: {
+	        required: true,
+	        minlength: 4
+	      },
+	      wphone: {
+	        required: true,
+	        minlength: 10
+	      },
+	      hphone: {
+	        required: true,
+	        minlength: 10
+	      }
+	    },
+	    
+	    messages: {
+	      fname: "Please specify your First name",
+	      lname: "Please specify your Last name",
+	      email: {
+	        required: "We need your email address to contact you",
+	        email: "Your email address must be in the format of name@domain.com"
+	      }
+	    },
+	    
+	    highlight: function (element) {
+	      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+	    },
+	    unhighlight: function (element) {
+	      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'help-block',
+	    errorPlacement: function (error, element) {
+	      if (element.parent('.input-group').length) {
+	        error.insertAfter(element.parent());
+	      } else {
+	        error.insertAfter(element);
+	      }
+	    }
+	  });
+	  
+	  $('#bootstrap-wizard-1').bootstrapWizard({
+	    'tabClass': 'form-wizard',
+	    'onNext': function (tab, navigation, index) {
+	      var $valid = $("#wizard-1").valid();
+	      if (!$valid) {
+	        $validator.focusInvalid();
+	        return false;
+	      } else {
+	        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+	          'complete');
+	        $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+	        .html('<i class="fa fa-check"></i>');
+	      }
+	    }
+	  });
+	  
+	}
+	
+	/*
+	 * Load fuelux wizard dependency
+	 */
+	loadScript("js/plugin/fuelux/wizard/wizard.js", fueluxWizard);
+	
+	function fueluxWizard() {
+	  
+	  var wizard = $('.wizard').wizard();
+	  
+	  wizard.on('finished', function (e, data) {
+	    //$("#fuelux-wizard").submit();
+	    //console.log("submitted!");
+	    $.smallBox({
+	      title: "Congratulations! Your form was submitted",
+	      content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+	      color: "#5F895F",
+	      iconSmall: "fa fa-check bounce animated",
+	      timeout: 4000
+	    });
+	    
+	  });
+	  
+	}
+
+</script>

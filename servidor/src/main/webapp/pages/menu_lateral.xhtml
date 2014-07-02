@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+
+<!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<aside id="left-panel">
+
+	<!-- User info -->
+	<div class="login-info">
+		<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+			<img src="img/avatars/male.png" alt="me" class="online" /> 
+			<!--  >a	href="" id="show-shortcut"--> <h:outputText value="#{personaBean.nombre}"/>,<h:outputText value="#{personaBean.apellido}"/><!-- >i class="fa fa-angle-down"></i>	</a-->
+	
+		</span>
+	</div>
+	<!-- end user info -->
+
+	<!-- NAVIGATION : This navigation is also responsive
+
+			To make this navigation dynamic please make sure to link the node
+			(the reference to the nav > ul) after page load. Or the navigation
+			will not initialize.
+			-->
+	<nav>
+		<!-- NOTE: Notice the gaps after each icon usage <i></i>..
+				Please note that these links work a bit different than
+				traditional href="" links. See documentation for details.
+				-->
+		<ul>
+			<sec:authorize ifAnyGranted="PACIENTE">
+								
+<!-- 				<li><a href="ajax/solicitudAptoMedico.xhtml" title="Solicitar Nuevo Apto Físico"><i
+						class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
+						class="menu-item-parent">Nuevo Apto</span></a>
+				</li> 
+ -->			
+				<li><a href="ajax/solicitudAptoMedico.xhtml" title="Formulario DAF Trend"><i
+								class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent" id="spanText" >Formulario DAF Trend</span></a>
+				</li>
+				<h:form id="formulario">
+					<h:inputHidden id="estadoFichaMedicaPaciente" value="#{solicitudBean.estadoFichaMedica}" />
+
+
+		
+					<script>
+						if(document.getElementById('formulario:estadoFichaMedicaPaciente').value != ''){
+							document.getElementById('spanText').innerHTML="Ver Mi Ficha Médica";
+						}
+					</script>
+				</h:form>
+
+<!-- 				<li><a href="ajax/fichaMedica.xhtml" title="Apto Médico"><i
+						class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
+						class="menu-item-parent">Ver Mi Ficha Médica</span></a>
+				</li> -->
+				<li>
+					<a href="#">
+						<i	class="fa fa-lg fa-fw fa-folder-open"></i> 
+						<span class="menu-item-parent">REPORTES</span>
+					</a>
+					<ul style="display: none;">
+						<li><a href="ajax/odyc.xhtml" title="Orientación Diagnóstica y Conductual"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> ODYC</a></li>
+						<li><a href="ajax/fme.xhtml" title="Ficha Médica de Emergencia"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> FME</a></li>
+						<li><a href="ajax/certificado.xhtml" title="Certificados"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> Certificados</a></li>
+						<li class=""><a href="ajax/ordenesMedicas.xhtml" title="Ordenes Médicas"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> Ordenes Médicas</a></li>
+					</ul>
+				</li>
+			</sec:authorize>
+			<sec:authorize ifAnyGranted="MEDICO">
+				<li><a href="ajax/consultaPacientes.xhtml" title="Consultar Pacientes"><i
+						class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
+						class="menu-item-parent">Pacientes</span></a>
+				</li>
+			</sec:authorize>
+			<sec:authorize ifAnyGranted="INSTITUCION">
+				<li><a href="ajax/consultaPacientesClub.xhtml" title="Consultar Inscriptos"><i
+						class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
+						class="menu-item-parent">Inscriptos</span></a>
+				</li>
+			</sec:authorize>
+		</ul>
+	</nav>
+	<span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i>
+	</span>
+
+</aside>
+<!-- END NAVIGATION -->
+
+</html>

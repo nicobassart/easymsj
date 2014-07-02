@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<body>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-pencil-square-o fa-fw "></i> Reporte <span>>
+					Orientación Diagnóstica y Conductual</span>
+			</h1>
+		</div>
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+
+		<!-- row -->
+		<div class="row">
+
+			<!-- NEW WIDGET START -->
+			<article class="col-sm-12 col-md-12 col-lg-12">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+					<header>
+						<span class="widget-icon"> <i class="fa fa-check"></i>
+						</span>
+						<h2>Reporte de Apto Medico</h2>
+
+					</header>
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc" novalidate="novalidate">
+									<div class="col-sm-12">
+
+										<div
+											class="well well-sm bg-color-darken txt-color-white text-center">
+											<h1 align="center" style="font-size: 30px;"><STRONG>APTO FITNESS</STRONG></h1>
+											<h2 align="center"><STRONG>Diagnóstico Médico de Aptitud Física</STRONG></h2>
+											<h3 align="center"><STRONG>Ficha Médica Personal</STRONG></h3>
+										</div>
+
+										<br />
+
+										<p>
+											<span class="label label-info"></span> INFORME #{odycBean.estadoInforme} <span class="txt-color-purple pull-right"><i
+												class="fa fa-warning"></i></span>
+										</p>
+
+										<div class="progress">
+
+											<div class="progress progress-striped">
+												<div class="progress-bar bg-color-purple" role="progressbar"
+													style="width:  #{odycBean.porcentajeInforme} "></div>
+											</div>
+
+										</div>
+
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th width="50%"><h3>Orientación Diagnóstica y
+															Conductual</h3></th>
+													<th width="50%"><h3>
+															Historia Clínica N°:
+															<h:outputText value="#{odycBean.histClinica_120}" />
+														</h3></th>
+												</tr>
+											</thead>
+
+										</table>
+
+
+										<div class="row">
+											<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+												<h1 class="page-title txt-color-blueDark">
+													<i class="fa fa-list-alt fa-fw "></i> Conclusión DAF (Recomendaciones #{odycBean.estadoRecomendaciones})
+												</h1>
+											</div>
+
+
+										</div>
+
+
+										<table class="table">
+											<tr>
+												<th width="50%"><h1
+														class="page-title txt-color-blueDark">
+														Apellidos:
+														<h:outputText value="#{odycBean.apellidos_121}" />
+													</h1></th>
+												<th width="50%"><h1
+														class="page-title txt-color-blueDark">
+														Nombres:
+														<h:outputText value="#{odycBean.nombres_121p}" />
+													</h1></th>
+											</tr>
+										</table>
+
+
+										<h1 class="alert alert-info" align="left">
+											Paciente en Evaluación Clínica y Cardiológica del Programa,
+											no se encontró patología evidente que le impida realizar sus
+											tareas habituales y Actividad Física de tipo recreativa de
+											intensidad #{odycBean.intensidad_121a != null ? odycBean.intensidad_121a : "_____________________________"} <br/>
+											según sus antecedentes clínicos, su sexo, su peso y edad,
+											en el día de la fecha #{odycBean.fecha_122 != null ? odycBean.fecha_122 : "___"}
+											para una posterior progesión graduada, bajo estricto control
+											Médico.
+						
+										
+											A una Frecuencia Cardíaca Máxima de entrenamiento teórica de:
+									
+											<table class="table">
+												<tr>
+													<th width="33%"><h1
+															class="page-title txt-color-blueDark">
+															#{odycBean.fc_175IIA != 0 ? odycBean.fc_175IIA : "___"} Latidos Por minuto
+														</h1></th>
+													<th width="33%"><h1
+															class="page-title txt-color-blueDark">
+															#{odycBean.minXdia_175IIB != 0 ? odycBean.minXdia_175IIB : "___"} Minutos por día
+														</h1></th>
+													<th width="33%"><h1
+															class="page-title txt-color-blueDark">
+															#{odycBean.vecesXsem_175IIC != 0 ? odycBean.vecesXsem_175IIC : "___"} Veces por semana
+														</h1></th>
+												</tr>
+											</table>
+
+											Más actividad, otras #{odycBean.vecesXsem_175IIIC != 0 ? odycBean.vecesXsem_175IIIC : "___"} veces por semana, 
+												#{odycBean.vecesXsem_175IIIC != 0 ? odycBean.vecesXsem_175IIIC : "___"} minutos por día,
+												a una Frecuencia Cardíaca Máxima de Entrenamiento de #{odycBean.fc_175IIIA != 0 ? odycBean.fc_175IIIA : "___"} Latidos por Minuto.
+										</h1>
+					
+										
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+										
+										<h2 class="alert alert-warning">SE INDICA: Seguimiento
+											estricto por Médico de cabecera; estudios para control, e
+											interconsultas para seguimiento y recomendaciones por
+											especialidades. Solicitar interconsulta con nutrición y plan
+											de Actividad Física adaptada:</h2>
+
+										<article
+											class="col-xs-12 col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+											<div
+												class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable"
+												id="wid-id-12" data-widget-colorbutton="false"
+												data-widget-togglebutton="false"
+												data-widget-editbutton="false"
+												data-widget-fullscreenbutton="false"
+												data-widget-deletebutton="false" role="widget"
+												style="position: relative; opacity: 1;">
+
+												<header role="heading">
+													<span class="widget-icon"> <i
+														class="fa fa-arrow-down"></i>
+													</span>
+													<h2>
+														<strong>Otras Consultas:</strong> <i>Seguimiento por:</i>
+													</h2>
+
+													<span class="jarviswidget-loader"><i
+														class="fa fa-refresh fa-spin"></i></span>
+												</header>
+
+												<!-- widget div-->
+												<div role="content">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+
+													</div>
+													<!-- end widget edit box -->
+
+													<!-- widget content -->
+													<div class="widget-body">
+														<div class="row">
+															<div class="col-sm-12">
+																<div class="form-group">
+																	<div class="input-group">
+																		<BR />
+																		<BR />
+																		<article
+																			class="col-xs-12 col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.cardiologia_123}"/>
+																				</span> <label class="form-control input-lg">Cardiología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.neumonologia_125}"/>
+																				</span> <label class="form-control input-lg">Neumonología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.neurologia_127}"/>
+																				</span> <label class="form-control input-lg">Neurología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.traumatologia_129}"/>
+																				</span> <label class="form-control input-lg">Traumatología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.reumatologia_130B}"/>
+																				</span> <label class="form-control input-lg">Reumatología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.dermatologia_131}"/>
+																				</span> <label class="form-control input-lg">Dermatología</label>
+																			</div>
+
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.infectologia_133}"/>
+																				</span> <label class="form-control input-lg">Infectología</label>
+																			</div>
+
+																		</article>
+
+																		<article
+																			class="col-xs-12 col-sm-6 col-md-6 col-lg-6
+																				sortable-grid ui-sortable">
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.diabetologia_124}"/>
+																				</span> <label class="form-control input-lg">Diabetología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.endocrinologia_126}"/>
+																				</span> <label class="form-control input-lg">Endocrinología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.neurocirugia_128}"/>
+																				</span> <label class="form-control input-lg">Neurocirugía</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.cirugia_130}"/>
+																				</span> <label class="form-control input-lg">Cirugía</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.deportologia_130C}"/>
+																				</span> <label class="form-control input-lg">Deportología</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.servicioAlergia_132}"/>
+																				</span> <label class="form-control input-lg">Servicio
+																					de Alergia</label>
+																			</div>
+
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.servicioCesacionTabaquica_134}"/>
+																				</span> <label class="form-control input-lg">Servicio
+																					de Cesación Tabáquica</label>
+																			</div>
+																		<BR />
+																		<BR />
+																		</article>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- end widget content -->
+
+												</div>
+												<!-- end widget div -->
+
+											</div>
+
+										</article>
+
+										<article
+											class="col-xs-12 col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+											<div
+												class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable"
+												id="wid-id-12" data-widget-colorbutton="false"
+												data-widget-togglebutton="false"
+												data-widget-editbutton="false"
+												data-widget-fullscreenbutton="false"
+												data-widget-deletebutton="false" role="widget"
+												style="position: relative; opacity: 1;">
+
+												<header role="heading">
+													<span class="widget-icon"> <i
+														class="fa fa-arrow-down"></i>
+													</span>
+													<h2>
+														<strong>Completar estudios:</strong>
+													</h2>
+
+													<span class="jarviswidget-loader"><i
+														class="fa fa-refresh fa-spin"></i></span>
+												</header>
+
+												<!-- widget div-->
+												<div role="content">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+													</div>
+													<!-- end widget edit box -->
+
+													<!-- widget content -->
+													<div class="widget-body">
+													
+													<div class="row">
+															<div class="col-sm-12">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<article
+																			class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.renovarEcg_136p}"/>
+																				</span> <label class="form-control input-lg">Renovar E.C.G con Informe Cardiológico.</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.peg12yEcocardiograma_135}"/>
+																				</span> <label class="form-control input-lg">PEG de 12 derivaciones y Ecocardiograma.<BR />
+																				(Control de resultados en consulta con Cardiólogo de Cabecera)</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.laboratorioSanguineoCompleto_136}"/>
+																				</span> <label class="form-control input-lg">Laboratorio Sanguineo Completo.</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<h3 >Otros exámenes complementarios:</h3>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.rxTorax_137}"/>
+																				</span> <label class="form-control input-lg">RX Tórax</label>
+																			</div>
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.rxCervical_138}"/>
+																				</span> <label class="form-control input-lg">RX Cervical (Indice de Torg y Pavlov)</label>
+																			</div>
+
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.tac_139}"/></span> 
+																				<label class="form-control input-lg">TAC Especificar: <input type="text" value="#{odycBean.tacDescripcion_140}"
+																					style=" float:right; clear:both;" readonly="readonly"/></label>
+																			</div>
+																			
+																			<div class=".col-xs-6 .col-md-4">
+																				<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{odycBean.rnm_141}"/></span> 
+																				<label class="form-control input-lg">R.N.M Especificar: 
+																							<input type="text" value="#{odycBean.rnmDescripcion_142}" style=" float:right; clear:both;" readonly="readonly"/></label>
+																			</div>
+
+																		</article>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- end widget content -->
+
+												</div>
+												<!-- end widget div -->
+											</div>
+
+										</article>
+													
+									</div>
+									
+								</h:form>
+							</div>
+							<h2 class="alert alert-warning">PARA: Recomendaciones desde la especialidad, Tratamientos eventuales, y Controles.						
+																Determinación de limitaciones en la Aptitud Musculoesquelética, en relación a la realización de Actividad Física.							
+																Interconsulta con Médico de Cabecera, para control de medicación, parámetros de laboratorio y recomendaciones,							
+																 según hallazgos en exámenes complementarios.	</h2>
+																 
+							<h2 class="alert alert-warning">OTRAS RECOMENDACIONES CLÍNICAS GENERALES PREVENTIVAS: <BR />
+															Anualmente visite a su Médico de Cabecera para realizar los controles de rutina que él 
+															considere, de manera de prevenir posibles cambios de salud, y de identificar potenciales factores de 
+															riesgo modificables, así como el control de aquellos no modificables.</h2>
+															
+							<h2 class="alert alert-warning">#{odycBean.controlesRegulares_225}</h2>
+															
+							<h2 class="alert alert-warning">COMUNICARSE CON MÉDICOS DE GMED PARA MAYORES ESPECIFICACIONES PREVIO AL INICIO DE LA ACTIVIDAD
+														    FÍSICA SI PADECE PATOLOGIA DE CONSIDERABLE GRAVEDAD, O POR OTRAS CUESTIONES QUE USTED NECESITE 
+														    ACLARAR O AMPLIAR EN CONSULTA.</h2>
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- WIDGET END -->
+		</div>
+
+		<!-- end row -->
+
+	</section>
+	<!-- end widget grid -->
+
+	<script type="text/javascript">
+		/*
+		 * Load bootstrap wizard dependency
+		 */
+		loadScript(
+				"javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js",
+				runBootstrapWizard);
+
+		//Bootstrap Wizard Validations
+
+		function runBootstrapWizard() {
+
+			var $validator = $("#wizard-1")
+					.validate(
+							{
+
+								rules : {
+									email : {
+										required : true,
+										email : "Your email address must be in the format of name@domain.com"
+									},
+									nombre : {
+										required : true
+									},
+									presentarEn : {
+										required : true
+									},
+									apellido : {
+										required : true
+									},
+									sexo : {
+										required : true
+									},
+									tipoDoc : {
+										required : true
+									},
+									numeroDoc : {
+										required : true
+									},
+									postal : {
+										required : true,
+										minlength : 4
+									},
+									telefono : {
+										required : true,
+										minlength : 10
+									},
+									celular : {
+										required : true,
+										minlength : 10
+									}
+								},
+
+								messages : {
+									fname : "Please specify your First name",
+									lname : "Please specify your Last name",
+									email : {
+										required : "We need your email address to contact you",
+										email : "Your email address must be in the format of name@domain.com"
+									}
+								},
+
+								highlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-success')
+											.addClass('has-error');
+								},
+								unhighlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-error').addClass(
+													'has-success');
+								},
+								errorElement : 'span',
+								errorClass : 'help-block',
+								errorPlacement : function(error, element) {
+									if (element.parent('.input-group').length) {
+										error.insertAfter(element.parent());
+									} else {
+										error.insertAfter(element);
+									}
+								}
+							});
+
+			$('#bootstrap-wizard-1').bootstrapWizard(
+					{
+						'tabClass' : 'form-wizard',
+						'onNext' : function(tab, navigation, index) {
+							var $valid = $("#wizard-1").valid();
+							if (!$valid) {
+								$validator.focusInvalid();
+								return false;
+							} else {
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).addClass(
+												'complete');
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).find(
+												'.step').html(
+												'<i class="fa fa-check"></i>');
+							}
+						}
+					});
+
+		}
+
+		/*
+		 * Load fuelux wizard dependency
+		 */
+		/* 	loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+		
+		 function fueluxWizard() {
+		
+		 var wizard = $('.wizard').wizard();
+		
+		 wizard.on('finished', function (e, data) {
+		 //$("#fuelux-wizard").submit();
+		 //console.log("submitted!");
+		 $.smallBox({
+		 title: "Congratulations! Your form was submitted",
+		 content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+		 color: "#5F895F",
+		 iconSmall: "fa fa-check bounce animated",
+		 timeout: 4000
+		 });
+		
+		 });
+		
+		 } */
+	</script>
+
+
+</body>
+
+</html>

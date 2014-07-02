@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+	<h:head>
+			<meta charset="utf-8" />
+		
+			<title>Gmed</title>
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+		
+			<meta name="viewport"
+				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+			<!-- Basic Styles -->
+			<h:outputStylesheet library="css" name="bootstrap.min.css" />
+			<h:outputStylesheet library="css" name="font-awesome.min.css" />
+		
+			<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+			<h:outputStylesheet library="css" name="smartadmin-production.css"	media="screen" />
+			<h:outputStylesheet library="css" name="smartadmin-skins.css" media="screen" />
+			<!-- SmartAdmin RTL Support is under construction
+			<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+		
+			<!-- We recommend you use "your_style.css" to override SmartAdmin
+			specific styles this will also ensure you retrain your customization
+			with each SmartAdmin update.
+			<link rel="stylesheet" type="text/css" media="screen" href="css/demo.css"> -->
+		
+			<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+			<!-- h:outputStylesheet library="css"  media="screen" href="demo.css" /-->
+		
+			<!-- FAVICONS -->
+			<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+			<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+		
+			<!-- GOOGLE FONT -->
+			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+		</h:head>
+
+
+<h:body style="overflow: auto">
+	<script	src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-pencil-square-o fa-fw "></i> Reporte <span>>
+					Ficha Médica de Emergencia</span>
+			</h1>
+		</div>
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+
+		<!-- row -->
+		<div class="row">
+
+			<!-- NEW WIDGET START -->
+			<article class="col-sm-12 col-md-12 col-lg-12">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+					
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div id="allToPrint">
+
+							<div class="row">
+								<h:form id="reporte-odyc" novalidate="novalidate">
+								
+									<div class="col-sm-12">
+
+										<div
+											class="well well-sm bg-color-darken txt-color-white text-center">
+											<h1 align="center" style="font-size: 30px;"><STRONG>Ficha Médica de Emergencia</STRONG></h1>
+										</div>
+
+										<br />
+
+										<p>
+											<span class="label label-info"></span>  INFORME #{fmeBean.estadoInforme} 
+											<span class="txt-color-purple pull-right"><i
+												class="fa fa-warning"></i></span>
+										</p>
+
+										<div class="progress">
+
+											<div class="progress progress-striped">
+												<div class="progress-bar bg-color-purple" role="progressbar"
+													style="width: #{fmeBean.porcentajeInforme}"></div>
+											</div>
+
+										</div>
+
+									<article
+											class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+											<table class="table">
+												<tr>
+													<td width="25%">
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="#{fmeBean.apellidos_144p}, #{fmeBean.nombres_144}" style="font-weight:bold;font-size:20px"/>
+														</h1>
+													</td>
+													<td >
+														<h1	class="page-title txt-color-blueDark">
+																<h:outputText value="DNI: &#160;" style="font-size:20px;font-weight:bold"/>
+																<h:outputText value="#{fmeBean.dni_150}" style="font-size:20px"/>
+														</h1>
+													</td>
+													<td >
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="Edad: &#160;" style="font-size:20px;font-weight:bold"/>
+															<h:outputText value="#{fmeBean.edad_145}" style="font-size:20px"/>
+														</h1>
+													</td>
+													<td >
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="Teléfono de Emergencia: &#160;" style="font-size:20px;font-weight:bold"/>
+															<h:outputText value="#{fmeBean.telefonoEmergencia_148}" style="font-size:20px"/>
+														</h1>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="Obra Social/Prepaga:&#160;" style="font-size:20px;font-weight:bold"/>
+															<h:outputText value="#{fmeBean.obraSocialPrepaga_146}" style="font-size:20px"/>
+														</h1>
+													</td>
+													<td >
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="Afiliado:&#160;" style="font-size:20px;font-weight:bold"/>
+															<h:outputText value="#{fmeBean.afiliado_147}" style="font-size:20px"/>
+														</h1>
+													</td>
+													<td >
+														<h1	class="page-title txt-color-blueDark">
+															<h:outputText value="Grupo y Factor Sanguineo:&#160;" style="font-size:20px;font-weight:bold"/>
+															<h:outputText value="#{fmeBean.grupoSanguineo_171a.getGrupo()}    #{fmeBean.factorSanguineo_171b.getFactor()}" style="font-size:20px"/>
+														</h1>
+													</td>
+												</tr>	
+													
+											</table>
+										</article>
+
+
+										<!-- >article
+											class="col-xs-12 col-sm-3 col-md-3 col-lg-3 sortable-grid ui-sortable">
+											<table class="table">
+												<tr>
+													<th>
+														<h1 class="page-title txt-color-blueDark">Actualizada
+															al: #{fmeBean.actualizadaAl_143}</h1>
+													</th>
+												</tr>
+												<tr>
+													<th>
+														<h1 class="page-title txt-color-blueDark">Renovar
+															antes del: #{fmeBean.renovarAntesDel_152}</h1> RENOVAR ANUALMENTE INSTRUCCION EN RCP
+													</th>
+												</tr>
+											</table>
+										</article-->
+
+										<!-- >hr	style="align: center; border: 0px; height: 5px; width: 60%;" /-->
+	
+										<!-- >table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+											<thead>
+												<tr>
+													<th width="50%"><h3>Teléfono de Emergencia: #{fmeBean.telefonoEmergencia_148}</h3></th>
+													<th width="50%"><h3>Teléfono Alternativo: #{fmeBean.telefonoAlternativo_149}</h3></th>
+												</tr>
+											</thead>
+										</table-->
+										
+										<!-- >hr	style="align: center; border: 0px; height: 5px; width: 60%;" /-->
+
+										<!-- >h4 class="alert alert-info" align="center">ANTECEDENTES MÉDICOS:</h4>
+
+
+										<div class="row" align="center">
+											<div class="col-sm-3">
+												<div class="form-group">
+														<div class="input-group">
+															<h1><span class="label label-default">Grupo Sanguineo: <STRONG>#{fmeBean.grupoSanguineo_171a.getGrupo()}</STRONG> </span> </h1>
+														</div>
+													</div>
+											</div>
+											<div class="col-sm-3">
+													<div class="form-group">
+														<div class="input-group">
+															<h1><span class="label label-default">Factor Sanguineo: <STRONG>#{fmeBean.factorSanguineo_171b.getFactor()}</STRONG> </span> </h1>
+														</div>
+													</div>
+											</div>
+											
+											<h:panelGroup  rendered="#{fmeBean.sexo == 'F'}"> 
+												<div class="col-sm-3">
+													<div class="form-group">
+														<div class="input-group">
+															<h1>
+																<span class="label label-default">Paciente embarazada: <STRONG>#{fmeBean.pacienteEmbarazada_154 ==false? ' No' : ' Si'} </STRONG>
+																</span>
+															</h1>
+														</div>
+													</div>
+												</div>
+											</h:panelGroup> 
+											
+										</div-->
+									
+									
+										<article
+											class="col-xs-12 col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+											<div
+												class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable"
+												id="wid-id-12" data-widget-colorbutton="false"
+												data-widget-togglebutton="false"
+												data-widget-editbutton="false"
+												data-widget-fullscreenbutton="false"
+												data-widget-deletebutton="false" role="widget"
+												style="position: relative; opacity: 1;">
+
+												<header role="heading">
+													<span class="widget-icon"> <i
+														class="fa fa-arrow-down"></i>
+													</span>
+													<h2>
+														<strong>Factores de riesgo cardiovascular</strong> 
+													</h2>
+
+													<span class="jarviswidget-loader"><i
+														class="fa fa-refresh fa-spin"></i></span>
+												</header>
+
+												<!-- widget div-->
+												<div role="content">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+
+													</div>
+													<!-- end widget edit box -->
+
+													<!-- widget content -->
+													<div class="widget-body">
+														<div class="row">
+															<div >
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.dbt_159}"/>
+																			</span> <label class="form-control input-lg">DIABETES</label>
+																		</div>
+																			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.exTbq_157p}"/>
+																			</span> <label class="form-control input-lg">TABAQUISMO</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.hta_160}"/>
+																			</span> <label class="form-control input-lg">HIPERTENSIÓN ART.</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.preObesidad_156p}"/>
+																			</span> <label class="form-control input-lg">OBESIDAD</label>
+																		</div>
+																				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.dlp_161}"/>
+																			</span> <label class="form-control input-lg">DISLIPEMIA</label>
+																		</div>
+																		
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.sedentarismo_158}"/>
+																			</span> <label class="form-control input-lg">SEDENTARISMO</label>
+																		</div>
+																		
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.arritmias_164}"/>
+																			</span> <label class="form-control input-lg">ARRITMIAS</label>
+																		</div>
+																		
+																		
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.marcapasos_164p}"/>
+																			</span> <label class="form-control input-lg">MARCAPASOS</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.marcapasos_164p}"/>
+																			</span> <label class="form-control input-lg">PACIENTE ANTICUAGULADO</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.insulinoResistencia_162p}"/>
+																			</span> <label class="form-control input-lg">INSULINORRESIST.</label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.infartoAntecedenteCardiologico_155}"/>
+																			</span> <label class="form-control input-lg">INFARTO U OTRO ANTECEDENTE CARDIOLÓGICO</label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		
+
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.antecedenteFamiliarMuerteSubita_155p}"/>
+																			</span> <label class="form-control input-lg">ANTECEDENTE FAMILIAR DE MUERTE SÚBITA O EQUIVALENTE</label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+																		
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon">
+																			</span> 
+																			<label class="form-control input-lg">Indice de Riesgo Coronario 
+																			      <h:inputText class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" style=" 
+																			      		float:right; clear:both;" value="#{fmeBean.indiceRiesgoCoronario_162}"/>
+																			 </label>
+																		</div>
+
+
+
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- end widget content -->
+
+												</div>
+												<!-- end widget div -->
+
+											</div>
+
+										</article>
+
+										<article
+											class="col-xs-6 col-sm-6 col-md-6 col-lg-6 sortable-grid ui-sortable">
+											<div
+												class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable"
+												id="wid-id-12" data-widget-colorbutton="alse"
+												data-widget-togglebutton="false"
+												data-widget-editbutton="false"
+												data-widget-fullscreenbutton="false"
+												data-widget-deletebutton="false" role="widget"
+												style="position: relative; opacity: 1;">
+
+												<header role="heading">
+													<span class="widget-icon"> <i
+														class="fa fa-arrow-down"></i>
+													</span>
+													<h2>
+														<strong>Otros antecedentes</strong>
+													</h2>
+
+													<span class="jarviswidget-loader"><i
+														class="fa fa-refresh fa-spin"></i></span>
+												</header>
+
+												<!-- widget div-->
+												<div role="content">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+													</div>
+													<!-- end widget edit box -->
+
+													<!-- widget content -->
+													<div class="widget-body">
+													
+													<div class="row">
+															<div>
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.asma_163}"/>
+																			</span> <label class="form-control input-lg">ASMA</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.convulsiones_165}"/>
+																			</span> <label class="form-control input-lg">CONVULSIONES</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.disnea_165p}"/>
+																			</span> <label class="form-control input-lg">DISNEA CF. III/IV</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.enfermedadCeliaca_171c}"/>
+																			</span> <label class="form-control input-lg">Enfermedad celíaca</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.tiroides_167}"/>
+																			</span> <label class="form-control input-lg">#{fmeBean.tiroides_prefijo} TIROIDISMO</label>
+																		</div>
+																		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.infecc_168}"/>
+																			</span> <label class="form-control input-lg">INFECC.</label>
+																		</div>
+																		<hr	style="align: center; border: 0px; height: 18px; width: 60%;" />
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.herniaOcirugiaAbdominal_166}"/>
+																			</span> <label class="form-control input-lg">HERNIA/EVENTR. O CIRUGIA ABDOMINAL RECIENTE</label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 20px; width: 60%;" />
+																		
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> <h:selectBooleanCheckbox value="#{fmeBean.alergia_169}"/>
+																			</span> 
+																			<label class="form-control input-lg">ALERGIAS 
+																			      <h:inputText class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" style=" 
+																			      		float:right; clear:both;" value="#{fmeBean.descripcionAlergia_170}"/>
+																			 </label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 20px; width: 60%;" />
+																		
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> 
+																			</span> 
+																			<label class="form-control input-lg">MEDICACION ACTUAL 
+																			      <h:inputText class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" 
+																			          style="float:right; clear:both;" value="#{fmeBean.medicAct_166b}">
+																			       </h:inputText>
+																			 </label>
+																		</div>
+																		
+																		<hr	style="align: center; border: 0px; height: 20px; width: 60%;" />
+																		
+																		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+																			<span class="input-group-addon"> 
+																			</span> 
+																			<label class="form-control input-lg">OTROS ANTECEDENTES O COMENTARIOS
+																			      <h:inputText class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" 
+																			          style="float:right; clear:both;" 
+																			          value="#{fmeBean.otrosAntec_166c_otrosComent_166d}">
+																			       </h:inputText>
+																			 </label>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- end widget content -->
+
+												</div>
+												<!-- end widget div -->
+											</div>
+
+										</article>
+										
+									<article
+											class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+										
+
+												<!-- widget div-->
+												<div role="content">
+
+													<!-- widget edit box -->
+													<div class="jarviswidget-editbox">
+														<!-- This area used as dropdown edit box -->
+													</div>
+													<!-- end widget edit box -->
+													
+												<img id="qre" class="img-circle" alt="QR" style="width: 400px; height: 400px; display: none"
+															src="data:image/png;base64, #{fmeBean.imageByte}"/>
+												<img id="qre2" class="img-circle" alt="QR" style="width: 200px; height: 200px; display: none"
+															src="data:image/png;base64, #{fmeBean.imageByte}"/>
+												<img id="qre3" class="img-circle" alt="QR" style="width: 100px; height: 100px; display: none"
+															src="data:image/png;base64, #{fmeBean.imageByte}"/>
+												</div>
+												<!-- end widget div -->
+										
+												<DIV align="right">
+													<!-- >button type="button" class="btn btn-default" onclick="print()"  >Imprimir</button-->
+													
+													<h:commandButton type="button" class="btn btn-default" value="VER QRE" onclick="mostrarQr()">
+												    </h:commandButton>
+												    
+													<!-- >button type="button" class="btn btn-default" onclick="window.location.href='login.xhtml#ajax/blank_.xhtml'">IR A MENU PRINCIPAL</button-->
+													
+												</DIV>
+													<hr	style="align: center; border: 0px; height: 20px; width: 60%;" />
+												<DIV align="center">
+												 	Ver h.c. o llamar al 155 800 4859 para mas detalles relevantes en comunicación con un Profesional Médico.!!
+												 </DIV>
+										</article>
+
+									</div>
+
+								</h:form>
+								
+							</div>
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- WIDGET END -->
+		</div>
+
+		<!-- end row -->
+
+	</section>
+	<!-- end widget grid -->
+
+
+
+	<script src="js/jspdf.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jspdf.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/zlib.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jspdf.plugin.addimage.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jspdf.plugin.png_support.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/FileSaver.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/html2canvas.js"></script>
+	<script type="text/javascript" src="js/jquery.plugin.html2canvas.js"></script>
+
+	<script type="text/javascript">
+		/*
+		 * Load bootstrap wizard dependency
+		 */
+		 
+		 function mostrarQr(){
+			$( "#qre" ).show();
+			$( "#qre2" ).show();
+			$( "#qre3" ).show();
+		}
+		
+		 function print(){
+			 		 
+			    var doc = new jsPDF();
+			    $("#allToPrint").html2canvas({
+			        onrendered: function (canvas) {
+			            //Set hidden field's value to image data (base-64 string)
+			    
+			            //$('#img_val').val(canvas.toDataURL("image/png"));
+					    doc.addImage( canvas.toDataURL("data:image/jpeg;base64"), 'jpeg', 5, 5, 200, 200);
+					    doc.save('FME.pdf');
+			        }
+			    });
+		 }
+		 
+		 
+
+		 
+		loadScript(
+				"javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js",
+				runBootstrapWizard);
+		
+		function runBootstrapWizard() {
+			
+		}
+
+		//Bootstrap Wizard Validations
+
+	
+		/*
+		 * Load fuelux wizard dependency
+		 */
+		/* 	loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+		
+		 function fueluxWizard() {
+		
+		 var wizard = $('.wizard').wizard();
+		
+		 wizard.on('finished', function (e, data) {
+		 //$("#fuelux-wizard").submit();
+		 //console.log("submitted!");
+		 $.smallBox({
+		 title: "Congratulations! Your form was submitted",
+		 content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+		 color: "#5F895F",
+		 iconSmall: "fa fa-check bounce animated",
+		 timeout: 4000
+		 });
+		
+		 });
+		
+		 } */
+	</script>
+
+
+</h:body>
+
+</html>

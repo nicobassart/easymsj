@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+	<title>Edit Auth Page</title>
+</h:head>
+
+<body>
+	<f:view>
+		<ui:composition template="template.xhtml">
+			<ui:define name="body">
+				<h:form id="form">
+					<p:dataTable id="dataTable" var="agenda"
+						value="#{agendaBean.agendas}" paginator="true" rows="10"
+						selection="#{agendaBean.selectedAgendas}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						lazy="true" rowsPerPageTemplate="10,15,50"
+						rowKey="#{agenda.nombre}" rowIndexVar="nombre">
+						<f:facet name="header">
+		                    Agendas
+		                </f:facet>
+						<p:column selectionMode="multiple" style="width:18px" />
+						<p:column sortBy="#{agenda.nombre}">
+							<f:facet name="header">
+								<h:outputText value="Nombre" />
+							</f:facet>
+							<p:commandLink value="#{agenda.nombre}"
+								update=":agendaDetailForm:displayDetailAgenda"
+								oncomplete="agendaDialog.show()" title="View">
+								<f:setPropertyActionListener value="#{agenda}"
+									target="#{agendaBean.selectedAgenda}" />
+							</p:commandLink>
+						</p:column>
+						<p:column sortBy="#{agenda.descripcion}">
+							<f:facet name="header">
+								<h:outputText value="Descripción" />
+							</f:facet>
+							<h:outputText value="#{agenda.descripcion}" />
+						</p:column>
+
+					</p:dataTable>
+
+					<br></br>
+					<div align="center">
+						<p:commandButton value="Nueva Agenda" id="btnNuevaAgenda"
+							oncomplete="nuevaAgendaDialog.show()" icon="ui-icon-star"
+							title="Crear Nueva Agenda"
+							update=":nuevaAgendaForm:displayNuevaAgenda" />
+						<p:commandButton value="Eliminar Agendas" align="center"
+							id="btnEliminarAgendas"
+							actionListener="#{agendaBean.eliminarAgendas}"
+							update=":growl,:form:dataTable" icon="ui-icon-trash" />
+					</div>
+
+					<p:blockUI block=":form"
+						trigger="btnNuevaAgenda,btnEliminarAgendas">
+								Un momento por favor...<br />
+						<p:graphicImage value="/imgs/ajax-loader.gif" />
+					</p:blockUI>
+
+				</h:form>
+
+
+				<p:dialog header="Agenda Detail" widgetVar="agendaDialog"
+					resizable="false" id="detailAgendaDlg">
+					<h:form id="agendaDetailForm">
+						<p:growl id="growDetail" showDetail="true" life="5000" />
+						<p:panelGrid id="displayDetailAgenda" columns="2" cellpadding="4"
+							style="margin:0 auto;">
+
+							<p:inputText value="#{agendaBean.selectedAgenda.nombre}"
+								id="nombreAgenda" maxlength="18" required="true"
+								requiredMessage="Por favor, ingrese un nombre!" />
+							<p:watermark for="nombreAgenda" value="Nombre de la Agenda" />
+
+							<p:inputText value="#{agendaBean.selectedAgenda.descripcion}"
+								id="descAgenda" maxlength="150" required="true"
+								requiredMessage="Por favor, ingrese una descripción!" />
+							<p:watermark for="descAgenda" value="Descripción de la Agenda" />
+
+							<p:dataTable var="persona"
+								value="#{agendaBean.selectedAgenda.personas}"
+								id="tablePersonasDetail" editable="true">
+								<p:ajax event="rowEdit" listener="#{agendaBean.onEditPersona}"
+									update=":agendaDetailForm:growDetail" />
+								<p:ajax event="rowEditCancel"
+									listener="#{agendaBean.onCancelPersona}"
+									update=":agendaDetailForm:growDetail" />
+
+								<p:column headerText="Apellido, Nombre" style="width:50px">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.apellido}, #{persona.nombre}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:inputText value="#{persona.apellido}" id="apellido" />
+											<p:watermark for="apellido" value="Apellido" />
+											<h:inputText value="#{persona.nombre}" id="nombre" />
+											<p:watermark for="nombre" value="Nombre" />
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Celular" style="width:25%">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.celular}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:inputText value="#{persona.celular}" style="width:100%" />
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Estado" style="width:50px">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.estado}" style="width:50px" />
+										</f:facet>
+										<f:facet name="input" style="width:50px">
+											<p:selectOneMenu value="#{persona.estado}" style="width:100%">
+												<f:selectItem itemLabel="Select One" itemValue="" />
+												<f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+												<f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+											</p:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Opciones" style="width:2%">
+									<p:rowEditor />
+									<h:commandLink
+										actionListener="#{agendaBean.eliminarPersona(persona)}"
+										update=":agendaDetailForm:tablePersonasDetail">
+										<f:ajax render=":agendaDetailForm:tablePersonasDetail" />
+										<span class="ui-icon ui-icon-trash"></span>
+									</h:commandLink>
+								</p:column>
+								<f:facet name="footer">
+									<p:commandButton value="Agregar Persona"
+										id="btnAgregarPersonaDetail"
+										update=":agendaDetailForm:tablePersonasDetail"
+										actionListener="#{agendaBean.agregarPersona}"
+										styleClass="ui-priority-primary"
+										oncomplete="jQuery('.ui-datatable-data tr').last().find('span.ui-icon-pencil').each(function(){jQuery(this).click()}); " />
+								</f:facet>
+							</p:dataTable>
+							<f:facet name="footer">
+								<p:commandButton value="Update" id="btnUpdate"
+									update=":agendaDetailForm, :nuevaAgendaForm,:form:dataTable,:growl"
+									actionListener="#{agendaBean.updateAgenda}"
+									oncomplete="if (!args.validationFailed) agendaDialog.hide()" />
+							</f:facet>
+						</p:panelGrid>
+						<p:blockUI block="displayDetailAgenda"
+							trigger="tablePersonasDetail:btnAgregarPersonaDetail, btnUpdate">
+								Un momento por favor...<br />
+							<p:graphicImage value="/imgs/ajax-loader.gif" />
+						</p:blockUI>
+					</h:form>
+				</p:dialog>
+
+
+				<p:dialog header="Crear Nueva Agenda" widgetVar="nuevaAgendaDialog"
+					resizable="false" id="newagendaDlg">
+					<p:ajax event="close" listener="#{agendaBean.onCancel}"
+						update=":nuevaAgendaForm:growNuevaAgenda, :nuevaAgendaForm:displayNuevaAgenda" />
+					<h:form id="nuevaAgendaForm">
+						<p:growl id="growNuevaAgenda" showDetail="true" life="5000" />
+						<p:panelGrid id="displayNuevaAgenda" columns="2" cellpadding="4"
+							style="margin:0 auto;">
+
+
+							<p:inputText value="#{agendaBean.nuevaAgenda.nombre}"
+								id="nombreAgenda" maxlength="18" required="true"
+								requiredMessage="Por favor, ingrese un nombre!" />
+							<p:watermark for="nombreAgenda" value="Nombre de la Agenda" />
+
+							<p:inputText value="#{agendaBean.nuevaAgenda.descripcion}"
+								id="descAgenda" maxlength="150" required="true"
+								requiredMessage="Por favor, ingrese una descripción!" />
+							<p:watermark for="descAgenda" value="Descripción de la Agenda" />
+
+
+							<p:dataTable var="persona"
+								value="#{agendaBean.nuevaAgenda.personas}"
+								id="tablePersonasNueva" editable="true">
+								<p:ajax event="rowEdit" listener="#{agendaBean.onEditPersona}"
+									update=":nuevaAgendaForm:growNuevaAgenda" />
+								<p:ajax event="rowEditCancel"
+									listener="#{agendaBean.onCancelPersona}"
+									update=":nuevaAgendaForm:growNuevaAgenda, :nuevaAgendaForm:displayNuevaAgenda" />
+
+								<p:column headerText="Apellido, Nombre" style="width:50px">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.apellido}, #{persona.nombre}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:inputText value="#{persona.apellido}" id="apellido" />
+											<p:watermark for="apellido" value="Apellido" />
+											<h:inputText value="#{persona.nombre}" id="nombre" />
+											<p:watermark for="nombre" value="Nombre" />
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Celular" style="width:25%">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.celular}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:inputText value="#{persona.celular}" style="width:100%" />
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Estado" style="width:50px">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{persona.estado}" style="width:50px" />
+										</f:facet>
+										<f:facet name="input" style="width:50px">
+											<p:selectOneMenu value="#{persona.estado}" style="width:100%">
+												<f:selectItem itemLabel="Select One" itemValue="" />
+												<f:selectItem itemLabel="Activo" itemValue="ACTIVO" />
+												<f:selectItem itemLabel="Inactivo" itemValue="INACTIVO" />
+											</p:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Opciones" style="width:2%">
+									<p:rowEditor />
+									<h:commandLink
+										actionListener="#{agendaBean.eliminarPersona(persona)}"
+										update=":nuevaAgendaForm:tablePersonasNueva">
+										<f:ajax render=":nuevaAgendaForm:tablePersonasNueva" />
+										<span class="ui-icon ui-icon-trash"></span>
+									</h:commandLink>
+								</p:column>
+								<f:facet name="footer">
+									<p:commandButton value="Agregar Persona" validateClient="true"
+										id="btnAgregarPersonaNueva"
+										update=":nuevaAgendaForm:tablePersonasNueva, :nuevaAgendaForm:displayNuevaAgenda, :nuevaAgendaForm"
+										actionListener="#{agendaBean.agregarPersona}"
+										oncomplete="jQuery('.ui-datatable-data tr').last().find('span.ui-icon-pencil').each(function(){jQuery(this).click()}); " />
+								</f:facet>
+							</p:dataTable>
+
+							<f:facet name="footer">
+								<p:commandButton value="Guardar" id="btnGuardarNueva"
+									update=":agendaDetailForm, :nuevaAgendaForm,:form:dataTable,:growl"
+									actionListener="#{agendaBean.agregarAgenda}"
+									oncomplete="if (!args.validationFailed) nuevaAgendaDialog.hide()" />
+							</f:facet>
+
+						</p:panelGrid>
+
+						<p:blockUI block="displayNuevaAgenda"
+							trigger="tablePersonasNueva:btnAgregarPersonaNueva, btnGuardarNueva">
+								Un momento por favor...<br />
+							<p:graphicImage value="/imgs/ajax-loader.gif" />
+						</p:blockUI>
+
+					</h:form>
+				</p:dialog>
+
+				<p:growl id="growl" showDetail="true" life="5000" />
+
+
+			</ui:define>
+		</ui:composition>
+	</f:view>
+
+</body>
+
+</html>

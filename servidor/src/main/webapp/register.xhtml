@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"     
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+		<h:head>
+			<meta charset="utf-8" />
+		
+			<title>Gmed</title>
+			<meta name="description" content="" />
+			<meta name="author" content="" />
+		
+			<meta name="viewport"
+				content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+			<!-- Basic Styles -->
+			<h:outputStylesheet library="css" name="bootstrap.min.css" />
+			<h:outputStylesheet library="css" name="font-awesome.min.css" />
+		
+			<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+			<h:outputStylesheet library="css" name="smartadmin-production.css"	media="screen" />
+			<h:outputStylesheet library="css" name="smartadmin-skins.css" media="screen" />
+			<!-- SmartAdmin RTL Support is under construction
+			<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+		
+			<!-- We recommend you use "your_style.css" to override SmartAdmin
+			specific styles this will also ensure you retrain your customization
+			with each SmartAdmin update.
+			<link rel="stylesheet" type="text/css" media="screen" href="css/demo.css"> -->
+		
+			<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+			<!-- h:outputStylesheet library="css"  media="screen" href="demo.css" /-->
+		
+			<!-- FAVICONS -->
+			<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+			<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+		
+			<!-- GOOGLE FONT -->
+			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+		</h:head>
+	<body id="login" class="animated fadeInDown">
+		<!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
+		<header id="header">
+			<!--<span id="logo"></span>-->
+
+			<div id="logo-group">
+				<span id="logo"> <img src="img/logo.png" alt="Gmed" /> </span>
+
+				<!-- END AJAX-DROPDOWN -->
+			</div>
+
+		
+
+		</header>
+
+		<div id="main" role="main">
+
+			<!-- MAIN CONTENT -->
+			<div id="content" class="container">
+
+				<div class="row">
+				
+					<article class="col-sm-6 col-md-6 col-lg-6">
+						<h1 class="txt-color-red login-header-big">Bienvenido a Gmed !</h1>
+<!-- 						<div class="hero">
+
+							<div class="pull-left login-desc-box-l">
+								<h4 class="paragraph-header"></h4>
+							</div>
+							
+							img src="img/demo/iphoneview.png" class="pull-right display-image" alt="" style="width:210px" /
+
+						</div> -->
+
+						<div class="row">
+							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+								<h5 class="about-heading">Documento médico de emergencia <strong>QRE</strong></h5>
+								<p>
+									El <strong>QRE</strong>, es un Documento Médico de Emergencia, en formato de código QR.                                     Una Excepcional Herramienta de Seguridad y Cobertura Médica que consiste en un Seguro de Salvaguarda que brinda Protección Personal en Situaciones de Emergencias Médicas a quien lo posee. Contiene una Historia Clínica de Emergencia, con Datos de Repercusión Vital, los cuales pueden ser utilizados por Profesionales de la Salud en Situaciones de Emergencias y Urgencias, así como también por parte de Socorristas Casuales para la Inmediata puesta en contacto de Médico a Médico por parte del Sistema de Emergencia que se haya activado. ya sea con Médicos de Gmed, y /o con Médicos de otras Empresas de Emergencias. 
+Quien porte su Documento QRE, estará llevando consigo, a donde quiera que vaya, su Ficha Médica de Emergencia, y en ella, sus datos Médicos más importantes, los cuales pueden significar una Protección Clave en una situación de Urgencia, o de Riesgo de Vida.
+									 
+								</p>
+							</div>
+<!-- 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<h5 class="about-heading">Not just your average template!</h5>
+								<p>
+									Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+								</p>
+							</div> -->
+						</div>
+					</article>
+			
+
+				<article class="col-sm-6 col-md-6 col-lg-6">
+					<div class="form-container">
+
+
+						<section>
+							<h:form class="form-horizontal ng-pristine ng-valid">
+								<div class="form-group">
+									<div class="input-group input-group-lg">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-user"></span>
+										</span>
+										<h:inputText name="apellido"
+											styleClass="form-control  input-lg" p:placeholder="Apellido"
+											value="#{loginBean.apellido}" p:required="true"
+											p:maxlength="30" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group input-group-lg">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-user"></span>
+										</span>
+										<h:inputText name="nombre" styleClass="form-control  input-lg"
+											p:placeholder="Nombre" value="#{loginBean.nombre}"
+											p:required="true" p:maxlength="30" />
+									</div>
+								</div>
+		
+								<div class="form-group">
+									<div
+										class="input-group input-group-lg">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-envelope"></span>
+										</span> 
+										<h:inputText name="email" styleClass="form-control  input-lg"  p:placeholder="E-Mail"  value="#{loginBean.mail}" maxlength="40" p:required="true"/>
+									</div>
+								</div>
+								<div class="form-group">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon"> <span
+												class="glyphicon glyphicon-user"></span>
+											</span>
+											<h:selectOneMenu name="tipoDoc"
+												styleClass="form-control input-lg"
+												value="#{loginBean.tipoDoc}">
+												<f:selectItem itemLabel="Tipo Documento" itemValue="" />
+												<f:selectItem itemLabel="DNI" itemValue="1" />
+												<f:selectItem itemLabel="CI" itemValue="2" />
+												<f:selectItem itemLabel="LE" itemValue="3" />
+												<f:selectItem itemLabel="LC" itemValue="4" />
+												<f:selectItem itemLabel="PAS" itemValue="5" />
+											</h:selectOneMenu>
+										</div>
+								</div>
+								<div class="form-group">
+									<div
+										class="input-group input-group-lg">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-user"></span>
+										</span> 
+										<h:inputText name="numeroDoc" styleClass="form-control  input-lg"  p:pattern="[0-9]*" p:placeholder="Número de Documento"  value="#{loginBean.userName}" p:required="true"  p:maxlength="10"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div
+										class="input-group input-group-lg">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-lock"></span>
+										</span> 
+										<h:inputSecret name="password" styleClass="form-control  input-lg"  p:placeholder="Clave de Acceso Personal"  value="#{loginBean.password}" maxlength="10" p:required="true"/>
+									</div>
+								</div>
+
+								<DIV align="right">
+									<h:messages style="color:red;margin:12px;" />
+								</DIV>
+
+								<div class="form-group">
+									<p class="text-muted text-small">
+										Haciendo click en entrar, estas aceptando <a href="javascript:;">los terminos
+											y condiciones</a> como así también <a href="javascript:;">las politicas de privacidad
+											</a>
+									</p>
+									<div class="divider"></div>
+								
+									<h:commandButton type="submit" class="btn btn-primary btn-block btn-lg" id="login" action="#{mainAction.primerLogin}" value="Entrar"  />
+								</div>
+
+							</h:form>
+						</section>
+
+						<section>
+							<p class="text-center text-muted">
+								¿Ya has creado tu cuenta? <a href="login.xhtml">Log in</a>
+							</p>
+						</section>
+
+					</div>
+
+				</article>
+			</div>
+			</div>
+
+		</div>
+
+		<!--================================================== -->
+	
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)
+			<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>-->
+	
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script	src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document
+						.write('%3Cscript src="js/libs/jquery-2.0.2.min.js"%3E%3C\/script%3E');
+			}
+		</script>
+	
+		<script	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('%3Cscript src="js/libs/jquery-ui-1.10.3.min.js"%3E%3C\/script%3E');
+			}
+		</script>
+	
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+			<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+	
+		<!-- BOOTSTRAP JS -->
+		<h:outputScript library="js" name="bootstrap/bootstrap.min.js" />
+	
+		<!-- CUSTOM NOTIFICATION -->
+		<h:outputScript library="js" name="notification/SmartNotification.min.js" />
+	
+		<!-- JARVIS WIDGETS -->
+		<h:outputScript library="js" name="smartwidgets/jarvis.widget.min.js" />
+	
+		<!-- EASY PIE CHARTS -->
+		<h:outputScript library="js" name="plugin/easy-pie-chart/jquery.easy-pie-chart.min.js" />
+	
+		<!-- SPARKLINES -->
+		<h:outputScript library="js" name="plugin/sparkline/jquery.sparkline.min.js" />
+	
+		<!-- JQUERY VALIDATE -->
+		<h:outputScript library="js" name="plugin/jquery-validate/jquery.validate.min.js" />
+	
+		<!-- JQUERY MASKED INPUT -->
+		<h:outputScript library="js" name="plugin/masked-input/jquery.maskedinput.min.js" />
+	
+		<!-- JQUERY SELECT2 INPUT -->
+		<h:outputScript library="js" name="plugin/select2/select2.min.js" />
+	
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<h:outputScript library="js" name="plugin/bootstrap-slider/bootstrap-slider.min.js" />
+	
+		<!-- browser msie issue fix -->
+		<h:outputScript library="js" name="plugin/msie-fix/jquery.mb.browser.min.js" />
+	
+		<!-- SmartClick: For mobile devices -->
+		<h:outputScript library="js" name="plugin/smartclick/smartclick.js" />
+	
+		<!--[if IE 7]>
+	
+			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+	
+			<![endif]-->
+	
+		<!-- Demo purpose only -->
+		<!-- h:outputScript library="js" name="demo.js" /-->
+	
+		<!-- MAIN APP JS FILE -->
+		<h:outputScript library="js" name="app.js" />
+
+		<script type="text/javascript">
+			runAllForms();
+
+			$(function() {
+				// Validation
+				$("#login-form").validate({
+					// Rules for form validation
+					rules : {
+						email : {
+							required : true,
+							email : true
+						},
+						password : {
+							required : true,
+							minlength : 3,
+							maxlength : 20
+						}
+					},
+
+					// Messages for form validation
+					messages : {
+						email : {
+							required : 'Please enter your email address',
+							email : 'Please enter a VALID email address'
+						},
+						password : {
+							required : 'Please enter your password'
+						}
+					},
+
+					// Do not change code below
+					errorPlacement : function(error, element) {
+						error.insertAfter(element.parent());
+					}
+				});
+			});
+		</script>
+
+	</body>
+</html>

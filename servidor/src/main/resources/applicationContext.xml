@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.1.xsd">
+
+	<!-- holding properties for database connectivity / -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- enabling annotation driven configuration / -->
+	<context:annotation-config />
+
+	<!-- Esto permite que se utiliza el @persistenceContext para los entityManager -->
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<import resource="classpath:spring-security.xml" />
+ 	
+	<!--bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
+		p:dataSource-ref="dataSource"> <property name="loadTimeWeaver"> <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/> 
+		</property> <property name="persistenceUnitName" value="dataBasePpal"></property> 
+		</bean -->
+
+	<!-- la propiedad loadTimeWeaver se usa cuando la configuración se levanta 
+		desde el server. Puede ser que lo utilice también de manera temprana -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:dataSource-ref="dataSource" p:jpaVendorAdapter-ref="jpaAdapter">
+		<property name="loadTimeWeaver">
+			<bean
+				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+		</property>
+		<property name="persistenceUnitName" value="dataBasePpal"></property>
+	</bean>
+	
+	<bean id="accountDetailsService" class="ar.com.easyMsj.security.UserDetailsService" />
+	
+	<!-- Se utiliza para la integracion con Hibernate. Ademas, esto tiene que 
+		estar en el bean entityManagerFactory -->
+	<bean id="jpaAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+		p:database="${jpa.database}" p:showSql="${jpa.showSql}" />
+
+	<!-- Creo que esto se utiliza cuando el manejador de transacciones se declara 
+		de forma programatica -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<rabbit:connection-factory id="connectionFactory"
+		host="turtle.rmq.cloudamqp.com" virtual-host="ynmemqdl" username="ynmemqdl"
+		password="V-2pWPQFVq-1xvJoKBIIcQxtD8086r20" port="5672" />
+
+	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
+		exchange="myExchange" routing-key="foo.*" />
+
+	<rabbit:admin connection-factory="connectionFactory" />
+
+	<rabbit:queue name="myQueue" />
+
+	<rabbit:topic-exchange name="myExchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="myQueue" pattern="foo.*" />
+		</rabbit:bindings>
+	</rabbit:topic-exchange>
+
+	<!-- Scans the classpath of this application for @Components to deploy as 
+		beans -->
+	<context:component-scan base-package="ar.com.easyMsj.actions.main" />
+	<context:component-scan base-package="ar.com.easyMsj.bean.usuarios" />
+	<context:component-scan base-package="ar.com.easyMsj.bean.persona" />
+	<context:component-scan base-package="ar.com.easyMsj.bean.utils" />
+	<context:component-scan base-package="ar.com.easyMsj.views" />
+	<context:component-scan base-package="ar.com.easyMsj.servicios.dao" />
+	
+	 <context:component-scan base-package="ar.com.easyMsj.actions"/>
+	
+</beans>

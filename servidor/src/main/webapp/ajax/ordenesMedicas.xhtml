@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+<body>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<h1 class="page-title txt-color-blueDark">
+				<i class="fa fa-pencil-square-o fa-fw "></i> Reporte <span>>
+					Certificado</span>
+			</h1>
+		</div>
+	</div>
+
+	<div class="well well-sm bg-color-darken txt-color-white text-center">
+		<h1 align="center" style="font-size: 30px;">
+			<STRONG>Apto Físico</STRONG>
+		</h1>
+		<h2 align="center">
+			<STRONG>Diagnóstico Médico de Aptitud Física</STRONG>
+		</h2>
+		<h3 align="center">
+			<STRONG>Ordenes Médicas</STRONG>
+		</h3>
+	</div>
+
+
+	<p>
+		<span class="label label-info"></span> ORDENES #{ordenesBean.estadoInforme} <span
+			class="txt-color-purple pull-right"><i class="fa fa-warning"></i>
+			</span>
+	</p>
+
+	<div class="progress">
+
+		<div class="progress progress-striped">
+			<div class="progress-bar bg-color-purple" role="progressbar"
+				style="width: #{ordenesBean.porcentajeInforme}"></div>
+		</div>
+
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" class="">
+
+		<!-- row -->
+		<div class="row">
+		
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc0" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">Prioridad</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<tr>
+														<th ><P style="font-style: italic; font-size: 14px;" align="center">E.C.G  </P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">( con informe cardiológico)</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;">DGT <BR /> ATP. FÍS.</P></th>
+													</tr>
+													<tr>
+														<th ></th>
+													</tr>
+											</table>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MÉDICO</P>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</h:form>
+
+							</div>
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+	<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-1"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc1" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">Prioridad</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<tr>
+														<th ><P style="font-style: italic; font-size: 8px;">HEMOGRAMA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">HEPATOGRAMA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">TSH, T3, T4</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 8px;">GLUCEMIA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">COLESTEROL TOTAL</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">ESG</P></th>
+													</tr>
+													<tr>
+													
+														<th ><P style="font-style: italic; font-size: 8px;">UREA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">H.D.L., L.D.L., T.G.</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;" >CPK, LDH</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 8px;">CREATININA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">PROTEINOGRAMA</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 8px;">IONOGRAMA</P></th>
+														<th ><P style="font-style: italic; font-size: 8px;">INSULINEMIA</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 10px;">ORINA COMPLETA</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;">DGT <BR /> ATP. FÍS.</P></th>
+													</tr>
+													<tr>
+														<th ></th>
+													</tr>
+											</table>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+						
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-2"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc2" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_194E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+											
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 14px;" align="center">RX TX </P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;">DGT <BR /> ATP. FÍS.</P></th>
+													</tr>
+											</table>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-3"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc3" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_198E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+										<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<tr>
+												<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 14px;"	align="center">#{ordenesBean.detalleOrden_199}</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size:12px;" align="center">#{ordenesBean.detalleOrden_segundoRenglon_199 != "" ? ordenesBean.detalleOrden_segundoRenglon_199 : "&#160;"}</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size: 4px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size: 4px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size: 9px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th><h:outputText  style="font-style: italic; font-size: 11px;" escape="false"  value="#{ordenesBean.dgtAptFis_200}"/></th>
+											</tr>
+										</table>
+
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+										
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-4"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc4" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_203E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+										<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<tr>
+												<th><P style="font-style: italic; font-size: 14px;"	align="center">P.E.G de 12 Derivaciones</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 11px;"	align="center">( con informe cardiológico)</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 11px;">
+														DGT <BR /> ATP. FÍS.
+													</P></th>
+											</tr>
+										</table>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+										
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+						
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-5"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc5" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_208E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+										<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<tr>
+												<th><P style="font-style: italic; font-size: 14px;"	align="center">ECOCARDIOGRAMA</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 14px;"	align="center">CON DOPPLER CARDÍACO</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 11px;">
+														DGT <BR /> ATP. FÍS.
+													</P></th>
+											</tr>
+										</table>
+									
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+							
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-6"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc6" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_213E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+													<tr>
+														<th ><P style="font-style: italic; font-size: 14px;" align="center">ECOSTRESS </P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;" align="center">&#160;</P></th>
+													</tr>
+													<tr>
+														<th ><P style="font-style: italic; font-size: 11px;">DGT <BR /> ATP. FÍS. ALTO RENDIMIENTO</P></th>
+													</tr>
+													<tr>
+														<th ></th>
+													</tr>
+											</table>
+
+										<hr	style="align: center; border: 0px; height: 5px; width: 60%;" />
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+			<!-- NEW WIDGET START -->
+			<article class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+				<!-- Widget ID (each widget will need unique ID)-->
+				<div class="jarviswidget jarviswidget-color-darken" id="wid-id-7"
+					data-widget-editbutton="false" data-widget-deletebutton="false">
+					<!-- widget options:
+				usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+				data-widget-colorbutton="false"
+				data-widget-editbutton="false"
+				data-widget-togglebutton="false"
+				data-widget-deletebutton="false"
+				data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false"
+				data-widget-collapsed="true"
+				data-widget-sortable="false"
+
+				-->
+
+
+					<!-- widget div-->
+					<div>
+
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+
+						</div>
+						<!-- end widget edit box -->
+
+						<!-- widget content -->
+						<div class="widget-body">
+
+							<div class="row">
+								<h:form id="reporte-odyc7" novalidate="novalidate">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										
+											<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table table-bordered">
+												<p style="margin-bottom:0;font-size: 12px; color:red;">#{ordenesBean.prioridad_218E == true ? "Prioridad" : "&#160;"}</p>
+												<thead>
+													<tr>
+														<th >Nombres:<P style="font-style: italic;">#{ordenesBean.nombre_185A}</P></th>
+														<th >Apellidos:<P style="font-style: italic;">#{ordenesBean.apellido_185B}</P></th>
+													</tr>
+													<tr>
+														<th >Obra Social:<P style="font-style: italic;">#{ordenesBean.obraSoial_185C}</P></th>
+														<th >N° de Afiliado:<P style="font-style: italic;">#{ordenesBean.numeroAfiliado_185D}</P></th>
+													</tr>
+												</thead>
+											</table>
+
+										
+										<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+											<tr>
+												<th><P style="font-style: italic; font-size: 13px;"	align="center">I/C CON MÉDICO DEPORTÓLOGO</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 13px;"	align="center">I/C CON TOCOGINECOLOGÍA</P></th>
+											</tr>
+											<tr>
+												<th ><P style="font-style: italic; font-size: 7px;" align="center">Evaluar con médico Obstetra de cabecera,  la relación riesgo beneficio en relacion a la realización de Rayos x con protección, o la no realización de Rayos x, por el momento.</P></th>
+											</tr>
+											<tr>
+											<th ><P style="font-style: italic; font-size: 0px;" align="center">&#160;</P></th>
+											</tr>
+											<tr>
+												<th><P style="font-style: italic; font-size: 11px;">
+														DGT <BR /> ATP. FÍS.
+													</P></th>
+											</tr>
+										</table>
+
+										
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="left">
+												
+												<P style="font-style: italic; font-size: 12px;">Fecha: <BR /> #{ordenesBean.fechaActual_188}</P>
+
+
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"	align="center">
+												<div class="hr">
+													<HR />
+													<P style="font-style: italic; font-size: 11px;">FIRMA DEL MEDICO</P>
+													
+												</div>
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</h:form>
+
+							</div>
+
+						</div>
+						<!-- end widget content -->
+
+					</div>
+					<!-- end widget div -->
+
+				</div>
+				<!-- end widget -->
+
+			</article>
+		</div>
+
+		<!-- end row -->
+
+	</section>
+	<!-- end widget grid -->
+
+	<script type="text/javascript">
+		/*
+		 * Load bootstrap wizard dependency
+		 */
+		loadScript(
+				"javax.faces.resource/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js.xhtml?ln=js",
+				runBootstrapWizard);
+
+		//Bootstrap Wizard Validations
+
+		function runBootstrapWizard() {
+
+			var $validator = $("#wizard-1")
+					.validate(
+							{
+
+								rules : {
+									email : {
+										required : true,
+										email : "Your email address must be in the format of name@domain.com"
+									},
+									nombre : {
+										required : true
+									},
+									presentarEn : {
+										required : true
+									},
+									apellido : {
+										required : true
+									},
+									sexo : {
+										required : true
+									},
+									tipoDoc : {
+										required : true
+									},
+									numeroDoc : {
+										required : true
+									},
+									postal : {
+										required : true,
+										minlength : 4
+									},
+									telefono : {
+										required : true,
+										minlength : 10
+									},
+									celular : {
+										required : true,
+										minlength : 10
+									}
+								},
+
+								messages : {
+									fname : "Please specify your First name",
+									lname : "Please specify your Last name",
+									email : {
+										required : "We need your email address to contact you",
+										email : "Your email address must be in the format of name@domain.com"
+									}
+								},
+
+								highlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-success')
+											.addClass('has-error');
+								},
+								unhighlight : function(element) {
+									$(element).closest('.form-group')
+											.removeClass('has-error').addClass(
+													'has-success');
+								},
+								errorElement : 'span',
+								errorClass : 'help-block',
+								errorPlacement : function(error, element) {
+									if (element.parent('.input-group').length) {
+										error.insertAfter(element.parent());
+									} else {
+										error.insertAfter(element);
+									}
+								}
+							});
+
+			$('#bootstrap-wizard-1').bootstrapWizard(
+					{
+						'tabClass' : 'form-wizard',
+						'onNext' : function(tab, navigation, index) {
+							var $valid = $("#wizard-1").valid();
+							if (!$valid) {
+								$validator.focusInvalid();
+								return false;
+							} else {
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).addClass(
+												'complete');
+								$('#bootstrap-wizard-1').find('.form-wizard')
+										.children('li').eq(index - 1).find(
+												'.step').html(
+												'<i class="fa fa-check"></i>');
+							}
+						}
+					});
+
+		}
+
+		/*
+		 * Load fuelux wizard dependency
+		 */
+		/* 	loadScript("javax.faces.resource/plugin/fuelux/wizard/wizard.js.xhtml?ln=js", fueluxWizard);
+		
+		 function fueluxWizard() {
+		
+		 var wizard = $('.wizard').wizard();
+		
+		 wizard.on('finished', function (e, data) {
+		 //$("#fuelux-wizard").submit();
+		 //console.log("submitted!");
+		 $.smallBox({
+		 title: "Congratulations! Your form was submitted",
+		 content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+		 color: "#5F895F",
+		 iconSmall: "fa fa-check bounce animated",
+		 timeout: 4000
+		 });
+		
+		 });
+		
+		 } */
+	</script>
+
+
+</body>
+
+</html>
