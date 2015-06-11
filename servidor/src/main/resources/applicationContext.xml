@@ -28,7 +28,9 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<import resource="classpath:spring-security.xml" />
+   <import resource="classpath:spring-security.xml" />
+ 
+
  	
 	<!--bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
 		p:dataSource-ref="dataSource"> <property name="loadTimeWeaver"> <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/> 
@@ -47,7 +49,9 @@
 		<property name="persistenceUnitName" value="dataBasePpal"></property>
 	</bean>
 	
-	<bean id="accountDetailsService" class="ar.com.easyMsj.security.UserDetailsService" />
+	<bean id="loginBean" class="ar.com.instMessenger.bean.usuarios.LoginBean"/>
+	
+	<bean id="accountDetailsService" class="ar.com.instMessenger.security.UserDetailsService" />
 	
 	<!-- Se utiliza para la integracion con Hibernate. Ademas, esto tiene que 
 		estar en el bean entityManagerFactory -->
@@ -82,13 +86,16 @@
 
 	<!-- Scans the classpath of this application for @Components to deploy as 
 		beans -->
-	<context:component-scan base-package="ar.com.easyMsj.actions.main" />
-	<context:component-scan base-package="ar.com.easyMsj.bean.usuarios" />
-	<context:component-scan base-package="ar.com.easyMsj.bean.persona" />
-	<context:component-scan base-package="ar.com.easyMsj.bean.utils" />
-	<context:component-scan base-package="ar.com.easyMsj.views" />
-	<context:component-scan base-package="ar.com.easyMsj.servicios.dao" />
-	
-	 <context:component-scan base-package="ar.com.easyMsj.actions"/>
-	
+
+	<context:component-scan base-package="ar.com.instMessenger.bean.persona" />
+	<context:component-scan base-package="ar.com.instMessenger.bean.agenda" />
+	<context:component-scan base-package="ar.com.instMessenger.bean.usuarios" />
+	<context:component-scan base-package="ar.com.instMessenger.servicios.dao.persona" />
+	<context:component-scan base-package="ar.com.instMessenger.servicios.dao.agenda" />
+	<context:component-scan base-package="ar.com.instMessenger.actions.envioMensaje" />
+	<context:component-scan base-package="ar.com.instMessenger.actions.agenda" />
+	<context:component-scan base-package="ar.com.instMessenger.bean.utils" />
+	<context:component-scan base-package="ar.com.instMessenger.servicios.colas" />
+	<context:component-scan base-package="ar.com.instMessenger.views" />
+	<context:component-scan base-package="ar.com.instMessenger.security" />
 </beans>
