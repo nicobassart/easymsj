@@ -16,6 +16,7 @@
 
 package com.example.cliente;
 
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -91,15 +92,19 @@ public class MainActivity extends AbstractAsyncActivity {
 			mOutput =  (TextView) findViewById(R.id.output);
 			String message = null;
 			ConnectionFactory connectionFactory = new ConnectionFactory();
-			connectionFactory.setHost("lemur.cloudamqp.com");
-			connectionFactory.setPassword("X42BZqqOcWm33xzpookIFZbuqKdb_aiz" );
-			connectionFactory.setUsername("agprifpq");
+			connectionFactory.setHost("turtle.rmq.cloudamqp.com");
+			//connectionFactory.setHost("lemur.cloudamqp.com");
+			//connectionFactory.setPassword("X42BZqqOcWm33xzpookIFZbuqKdb_aiz" );
+			connectionFactory.setPassword("V-2pWPQFVq-1xvJoKBIIcQxtD8086r20" );
+			//connectionFactory.setUsername("agprifpq");
+			connectionFactory.setUsername("ynmemqdl");
 			connectionFactory.setPort(5672);
-			connectionFactory.setVirtualHost("agprifpq");
+			//connectionFactory.setVirtualHost("agprifpq");
+			connectionFactory.setVirtualHost("ynmemqdl");
 			try {
 	    	   mConnection = connectionFactory.newConnection();
 	    	   mModel = mConnection.createChannel();
-	    	   mModel.queueBind("myQueue", "myExchange", "");
+	    	   mModel.queueBind("myQueue", "myExchange", "foo.*");
 	    	   
 
 	    	    QueueingConsumer consumer = new QueueingConsumer(mModel);

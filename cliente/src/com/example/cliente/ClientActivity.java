@@ -1,9 +1,8 @@
 package com.example.cliente;
 
-import java.io.IOException;
-
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,11 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.AMQP.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.DefaultConsumer;
-import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.impl.AMQImpl.Channel;
 
 public class ClientActivity extends Activity {
