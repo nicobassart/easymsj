@@ -110,6 +110,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	    	    QueueingConsumer consumer = new QueueingConsumer(mModel);
 	    	    mModel.basicConsume("myQueue", true, consumer);
 
+	    	   int enviados = 0; 
 	    	   while (true) {
 	    		      QueueingConsumer.Delivery delivery;
 	    		      delivery = consumer.nextDelivery();
@@ -117,26 +118,31 @@ public class MainActivity extends AbstractAsyncActivity {
 	    		      message = new String(delivery.getBody());
 	    		      SmsManager sms = SmsManager.getDefault();
 	    		       sms.sendTextMessage(telefono.toString(), null, message, null, null);
+	    		      
+	    		       enviados+=1;
+	    		       final int enviadosFinal = enviados;
+	    		       runOnUiThread(new Runnable() {
+	    	               @Override
+	    	               public void run() {
+	    	            	   mOutput =  (TextView) findViewById(R.id.output);
+	    	       	           mOutput.setText("CLIENTE ACTIVO \n Enviados: " + enviadosFinal);
+	    	               }
+	    	            });
+	    		       
 	    	   }
 			} catch (Exception e1) {
-	    	   e1.printStackTrace();
+	    	   return new Message(1, "ERROR: \n", e1.toString());
 			}
-	 
-			return new Message(4, message, message);
+			
 		}
 
 		@Override
 		protected void onPostExecute(Message message) {
 	        //The output TextView we'll use to display messages
 	        mOutput =  (TextView) findViewById(R.id.output);
-			mOutput.append("[x] Received \n"+message+"\n");
+	        mOutput.setText(message.getSubject() + message.getText());
 			dismissProgressDialog();
 			displayResponse(message);
-			
-			
-			//if(100 == result.getId())
-//			Intent intent = new Intent(MainActivity.this, ClientActivity.class);
-//			startActivity(intent);
 		}
 
 	}
