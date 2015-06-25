@@ -110,6 +110,14 @@ public class MainActivity extends AbstractAsyncActivity {
 	    	    QueueingConsumer consumer = new QueueingConsumer(mModel);
 	    	    mModel.basicConsume("myQueue", true, consumer);
 
+	    	    runOnUiThread(new Runnable() {
+ 	               @Override
+ 	               public void run() {
+ 	            	   mOutput =  (TextView) findViewById(R.id.output);
+ 	       	           mOutput.setText("CLIENTE ACTIVO \n Enviados: " + 0);
+ 	               }
+ 	            });
+	    	    
 	    	   int enviados = 0; 
 	    	   while (true) {
 	    		      QueueingConsumer.Delivery delivery;
