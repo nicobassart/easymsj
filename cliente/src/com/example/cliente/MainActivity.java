@@ -17,6 +17,20 @@
 package com.example.cliente;
 
 
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -42,7 +56,10 @@ public class MainActivity extends AbstractAsyncActivity {
     private QueueingConsumer MySubscription;
     private String prueba;
     
-    
+    String SENT = "SMS_SENT";
+    String DELIVERED = "SMS_DELIVERED";
+
+    List<Intent> intents = new ArrayList<Intent>();
     
 	// ***************************************
 	// Activity methods
@@ -89,17 +106,14 @@ public class MainActivity extends AbstractAsyncActivity {
 
 		@Override
 		protected Message doInBackground(Void... params) {
+			
 			mOutput =  (TextView) findViewById(R.id.output);
 			String message = null;
 			ConnectionFactory connectionFactory = new ConnectionFactory();
 			connectionFactory.setHost("turtle.rmq.cloudamqp.com");
-			//connectionFactory.setHost("lemur.cloudamqp.com");
-			//connectionFactory.setPassword("X42BZqqOcWm33xzpookIFZbuqKdb_aiz" );
 			connectionFactory.setPassword("V-2pWPQFVq-1xvJoKBIIcQxtD8086r20" );
-			//connectionFactory.setUsername("agprifpq");
 			connectionFactory.setUsername("ynmemqdl");
 			connectionFactory.setPort(5672);
-			//connectionFactory.setVirtualHost("agprifpq");
 			connectionFactory.setVirtualHost("ynmemqdl");
 			try {
 	    	   mConnection = connectionFactory.newConnection();
@@ -109,34 +123,20 @@ public class MainActivity extends AbstractAsyncActivity {
 
 	    	    QueueingConsumer consumer = new QueueingConsumer(mModel);
 	    	    mModel.basicConsume("myQueue", true, consumer);
-
-	    	    runOnUiThread(new Runnable() {
- 	               @Override
- 	               public void run() {
- 	            	   mOutput =  (TextView) findViewById(R.id.output);
- 	       	           mOutput.setText("CLIENTE ACTIVO \n Enviados: " + 0);
- 	               }
- 	            });
 	    	    
-	    	   int enviados = 0; 
 	    	   while (true) {
 	    		      QueueingConsumer.Delivery delivery;
 	    		      delivery = consumer.nextDelivery();
+	    		      runOnUiThread(new Runnable() {
+	    	                 @Override
+	    	                 public void run() {
+	    	                	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesDesencolados)).getText().toString()) + 1;
+	    	                	((TextView) findViewById(R.id.mensajesDesencolados)).setText(i.toString());	
+	    	                 }
+	    	              });
 	    		      LongString telefono = (LongString)delivery.getProperties().getHeaders().get("telefono");
 	    		      message = new String(delivery.getBody());
-	    		      SmsManager sms = SmsManager.getDefault();
-	    		       sms.sendTextMessage(telefono.toString(), null, message, null, null);
-	    		      
-	    		       enviados+=1;
-	    		       final int enviadosFinal = enviados;
-	    		       runOnUiThread(new Runnable() {
-	    	               @Override
-	    	               public void run() {
-	    	            	   mOutput =  (TextView) findViewById(R.id.output);
-	    	       	           mOutput.setText("CLIENTE ACTIVO \n Enviados: " + enviadosFinal);
-	    	               }
-	    	            });
-	    		       
+	    		      sendSMS(telefono.toString(), message);
 	    	   }
 			} catch (Exception e1) {
 	    	   return new Message(1, "ERROR: \n", e1.toString());
@@ -153,6 +153,83 @@ public class MainActivity extends AbstractAsyncActivity {
 			displayResponse(message);
 		}
 
+	}
+	
+	private void sendSMS(String phoneNumber, String message)
+	{        
+		Random rand = new Random();
+
+		int  n = rand.nextInt(50000000);
+		
+	    PendingIntent sentPI = PendingIntent.getBroadcast(getApplicationContext(), 0,
+	            new Intent(SENT+n), 0);
+
+	        PendingIntent deliveredPI = PendingIntent.getBroadcast(getApplicationContext(), 0,
+	            new Intent(DELIVERED+n), 0);
+
+	        
+	    //---when the SMS has been sent---
+	    registerReceiver(new BroadcastReceiver(){
+	        @Override
+	        public void onReceive(Context arg0, Intent arg1) {
+	            switch (getResultCode())
+	            {
+	                case Activity.RESULT_OK:
+	            	       runOnUiThread(new Runnable() {
+	                        @Override
+	                        public void run() {
+	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesEnviados)).getText().toString()) + 1;
+	                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesEnviados);
+	                	         mOutput.setText(i.toString());
+	                        }
+	                     });
+	                    break;
+	                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+	                    Toast.makeText(getBaseContext(), "Generic failure", 
+	                            Toast.LENGTH_SHORT).show();
+	                    break;
+	                case SmsManager.RESULT_ERROR_NO_SERVICE:
+	                    Toast.makeText(getBaseContext(), "No service", 
+	                            Toast.LENGTH_SHORT).show();
+	                    break;
+	                case SmsManager.RESULT_ERROR_NULL_PDU:
+	                    Toast.makeText(getBaseContext(), "Null PDU", 
+	                            Toast.LENGTH_SHORT).show();
+	                    break;
+	                case SmsManager.RESULT_ERROR_RADIO_OFF:
+	                    Toast.makeText(getBaseContext(), "Radio off", 
+	                            Toast.LENGTH_SHORT).show();
+	                    break;
+	            }
+	        }
+	    }, new IntentFilter(SENT+n));
+
+	    //---when the SMS has been delivered---
+	    registerReceiver(new BroadcastReceiver(){
+	        @Override
+	        public void onReceive(Context arg0, Intent arg1) {
+	            switch (getResultCode())
+	            {
+	                case Activity.RESULT_OK:
+	            	       runOnUiThread(new Runnable() {
+	                        @Override
+	                        public void run() {
+	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesEntregados)).getText().toString()) + 1;
+	                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesEntregados);
+	                	         mOutput.setText(i.toString());
+	                        }
+	                     });
+	                    break;
+	                case Activity.RESULT_CANCELED:
+	                	//loguear enviados con error
+	                    break;                        
+	            }
+	        }
+	    }, new IntentFilter(DELIVERED+n));        
+
+	    SmsManager sms = SmsManager.getDefault();
+	    sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);  
+	   
 	}
 	
 }
