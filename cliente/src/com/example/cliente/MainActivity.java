@@ -184,22 +184,16 @@ public class MainActivity extends AbstractAsyncActivity {
 	                        }
 	                     });
 	                    break;
-	                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-	                    Toast.makeText(getBaseContext(), "Generic failure", 
-	                            Toast.LENGTH_SHORT).show();
-	                    break;
-	                case SmsManager.RESULT_ERROR_NO_SERVICE:
-	                    Toast.makeText(getBaseContext(), "No service", 
-	                            Toast.LENGTH_SHORT).show();
-	                    break;
-	                case SmsManager.RESULT_ERROR_NULL_PDU:
-	                    Toast.makeText(getBaseContext(), "Null PDU", 
-	                            Toast.LENGTH_SHORT).show();
-	                    break;
-	                case SmsManager.RESULT_ERROR_RADIO_OFF:
-	                    Toast.makeText(getBaseContext(), "Radio off", 
-	                            Toast.LENGTH_SHORT).show();
-	                    break;
+	                    default:
+	                    	 runOnUiThread(new Runnable() {
+	 	                        @Override
+	 	                        public void run() {
+	 	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesNoEnviados)).getText().toString()) + 1;
+	 	                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesNoEnviados);
+	 	                	         mOutput.setText(i.toString());
+	 	                        }
+	 	                     });
+	                    	break;
 	            }
 	        }
 	    }, new IntentFilter(SENT+n));
@@ -220,9 +214,16 @@ public class MainActivity extends AbstractAsyncActivity {
 	                        }
 	                     });
 	                    break;
-	                case Activity.RESULT_CANCELED:
-	                	//loguear enviados con error
-	                    break;                        
+	                default:
+                   	 runOnUiThread(new Runnable() {
+	                        @Override
+	                        public void run() {
+	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesNoEnviados)).getText().toString()) + 1;
+	                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesNoEnviados);
+	                	         mOutput.setText(i.toString());
+	                        }
+	                     });
+                   	break;                  
 	            }
 	        }
 	    }, new IntentFilter(DELIVERED+n));        
