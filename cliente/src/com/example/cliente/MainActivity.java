@@ -68,17 +68,14 @@ public class MainActivity extends AbstractAsyncActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		// Initiate the request to the protected service
-		final Button submitButton = (Button) findViewById(R.id.submit);
-		submitButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				new FetchSecuredResourceTask().execute();
-			}
-		});
-		
-		
 	}
+	
+	@Override
+	public void onResume() {
+	    super.onResume();  // Always call the superclass method first
+	    new FetchSecuredResourceTask().execute();
+	}
+	
 	
 	// ***************************************
 	// Private methods
