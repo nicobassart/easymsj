@@ -4,11 +4,10 @@
     <string name="app_name">Cliente SMS</string>
     <string name="username">Usuario:</string>
     <string name="password">Clave:</string>
-    <string name="submit">Acceder</string>
+    <string name="submit">Iniciar</string>
     <string name="title_activity_client">ClientActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">MENU CLIENTE SMS</string>
-    <string name="hello">MENU CLIENTE SMS</string>
+    <string name="mensaje">NO CONECTADO A LA COLA</string>
     <string name="iniciar_thread">Iniciar Thread</string>
 
 </resources>
