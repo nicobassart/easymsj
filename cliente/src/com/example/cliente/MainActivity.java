@@ -68,14 +68,17 @@ public class MainActivity extends AbstractAsyncActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		// Initiate the request to the protected service
+		Button submitButton = (Button) findViewById(R.id.submit);
+		submitButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				new FetchSecuredResourceTask().execute();
+			}
+		});
+		
+		
 	}
-	
-	@Override
-	public void onResume() {
-	    super.onResume();  // Always call the superclass method first
-	    new FetchSecuredResourceTask().execute();
-	}
-	
 	
 	// ***************************************
 	// Private methods
@@ -94,11 +97,8 @@ public class MainActivity extends AbstractAsyncActivity {
 	    
 		@Override
 		protected void onPreExecute() {
-	        //super.onCreate(savedInstanceState);
-	        setContentView(R.layout.activity_main);
 	 
-	        //The output TextView we'll use to display messages
-	        mOutput =  (TextView) findViewById(R.id.output);
+	        ((Button) findViewById(R.id.submit)).setVisibility(View.GONE);
 		}
 
 		@Override
@@ -120,6 +120,13 @@ public class MainActivity extends AbstractAsyncActivity {
 
 	    	    QueueingConsumer consumer = new QueueingConsumer(mModel);
 	    	    mModel.basicConsume("myQueue", true, consumer);
+	    	    
+	    	    runOnUiThread(new Runnable() {
+	                 @Override
+	                 public void run() {
+	                	 ((TextView) findViewById(R.id.mensajeConexion)).setText("CONECTADO...");	
+	                 }
+	              });
 	    	    
 	    	   while (true) {
 	    		      QueueingConsumer.Delivery delivery;
