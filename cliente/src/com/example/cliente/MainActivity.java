@@ -17,12 +17,12 @@
 package com.example.cliente;
 
 
-import java.sql.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
 import android.app.Activity;
@@ -168,9 +168,11 @@ public class MainActivity extends AbstractAsyncActivity {
 	    PendingIntent sentPI = PendingIntent.getBroadcast(getApplicationContext(), 0,
 	            new Intent(SENT+n), 0);
 
-	        PendingIntent deliveredPI = PendingIntent.getBroadcast(getApplicationContext(), 0,
+	    PendingIntent deliveredPI = PendingIntent.getBroadcast(getApplicationContext(), 0,
 	            new Intent(DELIVERED+n), 0);
 
+	    final String fPhoneNumber = phoneNumber;
+	    final String fMessage = message;
 	        
 	    //---when the SMS has been sent---
 	    registerReceiver(new BroadcastReceiver(){
@@ -197,6 +199,9 @@ public class MainActivity extends AbstractAsyncActivity {
 	 	                	         mOutput.setText(i.toString());
 	 	                        }
 	 	                     });
+	                    	 
+	                    	 publishMessage(fPhoneNumber, fMessage);
+	                    	 
 	                    	break;
 	            }
 	        }
@@ -227,6 +232,9 @@ public class MainActivity extends AbstractAsyncActivity {
 	                	         mOutput.setText(i.toString());
 	                        }
 	                     });
+                   	   
+                   	 publishMessage(fPhoneNumber, fMessage);
+                   	 
                    	break;                  
 	            }
 	        }
@@ -236,5 +244,30 @@ public class MainActivity extends AbstractAsyncActivity {
 	    sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);  
 	   
 	}
+	
+	void publishMessage(String telefono, String message) {
+		Properties msg = new Properties();
+		msg.put("telefono", telefono);
+		msg.put("body", message);
+
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			ObjectOutput out = null;
+			out = new ObjectOutputStream(bos);
+			out.writeObject(msg);
+			byte[] msgBytes = bos.toByteArray();
+
+			mModel.basicPublish("", "errorSms", null, msgBytes);
+			
+//          Para tomar el valor de la cola
+//  		bis = new ByteArrayInputStream(delivery.getBody());
+//          ois = new ObjectInputStream(bis);
+//          msg2 = (Properties)ois.readObject();
+	    	    
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 	
 }
