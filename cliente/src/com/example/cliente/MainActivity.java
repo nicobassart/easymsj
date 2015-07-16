@@ -261,19 +261,8 @@ public class MainActivity extends AbstractAsyncActivity {
 			out.writeObject(msg);
 			byte[] msgBytes = bos.toByteArray();
 
-			mModel.basicPublish("", "errorSms", null, msgBytes);
-			
-			 QueueingConsumer consumer = new QueueingConsumer(mModel);
-	    	 mModel.basicConsume("myQueue", true, consumer);
-  		     QueueingConsumer.Delivery delivery;
-  		     delivery = consumer.nextDelivery();
-	    	    
-	    	    
-//          Para tomar el valor de la cola
-//  		bis = new ByteArrayInputStream(delivery.getBody());
-//          ois = new ObjectInputStream(bis);
-//          msg2 = (Properties)ois.readObject();
-	    	    
+			mModel.basicPublish("", "errorSms", null, msgBytes);//Para verlo: http://string-functions.com/base64decode.aspx
+    	    	    	      	    
 		} catch (Exception e) {
 			 Log.v(TAG, e.toString());//Loguea el error
 		}
