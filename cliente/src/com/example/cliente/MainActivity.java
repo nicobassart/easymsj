@@ -34,6 +34,7 @@ import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -131,6 +132,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	    	   while (true) {
 	    		      QueueingConsumer.Delivery delivery;
 	    		      delivery = consumer.nextDelivery();
+	    		      Log.v(TAG, "Mensaje desencolado");
 	    		      runOnUiThread(new Runnable() {
 	    	                 @Override
 	    	                 public void run() {
@@ -143,9 +145,9 @@ public class MainActivity extends AbstractAsyncActivity {
 	    		      sendSMS(telefono.toString(), message);
 	    	   }
 			} catch (Exception e1) {
-	    	   return new Message(1, "ERROR: \n", e1.toString());
+				 Log.v(TAG, e1.toString());//Loguea el error
 			}
-			
+			return null;
 		}
 
 		@Override
@@ -191,6 +193,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	                     });
 	                    break;
 	                    default:
+	                    	 Log.v(TAG, Integer.toString(getResultCode()));//Loguea el error
 	                    	 runOnUiThread(new Runnable() {
 	 	                        @Override
 	 	                        public void run() {
@@ -223,19 +226,20 @@ public class MainActivity extends AbstractAsyncActivity {
 	                        }
 	                     });
 	                    break;
-	                default:
-                   	 runOnUiThread(new Runnable() {
-	                        @Override
-	                        public void run() {
-	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesNoEnviados)).getText().toString()) + 1;
-	                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesNoEnviados);
-	                	         mOutput.setText(i.toString());
-	                        }
-	                     });
-                   	   
-                   	 publishMessage(fPhoneNumber, fMessage);
-                   	 
-                   	break;                  
+		                default:
+			                 Log.v(TAG, Integer.toString(getResultCode()));//Loguea el error
+		                   	 runOnUiThread(new Runnable() {
+			                        @Override
+			                        public void run() {
+			                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesNoEnviados)).getText().toString()) + 1;
+			                        	 TextView mOutput =  (TextView) findViewById(R.id.mensajesNoEnviados);
+			                	         mOutput.setText(i.toString());
+			                        }
+			                     });
+		                   	   
+		                   	 publishMessage(fPhoneNumber, fMessage, Integer.toString(getResultCode()));
+	                   	 
+	                   	break;                  
 	            }
 	        }
 	    }, new IntentFilter(DELIVERED+n));        
@@ -245,10 +249,11 @@ public class MainActivity extends AbstractAsyncActivity {
 	   
 	}
 	
-	void publishMessage(String telefono, String message) {
+	void publishMessage(String telefono, String message, String error) {
 		Properties msg = new Properties();
 		msg.put("telefono", telefono);
 		msg.put("body", message);
+		msg.put("error", error);
 
 		try {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -265,7 +270,7 @@ public class MainActivity extends AbstractAsyncActivity {
 //          msg2 = (Properties)ois.readObject();
 	    	    
 		} catch (Exception e) {
-			System.out.println(e);
+			 Log.v(TAG, e.toString());//Loguea el error
 		}
 	}
 
