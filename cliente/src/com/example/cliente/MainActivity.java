@@ -48,7 +48,7 @@ import com.rabbitmq.client.QueueingConsumer;
 
 public class MainActivity extends AbstractAsyncActivity {
 
-	protected static final String TAG = MainActivity.class.getSimpleName();
+	protected static final String TAG = "Mensajeados";
 	
 	
     protected Channel mModel = null;
@@ -203,7 +203,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	 	                        }
 	 	                     });
 	                    	 
-	                    	 publishMessage(fPhoneNumber, fMessage,Integer.toString(getResultCode()));
+	                    	 publishMessage(fPhoneNumber, fMessage,"--> ERROR ON SENT : " + Integer.toString(getResultCode()) +"  <--");
 	                    	 
 	                    	break;
 	            }
@@ -217,7 +217,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	            switch (getResultCode())
 	            {
 	                case Activity.RESULT_OK:
-	            	       runOnUiThread(new Runnable() {
+	            	       runOnUiThread(new Runnable() { 
 	                        @Override
 	                        public void run() {
 	                        	 Integer i = Integer.valueOf(((TextView) findViewById(R.id.mensajesEntregados)).getText().toString()) + 1;
@@ -237,7 +237,7 @@ public class MainActivity extends AbstractAsyncActivity {
 			                        }
 			                     });
 		                   	   
-		                   	 publishMessage(fPhoneNumber, fMessage, Integer.toString(getResultCode()));
+		                   	 publishMessage(fPhoneNumber, fMessage, "--> ERROR ON DELIVERED : " + Integer.toString(getResultCode()) +"  <--");
 	                   	 
 	                   	break;                  
 	            }
@@ -246,7 +246,6 @@ public class MainActivity extends AbstractAsyncActivity {
 
 	    SmsManager sms = SmsManager.getDefault();
 	    sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);  
-	   
 	}
 	
 	void publishMessage(String telefono, String message, String error) {
@@ -254,7 +253,7 @@ public class MainActivity extends AbstractAsyncActivity {
 		msg.put("telefono", telefono);
 		msg.put("body", message);
 		msg.put("error", error);
-
+		
 		try {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			ObjectOutput out = null;
@@ -264,6 +263,12 @@ public class MainActivity extends AbstractAsyncActivity {
 
 			mModel.basicPublish("", "errorSms", null, msgBytes);
 			
+			 QueueingConsumer consumer = new QueueingConsumer(mModel);
+	    	 mModel.basicConsume("myQueue", true, consumer);
+  		     QueueingConsumer.Delivery delivery;
+  		     delivery = consumer.nextDelivery();
+	    	    
+	    	    
 //          Para tomar el valor de la cola
 //  		bis = new ByteArrayInputStream(delivery.getBody());
 //          ois = new ObjectInputStream(bis);
