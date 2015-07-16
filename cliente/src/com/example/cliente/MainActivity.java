@@ -203,7 +203,7 @@ public class MainActivity extends AbstractAsyncActivity {
 	 	                        }
 	 	                     });
 	                    	 
-	                    	 publishMessage(fPhoneNumber, fMessage);
+	                    	 publishMessage(fPhoneNumber, fMessage,Integer.toString(getResultCode()));
 	                    	 
 	                    	break;
 	            }
