@@ -7,7 +7,7 @@
     <string name="submit">Iniciar</string>
     <string name="title_activity_client">ClientActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="mensaje">NO CONECTADO A LA COLA</string>
+    <string name="mensaje">Tech Resources</string>
     <string name="iniciar_thread">Iniciar Thread</string>
 
 </resources>
