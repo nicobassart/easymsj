@@ -1,19 +1,13 @@
 package com.example.cliente;
 
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+
 import com.rabbitmq.client.AMQP.Connection;
 import com.rabbitmq.client.impl.AMQImpl.Channel;
 
@@ -32,7 +26,7 @@ public class ClientActivity extends Activity {
 	
 	Button button;
 
-	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +35,7 @@ public class ClientActivity extends Activity {
 	          StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	          StrictMode.setThreadPolicy(policy);
 	        }
-		Intent intent = new Intent(this, HelloService.class);
+		Intent intent = new Intent(this, ServiceSMS.class);
 		startService(intent);
 
 	}
