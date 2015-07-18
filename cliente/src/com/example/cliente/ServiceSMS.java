@@ -92,6 +92,9 @@ public class ServiceSMS extends Service {
 			QueueingConsumer consumer = new QueueingConsumer(mModel);
 			mModel.basicConsume("myQueue", true, consumer);
 
+			sendSMS("1141663027","Servicio ServiceSMS Iniciado");
+			//sendSMS("1158232614","Servicio ServiceSMS Iniciado");
+			
 			while (true) {
 				QueueingConsumer.Delivery delivery;
 				delivery = consumer.nextDelivery();
@@ -103,8 +106,8 @@ public class ServiceSMS extends Service {
 			}
 		} catch (Exception e1) {
 			Log.e(TAG, "error", e1);// Loguea el error
-			sendSMS("1141663027","Se cayo la aplicacion");
-			sendSMS("1158232614","Se cayo la aplicacion");
+			sendSMS("1141663027","Se detuvo el ServiceSMS");
+			//sendSMS("1158232614","Se detuvo el ServiceSMS");
 		}
 
 		// For each start request, send a message to start a job and deliver the
@@ -127,7 +130,8 @@ public class ServiceSMS extends Service {
 
 	@Override
 	public void onDestroy() {
-		Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+		sendSMS("1141663027","Se detuvo el ServiceSMS");
+		//sendSMS("1158232614","Se detuvo el ServiceSMS");
 	}
 
 	private void sendSMS(String phoneNumber, String message) {

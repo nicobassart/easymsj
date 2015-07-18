@@ -5,8 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.telephony.SmsManager;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
 
 import com.rabbitmq.client.AMQP.Connection;
@@ -31,8 +31,9 @@ public class ClientActivity extends Activity {
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setContentView(R.layout.activity_client);
+		super.onCreate(savedInstanceState);
 
+		//Esto es lo que hace que no se inicie bien el layout
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 					.permitAll().build();
@@ -40,15 +41,17 @@ public class ClientActivity extends Activity {
 		}
 		Intent intent = new Intent(this, ServiceSMS.class);
 		startService(intent);
-		super.onCreate(savedInstanceState);
 
+		setContentView(R.layout.activity_client);
 	}
 
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.client, menu);
-		return true;
+	public void onDestroy() {
+		SmsManager sms = SmsManager.getDefault();
+		sms.sendTextMessage("1141663027", null, "Aplicaci�n detenida - Se detuvo el ClientActivity", null, null);
+		//sms.sendTextMessage("1158232614", null, "Aplicaci�n detenida - Se detuvo el ClientActivity", null, null);
+		super.onDestroy();
 	}
 
 }
