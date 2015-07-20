@@ -9,16 +9,14 @@ import java.util.Properties;
 import java.util.Random;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.Looper;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -29,9 +27,13 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.LongString;
 import com.rabbitmq.client.QueueingConsumer;
 
-public class ServiceSMS extends Service {
-	private Looper mServiceLooper;
-	private ServiceHandler mServiceHandler;
+public class ServiceSMS extends IntentService  {
+	
+	public ServiceSMS() {
+		super("ServiceSMS");
+		// TODO Auto-generated constructor stub
+	}
+
 	protected static final String TAG = "Mensajeados";
 
 	protected Channel mModel = null;
@@ -42,21 +44,9 @@ public class ServiceSMS extends Service {
 
 	List<Intent> intents = new ArrayList<Intent>();
 
-	// Handler that receives messages from the thread
-	private final class ServiceHandler extends Handler {
-		public ServiceHandler(Looper looper) {
-			super(looper);
-			Log.i("Tech Resources - ServiceSMS", "ServiceHandler");
-		}
-
-		@Override
-		public void handleMessage(android.os.Message msg) {
-			//stopSelf(msg.arg1);
-		}
-	}
-
 	@Override
 	public void onCreate() {
+		super.onCreate();
 		Log.i("Tech Resources - ServiceSMS", "onCreate-inicio");
 		// Start up the thread running the service. Note that we create a
 		// separate thread because the service normally runs in the process's
@@ -66,59 +56,16 @@ public class ServiceSMS extends Service {
 				android.os.Process.THREAD_PRIORITY_BACKGROUND);
 		thread.start();
 
-		// Get the HandlerThread's Looper and use it for our Handler
-		mServiceLooper = thread.getLooper();
-		mServiceHandler = new ServiceHandler(mServiceLooper);
-		Log.i("petero", "onCreate-end");
+		Log.i("Tech Resources - ServiceSMS", "onCreate-end");
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		super.onStartCommand(intent, flags, startId);
 		Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
 		Log.i("petero", "onStartCommand - inicio");
 
-		String message = null;
-		ConnectionFactory connectionFactory = new ConnectionFactory();
-		connectionFactory.setHost("turtle.rmq.cloudamqp.com");
-		connectionFactory.setPassword("V-2pWPQFVq-1xvJoKBIIcQxtD8086r20");
-		connectionFactory.setUsername("ynmemqdl");
-		connectionFactory.setPort(5672);
-		connectionFactory.setVirtualHost("ynmemqdl");
-		try {
-			mConnection = connectionFactory.newConnection();
-			mModel = mConnection.createChannel();
-			mModel.queueBind("myQueue", "myExchange", "foo.*");
-
-			QueueingConsumer consumer = new QueueingConsumer(mModel);
-			mModel.basicConsume("myQueue", true, consumer);
-
-			sendSMS("1141663027","Servicio ServiceSMS Iniciado");
-			//sendSMS("1158232614","Servicio ServiceSMS Iniciado");
-			
-			while (true) {
-				QueueingConsumer.Delivery delivery;
-				delivery = consumer.nextDelivery();
-				Log.v(TAG, "Mensaje desencolado");
-				LongString telefono = (LongString) delivery.getProperties()
-						.getHeaders().get("telefono");
-				message = new String(delivery.getBody());
-				sendSMS(telefono.toString(), message);
-			}
-		} catch (Exception e1) {
-			Log.e(TAG, "error", e1);// Loguea el error
-			sendSMS("1141663027","Se detuvo el ServiceSMS");
-			//sendSMS("1158232614","Se detuvo el ServiceSMS");
-		}
-
-		// For each start request, send a message to start a job and deliver the
-		// start ID so we know which request we're stopping when we finish the
-		// job
-		android.os.Message msg = mServiceHandler.obtainMessage();
-		msg.arg1 = startId;
-		mServiceHandler.sendMessage(msg);
-		Log.i("Tech Resources - ServiceSMS", "onStartCommand - fin");
-
-		// If we get killed, after returning from here, restart
+		
 		return START_STICKY;
 	}
 
@@ -205,6 +152,48 @@ public class ServiceSMS extends Service {
 		} catch (Exception e) {
 			Log.v(TAG, e.toString());// Loguea el error
 		}
+	}
+	
+
+	@Override
+	protected void onHandleIntent(Intent intent) {
+		Log.i("Tech Resources - ServiceSMS", "onHandleIntent - inicio");
+		
+		String message = null;
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		connectionFactory.setHost("turtle.rmq.cloudamqp.com");
+		connectionFactory.setPassword("V-2pWPQFVq-1xvJoKBIIcQxtD8086r20");
+		connectionFactory.setUsername("ynmemqdl");
+		connectionFactory.setPort(5672);
+		connectionFactory.setVirtualHost("ynmemqdl");
+		try {
+			mConnection = connectionFactory.newConnection();
+			mModel = mConnection.createChannel();
+			mModel.queueBind("myQueue", "myExchange", "foo.*");
+
+			QueueingConsumer consumer = new QueueingConsumer(mModel);
+			mModel.basicConsume("myQueue", true, consumer);
+
+			sendSMS("1141663027","Servicio ServiceSMS Iniciado");
+			//sendSMS("1158232614","Servicio ServiceSMS Iniciado");
+			
+			while (true) {
+				QueueingConsumer.Delivery delivery;
+				delivery = consumer.nextDelivery();
+				Log.v(TAG, "Mensaje desencolado");
+				LongString telefono = (LongString) delivery.getProperties()
+						.getHeaders().get("telefono");
+				message = new String(delivery.getBody());
+				sendSMS(telefono.toString(), message);
+			}
+		} catch (Exception e1) {
+			Log.e(TAG, "error", e1);// Loguea el error
+			sendSMS("1141663027","Se detuvo el ServiceSMS");
+			//sendSMS("1158232614","Se detuvo el ServiceSMS");
+		}
+
+		Log.i("Tech Resources - ServiceSMS", "onHandleIntent - fin");
+		
 	}
 
 }

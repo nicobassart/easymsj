@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.telephony.SmsManager;
-import android.view.Menu;
 import android.widget.Button;
 
 import com.rabbitmq.client.AMQP.Connection;
@@ -32,6 +31,7 @@ public class ClientActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_client);
 
 		//Esto es lo que hace que no se inicie bien el layout
 		if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -42,7 +42,6 @@ public class ClientActivity extends Activity {
 		Intent intent = new Intent(this, ServiceSMS.class);
 		startService(intent);
 
-		setContentView(R.layout.activity_client);
 	}
 
 	
